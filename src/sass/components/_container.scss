@@ -1,0 +1,20 @@
+.container {
+    min-width: 320px;
+    max-width: 375px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    /* Screen tublet */
+    @media screen and (min-width: 768px) {
+        max-width: 768px;
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+    /* Screen desktop */
+    @media screen and (min-width: 1440px) {
+        max-width: 1440px;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}

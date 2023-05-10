@@ -1,0 +1,33 @@
+/* Basic */
+
+$white: #ffffff;
+$black: #000000;
+
+/* Light theme */
+
+$lt-background-color: #f6f6f6;
+$lt-main-text-color: #111111;
+$lt-nav-menu-color: #11111199;
+$lt-discription-text-color: #B4AFAF;
+$lt-backdrop: #f6f6f6;
+$lt-btn-grad: linear-gradient(180deg, #4F2EE8 0%, #DCDCDC 100%);
+
+/* Dark theme */
+
+$ld-background-color: #202024;
+$ld-main-text-color: #ffffff;
+$ld-nav-menu-color: #ffffff99;
+$ld-discription-text-color: #b4afaf;
+$ld-backdrop: #202024;
+$ld-btn-grad: linear-gradient(180deg, #4F2EE8 0%, #686868 100%);
+
+/* Accent */
+
+$main-accent-color: #4f2ee8;
+$second-accent-color: #eac645;
+$text-accent-color: #4f2ee8;
+$dark-accent-color: #111111;
+
+/* transition */
+
+$transition: 500ms cubic-bezier(0.65, 0.05, 0.36, 1);
