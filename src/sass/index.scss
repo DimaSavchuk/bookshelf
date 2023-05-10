@@ -1,27 +1,7 @@
-/* common */
-
-// @import './common';
-
-/* base */
-
+@import './common';
 @import './base/main';
-
-/* components */
-
 @import './components/main';
-
-/* layouts */
-
 @import './layouts/main';
-
-/* modals */
-
 @import './modals/main';
-
-/* utils */
-
 @import './utils/main';
-
-/* shopping list */
-
 @import './pages/main'
