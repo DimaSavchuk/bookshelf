@@ -23,7 +23,7 @@ function markupList(arr) {
     .map(
       ({ title, url, img }, idx) =>
         `<div class="support-item">
-            <p class="support-number">${idx}</p>
+            <p class="support-number">${(idx + 1).toString().padStart(2, 0)}</p>
             <a class="support-link" href="${url}">
               <img src="${img}" alt="${title}" />
             </a>
