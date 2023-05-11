@@ -1,0 +1,71 @@
+.bestsellers {
+    background-color: rgb(238, 214, 218);
+    width: 1000px;
+    height: 2000px;
+}
+
+.bestsellers-title {
+    color: #B4AFAF;
+font-size: 14px;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0.03em;
+text-align: left;
+
+}
+
+.bestsellers-list{
+    // display: flex;
+    height: 348px;
+    width: 996px;
+    border-radius: 0px;
+    // background-color: #B4AFAF;
+}
+.bestsellers-btn {
+    height: 46px;
+    width: 124px;
+    left: 872px;
+    top: 380px;
+    border-radius: 40px;
+    padding: 14px 28px 14px 28px;
+    color:  #111111;
+    font-family: DM Sans;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: -0.01em;
+    text-align: left;
+
+}
+
+
+.bestsellers-card-item {
+    height: 306px;
+    width: 180px;
+    left: 0px;
+    top: 0px;
+    border-radius: 0px;
+    border-color: aqua;
+}
+
+.book-name {
+ color: #111111;
+
+font-size: 16px;
+font-weight: 700;
+line-height: 18px;
+letter-spacing: -0.04em;
+text-align: left;
+
+}
+.author {
+    color:  #B4AFAF;
+    font-family: DM Sans;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: -0.04em;
+    text-align: left;
+}
+

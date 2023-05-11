@@ -7,6 +7,7 @@ export async function categoryListRequest() {
 
 export async function topBooksRequest() {
     return response = await apiInstance.get(`/books/top-books`);
+  
 }
 
 export async function categoryRequest() {
