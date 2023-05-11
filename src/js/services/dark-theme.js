@@ -18,7 +18,6 @@ function onClick() {
   }
 
   localStorage.setItem(STORAGE_KEY, true);
-  console.log(localStorage.getItem(STORAGE_KEY));
 }
 
 // Функція для відображення даних зі сховища при перезавантаженні сторінки
@@ -26,5 +25,6 @@ function onLoadDarkTheme() {
   const value = localStorage.getItem(STORAGE_KEY);
   if (value) {
     bodyEl.classList.add('dark-theme');
+    switcherEl.setAttribute('checked', true);
   }
 }
