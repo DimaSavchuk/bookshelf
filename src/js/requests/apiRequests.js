@@ -1,18 +1,39 @@
 import { apiInstance } from "../services/api";
 
 export async function categoryListRequest() {
-    return response = await apiInstance.get(`/books/category-list`);
-}
+    try {
+        response = await apiInstance.get(`/books/category-list`);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
 
+}
 
 export async function topBooksRequest() {
-    return response = await apiInstance.get(`/books/top-books`);
+    try {
+        response = await apiInstance.get(`/books/top-books`);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
 }
 
-export async function categoryRequest() {
-    return response = await apiInstance.get(`/books/category`);
+export async function categoryRequest(category) {
+
+    try {
+        response = await apiInstance.get(`/books/category?category=${category}`);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
 }
 
-export async function BooksRequest(id) {
-    return response = await apiInstance.get(`/books/${id}`);
+export async function booksRequest(id) {
+    try {
+        response = await apiInstance.get(`/books/${id}`);
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
 }
