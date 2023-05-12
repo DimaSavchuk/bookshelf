@@ -11,7 +11,7 @@ galleryBtn.addEventListener('click', scrollGallery);
 
 function scrollGallery() {
   const galleryItems = document.querySelectorAll('.support-item');
-  position += 4; // сдвиг
+  position += 2; // сдвиг
   if (position >= galleryItems.length) {
     position = 0; // если дошли до конца, начинаем сначала
   }
