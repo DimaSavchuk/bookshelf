@@ -1,3 +1,50 @@
 <header class="header-section">
-    <div class="container"></div>
+  <div class="container">
+    <div class="header-wrap">
+      <a href="./index.html" class="header-logo link">
+        <svg class="header-logo-icon" width="109" height="28">
+          <use href="./images/sprite.svg#icon-logo-light"></use>
+        </svg>
+      </a>
+      <nav class="header-nav authorized">
+        <ul class="header-nav-list list">
+          <li class="header-nav-item current">
+            <a href="./index.html" class="header-nav-link link">Home</a>
+          </li>
+          <li class="header-nav-item">
+            <a href="./shoping-list.html" class="header-nav-link shopping link">
+              <span>Shopping list</span>
+              <svg class="header-uil-cart" width="20" height="20">
+                <use href="./images/sprite.svg#icon-uil-cart"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="header-wrap-2">
+        <label class="switch">
+          <input type="checkbox" class="js-switch-theme" />
+          <span class="slider round"></span>
+        </label>
+        <div class="user-wrap authorized js-user-bar">
+          <img src="./images/user.png" alt="user" class="user-img" />
+          <p class="user-name">Stephen</p>
+          <svg width="23" height="26" class="user-icon">
+            <use href="./images/sprite.svg#icon-show-more"></use>
+          </svg>
+        </div>
+        <button type="button" class="user-sign-up authorized js-authorization">
+          <p class="user-sign-up-text">Sign up</p>
+          <svg width="23" height="26" class="user-sign-up-icon">
+            <use href="./images/sprite.svg#icon-login-arrow"></use>
+          </svg>
+        </button>
+        <button type="button" class="mobile-menu-open js-mobile-menu">
+          <svg width="28" height="28" class="mobile-menu">
+            <use href="./images/sprite.svg#icon-naw-manu"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
 </header>
