@@ -1,0 +1,48 @@
+.footer-section {
+    border: 1.5px solid #111111;
+    border-radius: 0px 0px 8px 8px;
+    background-color: #fff;
+}
+
+
+.footer-section .container {
+    display: flex;
+    align-items: center;
+
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+
+
+.footer-button {
+    display: flex;
+    align-items: center;
+    padding: 4px 12px;
+    margin-left:  auto;
+
+    cursor: pointer;
+
+    background: #4f2ee8;
+    border-radius: 36px;
+    border-color: #4f2ee8;
+}
+
+.footer-button-text {
+    letter-spacing: -.02em;
+    color: #fff;
+    margin-left: 9px;
+    margin-right: 4px;
+    font-size: 22px;
+    line-height: 1.31818;
+}
+
+
+
+//  about-team-modal
+
+.about-team-modal.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
