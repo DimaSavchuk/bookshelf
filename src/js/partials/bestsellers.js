@@ -1,4 +1,5 @@
 
+
 const bestSellersGalery = document.querySelector('.bestsellers');
 
 
