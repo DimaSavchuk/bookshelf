@@ -1,0 +1,121 @@
+.about-team-modal {
+    position: fixed;
+    top: -1;
+    left: -1;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+
+    background-color: rgba(11, 11, 26, 0.801);
+
+    transition: visibility cubic-bezier(0.4, 0, 0.2, 1) 250ms,
+    opacity cubic-bezier(0.4, 0, 0.2, 1) 250ms;
+}
+
+.about-team-modal.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.about-team-window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    padding: 70px 10px 10px 10px;
+
+
+    background-color: white;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+
+    transition: transform cubic-bezier(0.4, 0, 0.2, 1) 300ms, opacity cubic-bezier(0.4, 0, 0.2, 1) 300ms;
+    overflow-x:hidden;
+}
+/* Screen tublet */
+@media screen and (min-width: 768px) {
+    .about-team-window {
+    max-width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+}
+/* Screen desktop */
+@media screen and (min-width: 1440px) {
+    .about-team-window {
+    max-width: 1440px;
+    padding-left: 24px;
+    padding-right: 24px;
+    }
+}
+
+.about-team-modal.is-hidden .about-team-window {
+    transform: translate(-100%, -100%);
+    opacity: 0;
+}
+
+.about-team-close-modal {
+    position: absolute;
+    right: 35;
+    top: 25;
+}
+
+.modal-icon {
+    fill: black;
+}
+
+.about-team-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    row-gap: 25px;
+    width: 320px;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+    .about-team-list {
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+    column-gap: 20px;
+}
+}
+
+/* Screen desktop */
+@media screen and (min-width: 1440px) {
+    .about-team-list {
+    width: 1440px;
+    padding-left: 24px;
+    padding-right: 24px;
+    }
+}
+
+.about-team-item {
+    width: 320px;
+    background-color: white;
+}
+
+// .about-team-photo {
+//     height: 340px;
+// }
+
+.about-team-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.about-team-role {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.about-team-details {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
