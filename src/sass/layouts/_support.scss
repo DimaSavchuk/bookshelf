@@ -39,9 +39,7 @@
 .support-list {
   width: 159px;
   height: 188px;
-  border: 1px solid black;
   margin-bottom: 16px;
-  //   overflow-y: scroll;
   overflow: hidden;
 }
 
@@ -56,7 +54,6 @@
   height: 32px;
   width: 159px;
   margin-bottom: 20px;
-  background-color: red;
 }
 
 .support-number {
@@ -71,6 +68,10 @@
 
 .support-link {
   text-decoration: none;
+}
+
+.support-link img {
+  filter: brightness(0) invert(1);
 }
 
 .support-btn {
