@@ -5,6 +5,30 @@ body {
   font-weight: 700;
 }
 
-.dark-theme {
+body.dark-theme {
   background-color: #202024;
+}
+
+.header-section.dark-theme {
+  background-color: #111111;
+}
+
+.shopping.dark-theme {
+  color: #ffffff;
+}
+
+.bestsellers-title.dark-theme {
+  color: #ffffff;
+}
+
+.dark_icon {
+  display: none;
+}
+
+.dark_icon.dark-theme {
+  display: block;
+}
+
+.light_icon.dark-theme {
+  display: none;
 }
