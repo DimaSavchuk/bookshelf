@@ -94,7 +94,7 @@
 .user-icon {
   fill: #ffffff;
 }
-.user-sign-up.authorized{
+.user-sign-up.authorized {
   display: none;
 }
 .user-sign-up {
@@ -190,6 +190,37 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+
+.scroll-up-btn {
+  position: fixed;
+  z-index: 99;
+  bottom: 20px;
+  right: 20px;
+  opacity: 0;
+  line-height: 0;
+  padding: 15px;
+  cursor: pointer;
+  background-color: #4f2ee8;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px #4f2ee84d;
+  transition: background-color 0.5s cubic-bezier(0.65, 0.05, 0.36, 1),
+    box-shadow 0.5s cubic-bezier(0.65, 0.05, 0.36, 1),
+    opacity 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+.scroll-arr {
+  fill: #ffffff;
+}
+
+.scroll-up-btn:hover {
+  box-shadow: 0 0 0 3px #4f2ee84d;
+  background-color: #fff;
+}
+.scroll-up-btn:hover .scroll-arr {
+  fill: #4f2ee8;
+}
+=======
 // _________________________________Стилі мобільної меню_____________________________________
 .menu-container {
   position: fixed;
