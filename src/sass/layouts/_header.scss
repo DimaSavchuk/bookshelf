@@ -19,6 +19,7 @@
 .header-nav.unauthorized {
   display: none;
 }
+
 .authorized {
   display: none;
   
@@ -220,7 +221,7 @@ input:checked + .slider:before {
 .scroll-up-btn:hover .scroll-arr {
   fill: #4f2ee8;
 }
-=======
+
 // _________________________________Стилі мобільної меню_____________________________________
 .menu-container {
   position: fixed;
