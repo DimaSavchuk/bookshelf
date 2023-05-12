@@ -1,4 +1,22 @@
-const bodyEl = document.querySelector('body');
+const refs = {
+  bodyEl: document.querySelector('body'),
+  headerEl: document.querySelector('.header-section'),
+  headerNavLink: document.querySelector('.shopping'),
+  logoLightEl: document.querySelector('.light_icon'),
+  logoDarkEl: document.querySelector('.dark_icon'),
+  titleEl: document.querySelector('.bestsellers-title'),
+
+  // bookNameEl: document.querySelector('.book-name'),
+};
+
+const arrayEl = [
+  refs.bodyEl,
+  refs.headerEl,
+  refs.headerNavLink,
+  refs.logoLightEl,
+  refs.logoDarkEl,
+  refs.titleEl,
+];
 
 const switcherEl = document.querySelector('.js-switch-theme');
 
@@ -10,7 +28,15 @@ onLoadDarkTheme();
 
 // Функція для зміни теми сторінки
 function onClick() {
-  bodyEl.classList.toggle('dark-theme');
+  arrayEl.map(element => element.classList.toggle('dark-theme'));
+  // refs.bodyEl.classList.toggle('dark-theme');
+  // refs.headerEl.classList.toggle('dark-theme');
+  // refs.titleEl.classList.toggle('dark-theme');
+  // refs.logoLightEl.classList.toggle('dark-theme');
+  // refs.logoDarkEl.classList.toggle('dark-theme');
+  // refs.headerNavLink.classList.toggle('dark-theme');
+
+  // refs.bookNameEl.classList.toggle('dark-theme');
 
   if (localStorage.getItem(STORAGE_KEY) === 'true') {
     localStorage.removeItem(STORAGE_KEY);
@@ -24,7 +50,15 @@ function onClick() {
 function onLoadDarkTheme() {
   const value = localStorage.getItem(STORAGE_KEY);
   if (value) {
-    bodyEl.classList.add('dark-theme');
     switcherEl.setAttribute('checked', true);
+    arrayEl.map(element => element.classList.add('dark-theme'));
+    // refs.bodyEl.classList.add('dark-theme');
+    // refs.headerEl.classList.add('dark-theme');
+    // refs.titleEl.classList.add('dark-theme');
+    // refs.logoLightEl.classList.add('dark-theme');
+    // refs.logoDarkEl.classList.add('dark-theme');
+    // refs.headerNavLink.classList.add('dark-theme');
+
+    // refs.bookNameEl.classList.add('dark-theme');
   }
 }
