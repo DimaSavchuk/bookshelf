@@ -1,3 +1,7 @@
+import { category } from '../partials/categories';
+
+category();
+
 const refs = {
   bodyEl: document.querySelector('body'),
   headerEl: document.querySelector('.header-section'),
@@ -5,6 +9,7 @@ const refs = {
   logoLightEl: document.querySelector('.light_icon'),
   logoDarkEl: document.querySelector('.dark_icon'),
   titleEl: document.querySelector('.bestsellers-title'),
+  jsCategoryListEl: document.querySelector('.js-category-list'),
 
   // bookNameEl: document.querySelector('.book-name'),
 };
@@ -16,6 +21,7 @@ const arrayEl = [
   refs.logoLightEl,
   refs.logoDarkEl,
   refs.titleEl,
+  refs.jsCategoryListEl,
 ];
 
 const switcherEl = document.querySelector('.js-switch-theme');
@@ -29,13 +35,14 @@ onLoadDarkTheme();
 // Функція для зміни теми сторінки
 function onClick() {
   arrayEl.map(element => element.classList.toggle('dark-theme'));
+
+  // refs.jsCategoryListEl.classList.toggle('dark-theme');
   // refs.bodyEl.classList.toggle('dark-theme');
   // refs.headerEl.classList.toggle('dark-theme');
   // refs.titleEl.classList.toggle('dark-theme');
   // refs.logoLightEl.classList.toggle('dark-theme');
   // refs.logoDarkEl.classList.toggle('dark-theme');
   // refs.headerNavLink.classList.toggle('dark-theme');
-
   // refs.bookNameEl.classList.toggle('dark-theme');
 
   if (localStorage.getItem(STORAGE_KEY) === 'true') {
@@ -58,7 +65,7 @@ function onLoadDarkTheme() {
     // refs.logoLightEl.classList.add('dark-theme');
     // refs.logoDarkEl.classList.add('dark-theme');
     // refs.headerNavLink.classList.add('dark-theme');
-
     // refs.bookNameEl.classList.add('dark-theme');
+    // refs.jsCategoryListEl.classList.add('dark-theme');
   }
 }

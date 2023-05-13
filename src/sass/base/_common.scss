@@ -32,3 +32,14 @@ body.dark-theme {
 .light_icon.dark-theme {
   display: none;
 }
+
+.js-category-list.dark-theme > .category-item > .category-link {
+  color: #ffffff;
+  opacity: 60%;
+}
+
+.js-category-list.dark-theme > .category-item > .category-link:hover,
+.js-category-list.dark-theme > .category-item > .category-link:focus {
+  color: #eac645;
+  opacity: 100%;
+}
