@@ -2,6 +2,7 @@ import { supportList } from '../services/support-list';
 
 const gallery = document.querySelector('.support-wrapper');
 const galleryBtn = document.querySelector('.support-btn');
+const arrow = document.querySelector('.support-btn-icon');
 
 let position = 0;
 
@@ -11,8 +12,14 @@ galleryBtn.addEventListener('click', scrollGallery);
 
 function scrollGallery() {
   const galleryItems = document.querySelectorAll('.support-item');
-  position += 2; // сдвиг
+  position += 4; // сдвиг
+
+  if (galleryItems.length - position < position) {
+    arrow.style.transform = 'rotate(180deg)';
+  }
+
   if (position >= galleryItems.length) {
+    arrow.style.transform = 'rotate(0deg)';
     position = 0; // если дошли до конца, начинаем сначала
   }
   gallery.style.transform = `translateY(-${position * 11.2}%)`; // прокрутка
