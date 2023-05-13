@@ -12,9 +12,10 @@ galleryBtn.addEventListener('click', scrollGallery);
 
 function scrollGallery() {
   const galleryItems = document.querySelectorAll('.support-item');
-  position += 4; // сдвиг
+  const step = 2;
+  position += step;
 
-  if (galleryItems.length - position < position) {
+  if (galleryItems.length - position < step) {
     arrow.style.transform = 'rotate(180deg)';
   }
 
