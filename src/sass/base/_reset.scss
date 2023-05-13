@@ -5,45 +5,46 @@ h4,
 h5,
 h6,
 p {
-    margin: 0;
+  margin: 0;
 }
-
 
 /* ul */
 
-.list {
-    list-style: none;
-    padding-left: 0;
-    margin: 0;
+ul {
+  list-style: none;
 }
 
+.list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
 
 /* a */
 
 .link {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
-
 
 /* img */
 
 img {
-    display: block;
-    max-width: 100%;
-    height: auto;
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 address {
-    font-style: normal;
+  font-style: normal;
 }
 
 // menu table
 th,
 td {
-    padding: 0;
+  padding: 0;
 }
 
 .reset-table {
-    border-spacing: 0;
+  border-spacing: 0;
 }
