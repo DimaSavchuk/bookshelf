@@ -6,6 +6,10 @@
 
 @import './base/main';
 
+/* utils */
+
+@import './utils/main';
+
 /* components */
 
 @import './components/main';
@@ -18,10 +22,6 @@
 
 @import './modals/main';
 
-/* utils */
-
-@import './utils/main';
-
 /* shopping list */
 
-@import './pages/main'
+@import './pages/main';
