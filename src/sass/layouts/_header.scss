@@ -1,8 +1,14 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .header-section {
   background: #ffffff;
   border: 1.5px solid #111111;
   border-radius: 0px 0px 8px 8px;
   position: relative;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 .header-wrap {
