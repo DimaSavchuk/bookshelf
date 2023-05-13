@@ -43,7 +43,6 @@ function onClick() {
   // refs.logoLightEl.classList.toggle('dark-theme');
   // refs.logoDarkEl.classList.toggle('dark-theme');
   // refs.headerNavLink.classList.toggle('dark-theme');
-
   // refs.bookNameEl.classList.toggle('dark-theme');
 
   if (localStorage.getItem(STORAGE_KEY) === 'true') {
@@ -66,7 +65,7 @@ function onLoadDarkTheme() {
     // refs.logoLightEl.classList.add('dark-theme');
     // refs.logoDarkEl.classList.add('dark-theme');
     // refs.headerNavLink.classList.add('dark-theme');
-
     // refs.bookNameEl.classList.add('dark-theme');
+    // refs.jsCategoryListEl.classList.add('dark-theme');
   }
 }
