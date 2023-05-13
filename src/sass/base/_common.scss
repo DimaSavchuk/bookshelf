@@ -38,8 +38,8 @@ body.dark-theme {
   opacity: 60%;
 }
 
-.js-category-list.dark-theme > .category-item > .category-link:hover,
-.js-category-list.dark-theme > .category-item > .category-link:focus {
+.js-category-list.dark-theme > .category-item:hover > .category-link,
+.js-category-list.dark-theme > .category-item:focus > .category-link {
   color: #eac645;
   opacity: 100%;
 }
