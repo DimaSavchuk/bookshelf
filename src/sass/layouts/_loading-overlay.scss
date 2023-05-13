@@ -1,6 +1,6 @@
 .loading-overlay {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,6 +89,6 @@ $perspective: 250px;
     transform: translateY(0px);
   }
   100% {
-    transform: translateY(-1400px);
+    transform: translateY(-110vh);
   }
 }

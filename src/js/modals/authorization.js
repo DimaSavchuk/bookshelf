@@ -52,16 +52,19 @@ const auth = getAuth();
 // TODO: Introduce main entry file and move this logic there
 window.addEventListener('DOMContentLoaded', event => {
   console.log('DOM fully loaded and parsed');
+  const layoutElement = document.querySelector('.layout');
+  layoutElement.classList.add('is-loading');
+
   Promise.all([authCheck(), fetchTopBooksRequest()]).then(() => {
     const loadingElement = document.querySelector('.js-loading');
+    const layoutElement = document.querySelector('.layout');
+
     loadingElement.classList.add('loading-overlay-hide');
+    layoutElement.classList.remove('is-loading');
   });
 });
 
-
-
 export function authCheck() {
- 
   onAuthStateChanged(auth, user => {
     if (user) {
       console.log(user);
@@ -78,11 +81,7 @@ export function authCheck() {
 
     const loadingElement = document.querySelector('.js-loading');
   });
-
-
 }
-
-
 
 const instance = basicLightbox.create(signUpMarkup);
 const instanceSignIn = basicLightbox.create(signInMarkup);
@@ -124,7 +123,6 @@ function onSignUpBtn(e) {
         // return Notify.warning('Please enter all information');
       }
 
-      
       createUserWithEmailAndPassword(auth, email, password, name)
         .then(userCredential => {
           // Signed in
@@ -137,7 +135,6 @@ function onSignUpBtn(e) {
           })
             .then(() => {
               // Profile updated!
-              
 
               window.location.reload();
             })
@@ -153,7 +150,6 @@ function onSignUpBtn(e) {
           // ..
         });
 
-     
       AuthForm.removeEventListener('submit', onSubmit);
       instance.close();
     }
@@ -182,8 +178,6 @@ function onSignUpBtn(e) {
 
           const email = signInForm.elements.email.value;
           const password = signInForm.elements.password.value;
-
-          
 
           signInWithEmailAndPassword(auth, email, password)
             .then(userCredential => {
