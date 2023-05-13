@@ -4,6 +4,7 @@ import 'basiclightbox/dist/basicLightbox.min.css';
 import { signUpMarkup } from './auth-markup';
 import { signInMarkup } from './signin-markup';
 
+import { fetchTopBooksRequest } from '../partials/bestsellers';
 import { initializeApp } from 'firebase/app';
 import {
   getAuth,
@@ -48,27 +49,19 @@ authorizedBtn.addEventListener('click', onAuthorizedBtn);
 
 const auth = getAuth();
 
+// TODO: Introduce main entry file and move this logic there
 window.addEventListener('DOMContentLoaded', event => {
   console.log('DOM fully loaded and parsed');
-  authCheck();
+  Promise.all([authCheck(), fetchTopBooksRequest()]).then(() => {
+    const loadingElement = document.querySelector('.js-loading');
+    loadingElement.classList.add('loading-overlay-hide');
+  });
 });
 
-// window.DOMContent = event => {
-//   authChec();
-// };k
 
-//   document.addEventListener('DOMContentLoaded', () => {
-//     console.log('DOMContentLoaded OKOK');
-//   });
 
-//   window.addEventListener('load', () => {
-//     console.log('window load OK');
-//   });
-
-function authCheck() {
-  //   const { email, password } =
-  //     JSON.parse(localStorage.getItem('authorization-form-info')) || {};
-
+export function authCheck() {
+ 
   onAuthStateChanged(auth, user => {
     if (user) {
       console.log(user);
@@ -82,45 +75,14 @@ function authCheck() {
       signUpBtn.classList.remove('authorized');
       authorizedBtn.classList.replace('authorized', 'unauthorized');
     }
+
+    const loadingElement = document.querySelector('.js-loading');
   });
 
-  //   signInWithEmailAndPassword(auth, email, password)
-  //     .then(userCredential => {
-  //       // Signed in
-  //       const user = userCredential.user;
-  //       signUpBtn.classList.add('authorized');
-  //       authorizedBtn.classList.replace('unauthorized', 'authorized');
-  //       userLoggedName.forEach(item => {
-  //         item.innerHTML = user.displayName;
-  //       });
-  //     })
-  //     .catch(error => {
-  //       const errorCode = error.code;
-  //       const errorMessage = error.message;
 
-  //       console.error('errorMessage', errorMessage);
-
-  //       signUpBtn.classList.remove('authorized');
-  //       authorizedBtn.classList.replace('authorized', 'unauthorized');
-  //     });
-
-  //   if (authuser.name) {
-  //     // signUpBtn.classList.add('authorized');
-  //     // authorizedBtn.classList.replace('unauthorized', 'authorized');
-  //   } else {
-  //     signUpBtn.classList.remove('authorized');
-  //     authorizedBtn.classList.replace('authorized', 'unauthorized');
-  //   }
 }
 
-// const KEY_USERPROFILE = 'authorization-form-info';
-// let userProfileObj = JSON.parse(localStorage.getItem(KEY_USERPROFILE)) || {
-//   user: '',
-//   email: '',
-//   password: '',
-// };
 
-// console.log(userProfileObj);
 
 const instance = basicLightbox.create(signUpMarkup);
 const instanceSignIn = basicLightbox.create(signInMarkup);
@@ -162,12 +124,7 @@ function onSignUpBtn(e) {
         // return Notify.warning('Please enter all information');
       }
 
-      //   const userProfileObj = {
-      //     name,
-      //     email,
-      //     password,
-      //   };
-
+      
       createUserWithEmailAndPassword(auth, email, password, name)
         .then(userCredential => {
           // Signed in
@@ -180,10 +137,7 @@ function onSignUpBtn(e) {
           })
             .then(() => {
               // Profile updated!
-              //   localStorage.setItem(
-              //     KEY_USERPROFILE,
-              //     JSON.stringify(userProfileObj)
-              //   );
+              
 
               window.location.reload();
             })
@@ -199,7 +153,7 @@ function onSignUpBtn(e) {
           // ..
         });
 
-      // authCheck();
+     
       AuthForm.removeEventListener('submit', onSubmit);
       instance.close();
     }
@@ -229,11 +183,7 @@ function onSignUpBtn(e) {
           const email = signInForm.elements.email.value;
           const password = signInForm.elements.password.value;
 
-          //   const userProfileObj = {
-          //     email: email,
-          //     password: password,
-          //   };
-          //   console.log(userProfileObj);
+          
 
           signInWithEmailAndPassword(auth, email, password)
             .then(userCredential => {
@@ -287,7 +237,6 @@ function onAuthorizedBtn(e) {
 }
 
 function onSignOutBtn() {
-  // localStorage.removeItem('authorization-form-info');
   signOut(auth);
   window.location.reload();
 }
