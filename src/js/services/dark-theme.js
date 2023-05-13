@@ -10,6 +10,9 @@ const refs = {
   logoDarkEl: document.querySelector('.dark_icon'),
   titleEl: document.querySelector('.bestsellers-title'),
   jsCategoryListEl: document.querySelector('.js-category-list'),
+  footerEl: document.querySelector('.footer-js'),
+  logoFooterLightEl: document.querySelector('.light_icon_footer'),
+  logoFooterDarkEl: document.querySelector('.dark_icon_footer'),
 
   // bookNameEl: document.querySelector('.book-name'),
 };
@@ -22,6 +25,9 @@ const arrayEl = [
   refs.logoDarkEl,
   refs.titleEl,
   refs.jsCategoryListEl,
+  refs.footerEl,
+  refs.logoFooterLightEl,
+  refs.logoFooterDarkEl,
 ];
 
 const switcherEl = document.querySelector('.js-switch-theme');

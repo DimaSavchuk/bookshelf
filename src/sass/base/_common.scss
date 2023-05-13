@@ -43,3 +43,19 @@ body.dark-theme {
   color: #eac645;
   opacity: 100%;
 }
+
+.footer-js.dark-theme {
+  background-color: #111111;
+}
+
+.dark_icon_footer {
+  display: none;
+}
+
+.dark_icon_footer.dark-theme {
+  display: block;
+}
+
+.light_icon_footer.dark-theme {
+  display: none;
+}
