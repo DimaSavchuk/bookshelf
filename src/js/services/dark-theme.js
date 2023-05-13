@@ -1,3 +1,7 @@
+import { category } from '../partials/categories';
+
+category();
+
 const refs = {
   bodyEl: document.querySelector('body'),
   headerEl: document.querySelector('.header-section'),
@@ -5,6 +9,7 @@ const refs = {
   logoLightEl: document.querySelector('.light_icon'),
   logoDarkEl: document.querySelector('.dark_icon'),
   titleEl: document.querySelector('.bestsellers-title'),
+  jsCategoryListEl: document.querySelector('.js-category-list'),
 
   // bookNameEl: document.querySelector('.book-name'),
 };
@@ -16,6 +21,7 @@ const arrayEl = [
   refs.logoLightEl,
   refs.logoDarkEl,
   refs.titleEl,
+  refs.jsCategoryListEl,
 ];
 
 const switcherEl = document.querySelector('.js-switch-theme');
@@ -29,6 +35,8 @@ onLoadDarkTheme();
 // Функція для зміни теми сторінки
 function onClick() {
   arrayEl.map(element => element.classList.toggle('dark-theme'));
+
+  // refs.jsCategoryListEl.classList.toggle('dark-theme');
   // refs.bodyEl.classList.toggle('dark-theme');
   // refs.headerEl.classList.toggle('dark-theme');
   // refs.titleEl.classList.toggle('dark-theme');
