@@ -93,12 +93,12 @@
   width: 335px;
 }
 
-.bestsellers-card-item:hover .overlay,
-.bestsellers-card-item:focus .overlay {
+.bestsellers-card-item:hover .overlay-bestseller,
+.bestsellers-card-item:focus .overlay-bestseller {
   transform: translate(0, 70%);
 }
 
-.overlay {
+.overlay-bestseller {
   position: absolute;
   overflow: hidden;
   top: 0;
@@ -127,7 +127,7 @@
   text-align: center;
 }
 
-.overlay > p {
+.overlay-bestseller > p {
   margin: 0;
 }
 
@@ -247,12 +247,14 @@
     // height: 366px;
     border-radius: 0px;
   }
+
   // .bestsellers-card-item:nth-child(n) {
   //   display: contents;
   // }
   // .bestsellers-card-item:nth-child(n + 4) {
   //   display: none;
   // }
+
   .box {
     width: 218px;
   }
