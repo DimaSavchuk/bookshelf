@@ -1,3 +1,4 @@
+import './js/services/loadingcheck-shopping-list';
 import './js/modals/authorization';
 
 import './js/partials/header';

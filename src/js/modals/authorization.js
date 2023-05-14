@@ -1,9 +1,8 @@
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
-// import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { signUpMarkup } from './auth-markup';
 import { signInMarkup } from './signin-markup';
-import { topBooksRequest } from '../requests/apiRequests';
 import { initializeApp } from 'firebase/app';
 import {
   getAuth,
@@ -14,8 +13,6 @@ import {
   signOut,
 } from 'firebase/auth';
 
-// import { getDatabase } from 'firebase/database';
-
 const firebaseConfig = {
   apiKey: 'AIzaSyAqWH2icjWY7IpUhAf_OC5YhETKs4dKhp4',
   authDomain: 'bookshelf-8fd9e.firebaseapp.com',
@@ -23,15 +20,10 @@ const firebaseConfig = {
   storageBucket: 'bookshelf-8fd9e.appspot.com',
   messagingSenderId: '750642504872',
   appId: '1:750642504872:web:4ecdb00b8b46247efb4e9d',
-  databaseURL:
-    'https://bookshelf-8fd9e-default-rtdb.europe-west1.firebasedatabase.app/',
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-// Initialize Realtime Database and get a reference to the service
-// const database = getDatabase(app);
 
 const signUpBtn = document.querySelector('.js-authorization');
 const authorizedBtn = document.querySelector('.js-user-bar');
@@ -47,19 +39,19 @@ logOutMobile.addEventListener('click', onSignOutBtn);
 const auth = getAuth();
 
 // TODO: Introduce main entry file and move this logic there
-window.addEventListener('DOMContentLoaded', event => {
-  console.log('DOM fully loaded and parsed');
-  const layoutElement = document.querySelector('.layout');
-  layoutElement.classList.add('is-loading');
+// window.addEventListener('DOMContentLoaded', event => {
+//   console.log('DOM fully loaded and parsed');
+//   const layoutElement = document.querySelector('.layout');
+//   layoutElement.classList.add('is-loading');
 
-  Promise.all([authCheck(), topBooksRequest()]).then(() => {
-    const loadingElement = document.querySelector('.js-loading');
-    const layoutElement = document.querySelector('.layout');
+//   Promise.all([authCheck(), topBooksRequest()]).then(() => {
+//     const loadingElement = document.querySelector('.js-loading');
+//     const layoutElement = document.querySelector('.layout');
 
-    loadingElement.classList.add('loading-overlay-hide');
-    layoutElement.classList.remove('is-loading');
-  });
-});
+//     loadingElement.classList.add('loading-overlay-hide');
+//     layoutElement.classList.remove('is-loading');
+//   });
+// });
 
 export function authCheck() {
   onAuthStateChanged(auth, user => {
@@ -116,8 +108,7 @@ function onSignUpBtn(e) {
       let password = AuthForm.elements.password.value;
 
       if (!name || !email || !password) {
-        return;
-        // return Notify.warning('Please enter all information');
+        return Notify.warning('Please enter all information');
       }
 
       createUserWithEmailAndPassword(auth, email, password, name)
@@ -143,7 +134,7 @@ function onSignUpBtn(e) {
         .catch(error => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          // Notify.failure(errorMessage);
+          Notify.failure(errorMessage);
           // ..
         });
 
@@ -181,18 +172,12 @@ function onSignUpBtn(e) {
               // Signed in
 
               const user = userCredential.user;
-              console.log(user);
-              //   localStorage.setItem(
-              //     KEY_USERPROFILE,
-              //     JSON.stringify(userProfileObj)
-              //   );
-
               window.location.reload();
             })
             .catch(error => {
               const errorCode = error.code;
               const errorMessage = error.message;
-              // Notify.failure(errorMessage);
+              Notify.failure(errorMessage);
               console.error('errorMessage', errorMessage);
               // return
             });

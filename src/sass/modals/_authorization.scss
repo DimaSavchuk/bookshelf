@@ -6,12 +6,11 @@
   width: 335px;
   padding: 40px 20px;
 
-  /* background-color: #202024;  dark mode*/
   background-color: #f6f6f6;
   border: 2px solid #111111;
   border-radius: 18px;
 
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color $transition;
 
   @media screen and (min-width: 768px) {
     width: 579px;
@@ -69,11 +68,9 @@
 .authorization-form-input {
   padding: 14px 22px;
 
-  /* outline: 2px solid #f6f6f6; dark mode */
   outline: 2px solid #111111;
   border-radius: 24px;
 
-  /* color: #f6f6f6; dark mode*/
   color: #111111;
 
   background-color: transparent;
@@ -97,6 +94,11 @@
 }
 .authorization-form-input:focus-visible {
   outline: 2px solid #4f2ee8;
+  background-color: transparent;
+}
+.authorization-form-input:-internal-autofill-selected{
+    background-color: transparent !important;
+        color: black !important;
 }
 
 .authorization-form-label {
@@ -107,15 +109,13 @@
 
   font-weight: 700;
   font-size: 16px;
-  line-height: 18px;
-  /* identical to box height, or 112% */
+  line-height: 1.12;
 
   letter-spacing: -0.01em;
   text-transform: uppercase;
-  /* color: #f6f6f6;
-  background-color: #202024; dark mode */
-
-  transition: 200ms cubic-bezier(0.65, 0.05, 0.36, 1);
+  background-color: #f6f6f6;
+  
+  transition: transform $transition;
 
   @media screen and (min-width: 768px) {
     font-size: 18px;
@@ -123,7 +123,7 @@
   }
 }
 .authorization-form-field {
-  transition: 200ms cubic-bezier(0.65, 0.05, 0.36, 1);
+  transition: transform $transition;
 }
 
 .authorization-form-input:focus + .authorization-form-label,
@@ -153,15 +153,10 @@
 
   font-weight: 700;
   font-size: 16px;
-  line-height: 18px;
-  /* identical to box height, or 112% */
+  line-height: 1.12;
 
   letter-spacing: -0.01em;
   text-transform: uppercase;
-
-  /* color: #202024; 
-    background-color: #f6f6f6;
-    border: 2px solid #f6f6f6; dark mode*/
 
   color: #f3f3f3;
   background-color: #111111;
@@ -169,7 +164,7 @@
   border-radius: 40px;
 
   cursor: pointer;
-  transition: 200ms cubic-bezier(0.65, 0.05, 0.36, 1);
+  transition: color $transition, background-color $transition, border-color $transition, box-shadow $transition;
 
   @media screen and (min-width: 768px) {
     padding: 20px 38px;
@@ -196,18 +191,15 @@
 .modal-sign-action {
   font-weight: 700;
   font-size: 14px;
-  line-height: 18px;
-  /* identical to box height, or 129% */
-
+  line-height: 1.29;
   letter-spacing: -0.01em;
   text-transform: uppercase;
 
-  /* color: rgba(246, 246, 246, 0.5); */
   color: rgba(17, 17, 17, 0.5);
 
   cursor: pointer;
 
-  transition: color 200ms cubic-bezier(0.65, 0.05, 0.36, 1);
+  transition: color $transition;
 
   @media screen and (min-width: 768px) {
     font-size: 18px;
@@ -230,7 +222,6 @@
 
   @media screen and (min-width: 768px) {
     opacity: 1;
-    z-index: 2;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -244,14 +235,11 @@
     height: 150px;
     padding: 15px 20px;
 
-    /* background-color: #202024;  dark mode*/
-    background: radial-gradient(
-    183.6% 183.01% at 59.76% -23.42%,
-    #4f2ee8 18.03%,
-    #fff 100%);
+    background: #4f2ee8;
+    border: 2px solid #4f2ee8;
     border-radius: 18px;
 
-    transition: 150ms cubic-bezier(0.65, 0.05, 0.36, 1);
+    transition: opacity 150ms cubic-bezier(0.65, 0.05, 0.36, 1);
   }
   @media screen and (min-width: 1440px) {
     width: 350px;
@@ -287,7 +275,7 @@
     font-size: 16px;
     margin-left: 9px;
     margin-right: 4px;
-    line-height: calc(29 / 22);
+    line-height: 1.32;
     letter-spacing: -0.02em;
     color: #ffffff;
   }
