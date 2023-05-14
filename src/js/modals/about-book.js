@@ -1,4 +1,3 @@
-
 // import { makeMarkupBook } from '../partials/bestsellers';
 
 import * as basicLightbox from 'basiclightbox';
@@ -20,48 +19,52 @@ const bestSellersGalery = document.querySelector('.bestsellers');
 //     }
 //   }
 
-// bestSellersGalery.addEventListener('click', clickOnbook);
+bestSellersGalery.addEventListener('click', clickOnbook);
 
+function clickOnbook(event) {
+  event.preventDefault();
+  const bookID = event.target.id;
 
-// function clickOnbook(event){
-//     event.preventDefault();
-// const bookID = event.target.id;
+  console.log(bookID);
+  try {
+    booksRequest(bookID)
+      .then(data => {
+        if (data.length === 0 || data === undefined) {
+          Notiflix.Notify.failure(
+            "Sorry, we didn't find anything according to your request."
+          );
+          return;
+        }
 
+        console.log(data);
 
-// console.log(bookID)
-// try {
-//     booksRequest(bookID)
-//       .then(data => {
-//         if (data.length === 0 || data === undefined) {
-//           Notiflix.Notify.failure(
-//             "Sorry, we didn't find anything according to your request."
-//           );
-//           return;
-//         }
-    
-//         console.log(data)
+        // modal.insertAdjacentHTML('beforeend', markupCardBookInfo(data));
+        console.log(modal);
+        const instanceBook = basicLightbox.create(
+          markupCardBookInfo(data)
+          //         `
+          //   <h1>Not closable</h1>
+          //   <p>It's not possible to close this lightbox with a click.</p>
+          // `
+        );
 
-//         modal.insertAdjacentHTML('beforeend', markupCardBookInfo(data));
-//         console.log(modal)
-        
-//       })
-//       .catch(err => console.log(err));
-//   } catch (error) {
-//     console.log(error);
-//   }
-
-// }
-
+        instanceBook.show(() => {
+          markupCardBookInfo(data);
+        });
+      })
+      .catch(err => console.log(err));
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 //    function openModal() {
 //         modal.classList.remove('hidden');
 //         bestSellersGalerymodalBook.classList.remove('hidden');
 //     };
- 
-  
 
 //  function makeBook(data) {
-//     const markup = 
+//     const markup =
 //       `<div class="book_info_card">
 //           <button class="modal-info-close" type="button" data-modal-close>
 //               <svg class="close-modal-info" width="24" height="24">
@@ -85,7 +88,7 @@ const bestSellersGalery = document.querySelector('.bestsellers');
 //           </div>
 //           <button class="btn-book-info ${data.buttonClass}" type="button" id="addRemoveBookButton">${data.buttonText}</button>
 //           <p class="book-infoBtn-explanation ${data.classDescription}">
-//           Сongratulations! You have added the book to the shopping list. 
+//           Сongratulations! You have added the book to the shopping list.
 //           To delete, press the button “Remove from the shopping list”.
 //           </p>
 //       </div>`;
@@ -93,14 +96,14 @@ const bestSellersGalery = document.querySelector('.bestsellers');
 //   }
 
 //   function makeBook(data) {
-//     const markup = 
+//     const markup =
 //       <div class="flex">
 //         <button class="btn-close">⨉</button>
 //         <li class="bestsellers-card-item">
 //           <a href="" class="bestsellers-link project-transit" id="${data._id}">
 //             <!-- box-menu -->
 //             <div class="box">
-//               <p class="overlay" id="${data._id}">Quick View</p>  
+//               <p class="overlay" id="${data._id}">Quick View</p>
 //               <img class="gallery__image" src="${data.book_image}" id="${data._id}">
 //             </div>
 //             <!-- box-menu -->
@@ -113,61 +116,52 @@ const bestSellersGalery = document.querySelector('.bestsellers');
 //         <button class="btn">ADD TO SHOP LIST</button>
 //       </div>
 //     ;
-  
-//     return markup;
-//   } 
 
-  
+//     return markup;
+//   }
+
 // =============================================
 
-const contentWrapper = document.querySelector('.bestsellers');
+// const contentWrapper = document.querySelector('.bestsellers');
 
-contentWrapper.addEventListener('click', onBookInfoClick);
+// contentWrapper.addEventListener('click', onBookInfoClick);
 
-async function onBookInfoClick(evt) {
-  try {
-    evt.preventDefault();
-    const cardLink = evt.target.closest('.bestsellers-link');
-    if (!cardLink) {
-      return;
-    }
+// async function onBookInfoClick(evt) {
+//   try {
+//     evt.preventDefault();
+//     const cardLink = evt.target.closest('.bestsellers-link');
+//     if (!cardLink) {
+//       return;
+//     }
 
-    const bookId = cardLink.dataset.id;
-    const data = await booksRequest('bookId', bookId);
-    const infoMarkup = markupCardBookInfo(data, searchBook(data));
+//     const bookId = cardLink.dataset.id;
+//     const data = await booksRequest('bookId', bookId);
+// const infoMarkup = markupCardBookInfo(data, searchBook(data));
 
-    const instanceBook = basicLightbox.create(infoMarkup, {
-      onShow: () => window.addEventListener('keydown', onEscButtonClick),
-      onClose: () => window.removeEventListener('keydown', onEscButtonClick),
-    });
+//     const actionBtn = document.querySelector('.btn-book-info');
 
-    instanceBook.show();
+//     actionBtn.addEventListener('click', onClickBtn);
 
-    const actionBtn = document.querySelector('.btn-book-info');
-
-    actionBtn.addEventListener('click', onClickBtn);
-
-    function onEscButtonClick(evt) {
-      if (evt.code === 'Escape') {
-        instanceBook.close();
-      }
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}
+//     function onEscButtonClick(evt) {
+//       if (evt.code === 'Escape') {
+//         instanceBook.close();
+//       }
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
 // =======================================
 
 function markupCardBookInfo(data, flag) {
-    const classDescription = flag ? '' : 'visually-hidden';
-    const buttonText = flag
-      ? 'REMOVE FROM SHOPPING LIST'
-      : 'ADD TO SHOPPING LIST';
-    const buttonClass = flag ? 'book_removefrom_list' : 'book_addto_list';
-    const { book_image, list_name, author, description, title, buy_links } = data;
-    return 
-      `<div class="book_info_card">
+  const classDescription = flag ? '' : 'visually-hidden';
+  const buttonText = flag
+    ? 'REMOVE FROM SHOPPING LIST'
+    : 'ADD TO SHOPPING LIST';
+  const buttonClass = flag ? 'book_removefrom_list' : 'book_addto_list';
+  const { book_image, list_name, author, description, title, buy_links } = data;
+  return `<div class="book_info_card">
           <button class="modal-info-close" type="button" data-modal-close>
               <svg class="close-modal-info" width="24" height="24">
                   <use href="./images/symbol-defs.svg#close"></use>
@@ -193,5 +187,5 @@ function markupCardBookInfo(data, flag) {
           Сongratulations! You have added the book to the shopping list. 
           To delete, press the button “Remove from the shopping list”.
           </p>
-      </div>`
-  }
+      </div>`;
+}
