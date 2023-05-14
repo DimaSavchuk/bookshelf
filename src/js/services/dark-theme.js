@@ -5,7 +5,7 @@ category();
 const refs = {
   bodyEl: document.querySelector('body'),
   headerEl: document.querySelector('.header-section'),
-  headerNavLink: document.querySelector('.shopping'),
+  headerNavLinkEl: document.querySelector('.shopping'),
   logoLightEl: document.querySelector('.light_icon'),
   logoDarkEl: document.querySelector('.dark_icon'),
   titleEl: document.querySelector('.bestsellers-title'),
@@ -14,12 +14,13 @@ const refs = {
   logoFooterLightEl: document.querySelector('.light_icon_footer'),
   logoFooterDarkEl: document.querySelector('.dark_icon_footer'),
   bookNameEl: document.querySelector('.bestsellers'),
+  // modalAuthEl: document.querySelector('.modal-auth'),
 };
 
 const arrayEl = [
   refs.bodyEl,
   refs.headerEl,
-  refs.headerNavLink,
+  refs.headerNavLinkEl,
   refs.logoLightEl,
   refs.logoDarkEl,
   refs.titleEl,
@@ -28,6 +29,7 @@ const arrayEl = [
   refs.logoFooterLightEl,
   refs.logoFooterDarkEl,
   refs.bookNameEl,
+  // refs.modalAuthEl,
 ];
 
 const switcherEl = document.querySelector('.js-switch-theme');

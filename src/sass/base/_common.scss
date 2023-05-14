@@ -12,6 +12,52 @@ body.dark-theme {
   background-color: #202024;
 }
 
+body.dark-theme > .basicLightbox > .basicLightbox__placeholder > .modal-auth {
+  background-color: #202024;
+}
+
+body.dark-theme
+  > .basicLightbox
+  > .basicLightbox__placeholder
+  > .modal-auth
+  > .modal-authorization-form
+  > .authorization-form-group
+  > .authorization-form-field
+  > .authorization-form-input {
+  outline: 2px solid #f6f6f6;
+}
+
+body.dark-theme
+  > .basicLightbox
+  > .basicLightbox__placeholder
+  > .modal-auth
+  > .modal-authorization-form
+  > .authorization-form-group
+  > .authorization-form-field
+  > .authorization-form-label {
+  color: #f6f6f6;
+}
+
+body.dark-theme
+  > .basicLightbox
+  > .basicLightbox__placeholder
+  > .modal-auth
+  > .modal-authorization-form
+  > .authorization-form-button {
+  background-color: #f6f6f6;
+  color: #202024;
+}
+
+body.dark-theme
+  > .basicLightbox
+  > .basicLightbox__placeholder
+  > .modal-auth
+  > .sign-action-group
+  > .js_sign_in {
+  color: #f6f6f6;
+  opacity: 50%;
+}
+
 .js-category-list::-webkit-scrollbar-track {
   background-color: rgba(0, 0, 0, 0);
 }
