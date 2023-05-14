@@ -12,6 +12,15 @@ body.dark-theme {
   background-color: #202024;
 }
 
+.js-category-list::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.js-category-list.dark-theme::-webkit-scrollbar-thumb {
+  background-color: #111111;
+  opacity: 60%;
+}
+
 .header-section.dark-theme {
   background-color: #111111;
   border: 1.5px solid #ffffff;
