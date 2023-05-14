@@ -1,11 +1,7 @@
 import { listenerCount } from 'process';
 import { categoryRequest } from '../requests/apiRequests';
 import { apiInstance } from '../services/api';
-import {
-  changeColorStyleInTitle,
-  createAllCategoryList,
-  loadTopBooksOnClick,
-} from './bestsellers';
+import { changeColorStyleInTitle, createAllCategoryList } from './bestsellers';
 
 const list = document.querySelector('.category-list');
 const categoryTitle = document.querySelector('.bestsellers-title');
