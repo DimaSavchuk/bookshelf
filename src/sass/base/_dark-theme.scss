@@ -152,3 +152,39 @@ body.dark-theme
   > .bestsellers-card-item:focus {
   box-shadow: 0 0 0 5px #4f2ee84d;
 }
+
+body.dark-theme > .layout > .about-team-modal > .about-team-window,
+body.dark-theme
+  > .layout
+  > .about-team-modal
+  > .about-team-window
+  > .about-team-list
+  > .about-team-item {
+  background-color: #202024;
+}
+
+body.dark-theme
+  > .layout
+  > .about-team-modal
+  > .about-team-window
+  > .about-team-list
+  > .about-team-item
+  > .about-team-title,
+body.dark-theme
+  > .layout
+  > .about-team-modal
+  > .about-team-window
+  > .about-team-list
+  > .about-team-item
+  > .about-team-role {
+  color: #ffffff;
+}
+
+body.dark-theme
+  > .layout
+  > .about-team-modal
+  > .about-team-window
+  > .about-team-close-modal {
+  background-color: #202024;
+  border: 1px solid #ffffff;
+}
