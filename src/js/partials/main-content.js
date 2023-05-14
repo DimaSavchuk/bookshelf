@@ -1,3 +1,4 @@
 import './categories';
 import './support';
-import './bestsellers';
+// TODO: Remove this after initial loading starts working
+// import './bestsellers';

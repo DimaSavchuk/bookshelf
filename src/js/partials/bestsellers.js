@@ -1,36 +1,59 @@
-
-
 const bestSellersGalery = document.querySelector('.bestsellers');
 
-
 // -------------------------------- Рішення 1------------
-export async function topBooksRequest() {
+export async function fetchTopBooksRequest() {
+  const response = await fetch(
+    `https://books-backend.p.goit.global/books/top-books`
+  )
+    .then(data => data.json())
+    .then(response => {
+      bestSellersGalery.insertAdjacentHTML(
+        'beforeend',
+        createTopBookCardList(response)
+      );
+    })
+    .catch(err => {
+      console.log(err);
+      throw new Error('Oops! there is some issue');
+    });
+}
 
-    const response = await fetch(`https://books-backend.p.goit.global/books/top-books`);
+// export async function topBooksRequest() {
+//   const response = await fetch(
+//     `https://books-backend.p.goit.global/books/top-books`
+//   );
 
-  if (!response.ok) {
-    throw new Error(
-console.log('Oops, there is no country with that name'));
-  }
-  return await response.json();
-  
-  }
- 
-  topBooksRequest()
-.then(response => {   
-    
-bestSellersGalery.insertAdjacentHTML('beforeend', createTopBookCardList(response))
-}).catch(err => console.log(err));
+//   if (!response.ok) {
+//     throw new Error(console.log('Oops, there is no country with that name'));
+//   }
+//   return await response.json();
+// }
 
+// topBooksRequest()
+//   .then(response => {
+//     bestSellersGalery.insertAdjacentHTML(
+//       'beforeend',
+//       createTopBookCardList(response)
+//     );
+//   })
+//   .catch(err => console.log(err));
 
 function createTopBookCardList(arr) {
-    return arr.map(({ list_name, books }) => {
-    return `<div class="bestsellers-card">
+  return arr
+    .map(({ list_name, books }) => {
+      return `<div class="bestsellers-card">
             <h2 class="bestsellers-title-book">${list_name}</h2>
             <ul class="bestsellers-list">
-            ${
-                books.map(({ book_image, title, author, book_image_width, book_image_height }) => {
-                return       ` <li class="bestsellers-card-item">
+            ${books
+              .map(
+                ({
+                  book_image,
+                  title,
+                  author,
+                  book_image_width,
+                  book_image_height,
+                }) => {
+                  return ` <li class="bestsellers-card-item">
                                 <a href="" class="bestsellers-link project-transit">
                                 <!-- box-menu -->
                                 <div class="box">
@@ -45,13 +68,13 @@ function createTopBookCardList(arr) {
                                   </div>
                                    </a>
                                  
-                         </li>`
-                }).join('')
-              
-            }
+                         </li>`;
+                }
+              )
+              .join('')}
                 </ul>
                 <button class="bestsellers-btn" type="button" data-action="click">See more</button>
-            </div>`
-        
-    }).join('');
-} 
+            </div>`;
+    })
+    .join('');
+}
