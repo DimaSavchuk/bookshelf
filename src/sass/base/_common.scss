@@ -40,6 +40,9 @@ body.dark-theme {
 .js-category-list.dark-theme > .category-item > .category-link {
   color: #ffffff;
   opacity: 60%;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .js-category-list.dark-theme > .category-item:hover > .category-link,
@@ -71,5 +74,9 @@ body.dark-theme {
   > .bestsellers-link
   > .text-box
   > .book-name {
+  color: #ffffff;
+}
+
+.bestsellers.dark-theme > .bestsellers-card > .bestsellers-btn {
   color: #ffffff;
 }
