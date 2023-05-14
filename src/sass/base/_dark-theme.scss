@@ -141,3 +141,14 @@ body.dark-theme
   > .book-name {
   color: #ffffff;
 }
+
+.bestsellers.dark-theme
+  > .bestsellers-card
+  > .bestsellers-list
+  > .bestsellers-card-item:hover,
+.bestsellers.dark-theme
+  > .bestsellers-card
+  > .bestsellers-list
+  > .bestsellers-card-item:focus {
+  box-shadow: 0 0 0 5px #4f2ee84d;
+}
