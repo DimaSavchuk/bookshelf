@@ -13,8 +13,7 @@ const refs = {
   footerEl: document.querySelector('.footer-js'),
   logoFooterLightEl: document.querySelector('.light_icon_footer'),
   logoFooterDarkEl: document.querySelector('.dark_icon_footer'),
-
-  // bookNameEl: document.querySelector('.book-name'),
+  bookNameEl: document.querySelector('.bestsellers'),
 };
 
 const arrayEl = [
@@ -28,6 +27,7 @@ const arrayEl = [
   refs.footerEl,
   refs.logoFooterLightEl,
   refs.logoFooterDarkEl,
+  refs.bookNameEl,
 ];
 
 const switcherEl = document.querySelector('.js-switch-theme');
