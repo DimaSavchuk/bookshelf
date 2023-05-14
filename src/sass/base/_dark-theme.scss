@@ -130,3 +130,13 @@ body.dark-theme
 .bestsellers.dark-theme > .bestsellers-title {
   color: #ffffff;
 }
+
+.bestsellers.dark-theme
+  > .bestsellers-category-item
+  > .category-book-list
+  > .bestsellers-card-item
+  > .bestsellers-link
+  > .text-box
+  > .book-name {
+  color: #ffffff;
+}
