@@ -1,3 +1,31 @@
-@import "./categories";
-@import "./support";
-@import "./bestsellers";
+@import './categories';
+@import './support';
+@import './bestsellers';
+
+/*Main content*/
+
+.main-content {
+  padding-top: 40px;
+  .side-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-bottom: 40px;
+    @media screen and (min-width: 768px) {
+      flex-direction: row;
+      gap: 32px;
+    }
+    @media screen and (min-width: 1440px) {
+      flex-direction: column;
+      gap: 86px;
+    }
+  }
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    // gap: 40px;
+  }
+}
+
+.main-container {
+  padding-bottom: 40px;
+}

@@ -2,8 +2,11 @@
   <div class="container">
     <div class="header-wrap">
       <a href="./index.html" class="header-logo link">
-        <svg class="header-logo-icon" width="109" height="28">
+        <svg class="header-logo-icon light_icon" width="109" height="28">
           <use href="./images/sprite.svg#icon-logo-light"></use>
+        </svg>
+        <svg class="header-logo-icon dark_icon" width="109" height="28">
+          <use href="./images/sprite.svg#icon-logo-dark"></use>
         </svg>
       </a>
       <nav class="header-nav authorized">
@@ -26,9 +29,9 @@
           <input type="checkbox" class="js-switch-theme" />
           <span class="slider round"></span>
         </label>
-        <div class="user-wrap authorized js-user-bar">
+        <div class="user-wrap authorized js-user-bar js-close-wdw">
           <img src="./images/user.png" alt="user" class="user-img" />
-          <p class="user-name">Stephen</p>
+          <p class="user-name js-name"></p>
           <svg width="23" height="26" class="user-icon">
             <use href="./images/sprite.svg#icon-show-more"></use>
           </svg>
@@ -39,12 +42,46 @@
             <use href="./images/sprite.svg#icon-login-arrow"></use>
           </svg>
         </button>
-        <button type="button" class="mobile-menu-open js-mobile-menu">
+
+        <div class="logout-wdw logouthidn js-logout js-close">
+          <p class="signout-text">
+            Signed in as:<span class="signout-name js-name"></span>
+          </p>
+          <button type="button" class="signout-btn js-signOut">
+            Sign out
+            <svg width="23" height="26" class="user-sign-up-icon">
+              <use href="./images/sprite.svg#icon-login-arrow"></use>
+            </svg>
+          </button>
+        </div>
+
+
+        <button type="button" class="mobile-menu-btn js-open-menu">
           <svg width="28" height="28" class="mobile-menu">
             <use href="./images/sprite.svg#icon-naw-manu"></use>
+          </svg>
+        </button>
+        <button type="button" class="mobile-menu-btn js-close-menu">
+          <svg width="28" height="28" class="mobile-menu">
+            <use href="./images/sprite.svg#icon-x-close"></use>
+          </svg>
+        </button> 
+
+      </div>
+      <!-- Мобільне меню -->
+      <div class="menu-container js-menu-container" id="mobile-menu">
+        <button type="button" class="mobile-logout-btn js-logOut">
+          Log out
+          <svg width="20" height="20" class="mobile-menu">
+            <use href="./images/sprite.svg#icon-login-arrow"></use>
           </svg>
         </button>
       </div>
     </div>
   </div>
+  <button type="button" class="scroll-up-btn js-scroll-up">
+    <svg width="24" height="24" class="scroll-arr">
+      <use href="./images/sprite.svg#icon-skroll-up"></use>
+    </svg>
+  </button>
 </header>

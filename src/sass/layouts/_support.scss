@@ -20,7 +20,6 @@
 .support-name {
   width: 205px;
   height: 32px;
-
   font-family: 'DM Sans';
   font-weight: 700;
   font-size: 28px;
@@ -50,7 +49,6 @@
 .support-item {
   display: flex;
   align-items: center;
-
   height: 32px;
   width: 159px;
   margin-bottom: 20px;
@@ -72,6 +70,12 @@
 
 .support-link img {
   filter: brightness(0) invert(1);
+  transition: filter 500ms cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+.support-link:hover img,
+.support-link:focus img {
+  filter: none;
 }
 
 .support-btn {
@@ -81,10 +85,8 @@
   background-color: #fff;
   border-radius: 50%;
   cursor: pointer;
-
   border: none;
   margin-left: 112px;
-
   transition: background-color 500ms cubic-bezier(0.65, 0.05, 0.36, 1),
     box-shadow 500ms cubic-bezier(0.65, 0.05, 0.36, 1);
 }
@@ -100,8 +102,6 @@
   height: 6px;
   fill: #4f2ee8;
   margin: 0 auto;
-
-  // transition: fill 500ms cubic-bezier(0.65, 0.05, 0.36, 1);
 }
 
 .support-btn:hover .support-btn-icon,
@@ -109,34 +109,26 @@
   fill: #ffffff;
 }
 
-// .support-btn-icon:hover,
-// .support-btn-icon:focus {
-//   fill: #ffffff;
-// }
-
 @media screen and (min-width: 768px) {
   .support {
     height: 472px;
   }
-
   .support-list {
     height: 292px;
     margin-bottom: 32px;
   }
-
   .support-btn {
     width: 38px;
     height: 38px;
     margin-left: 109px;
   }
-
   .support-btn-icon {
     width: 13px;
     height: 7px;
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1440px) {
   .support {
     width: 356px;
     height: 490px;

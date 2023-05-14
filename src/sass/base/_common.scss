@@ -3,8 +3,7 @@ body {
   font-family: 'DM Sans', sans-serif;
   font-size: 16px;
   font-weight: 700;
-}
 
-.dark-theme {
-  background-color: #202024;
+  background-color: #f6f6f6;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
