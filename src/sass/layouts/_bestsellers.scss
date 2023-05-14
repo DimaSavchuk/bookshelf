@@ -27,7 +27,7 @@
   display: flex;
   flex-wrap: wrap;
   // align-content: center;
-  // max-width: 335px;
+  width: 335px;
   // border-radius: 0;
   margin-bottom: 40px;
 }
@@ -55,7 +55,7 @@
 }
 
 .bestsellers-card-item {
-  height: 535px;
+  // height: 535px;
   border-radius: 0px;
 }
 
@@ -70,9 +70,9 @@
 
 /* ----------- hover-focus --------------- */
 
-.bestsellers-card-item:not(:first-child) {
-  display: none;
-}
+// .bestsellers-card-item:not(:first-child) {
+//   display: none;
+// }
 
 /*---------- box-menu  -------------*/
 
@@ -87,6 +87,7 @@
 .box {
   position: relative;
   overflow: hidden;
+  width: 335px;
 }
 
 .bestsellers-card-item:hover .overlay,
@@ -191,6 +192,15 @@
   letter-spacing: -0.01em;
   // text-align: left;
 }
+// ---------------------------
+
+.category-book-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
 
 //  ------------------------- MOBILE -------------------------
 //  ------------------------- TABLET -------------------------
@@ -203,7 +213,7 @@
     display: flex;
     // flex-wrap: wrap;
     // height: 474px;
-    // width: 704px;
+    width: 704px;
     // align-content: center;
     // max-width: 335px;
     // border-radius: 0;
@@ -219,23 +229,32 @@
     // height: 366px;
   }
   .bestsellers-card-item {
-    height: 366px;
+    // height: 366px;
     border-radius: 0px;
   }
-  .bestsellers-card-item:nth-child(n) {
-    display: contents;
-  }
-  .bestsellers-card-item:nth-child(n + 4) {
-    display: none;
+  // .bestsellers-card-item:nth-child(n) {
+  //   display: contents;
+  // }
+  // .bestsellers-card-item:nth-child(n + 4) {
+  //   display: none;
+  // }
+  .box {
+    width: 218px;
+
   }
   .gallery__image {
     height: 316px;
-    // width: 218px;
+    width: 218px;
   }
   .bestsellers-btn {
     display: flex;
     align-self: flex-end;
   }
+  // -----------------
+
+.category-book-list {
+  gap: 40px 25px;
+}
 }
 
 //  ------------------------- TABLET -------------------------
@@ -256,17 +275,27 @@
     height: 306px;
     border-radius: 0px;
   }
+  .box {
+    width: 180px;
+
+  }
   .bestsellers-card-item {
-    height: 306px;
+    // height: 306px;
     width: 180px;
   }
-  .bestsellers-card-item:nth-child(n) {
-    display: contents;
-  }
+  // .bestsellers-card-item:nth-child(n) {
+  //   display: contents;
+  // }
   .gallery__image {
     height: 256px;
-    // width: 180px;
+    width: 180px;
   }
+
+  //-----------------------------
+
+.category-book-list {
+  gap: 40px 24px;
+}
 }
 
 //  ------------------------- DESKTOP -------------------------
