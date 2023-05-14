@@ -4,7 +4,6 @@ import 'basiclightbox/dist/basicLightbox.min.css';
 import { signUpMarkup } from './auth-markup';
 import { signInMarkup } from './signin-markup';
 
-import { fetchTopBooksRequest } from '../partials/bestsellers';
 import { initializeApp } from 'firebase/app';
 import {
   getAuth,
