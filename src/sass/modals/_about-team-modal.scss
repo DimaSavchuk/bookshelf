@@ -106,13 +106,18 @@
 }
 
 .about-team-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 320px;
     background-color: white;
+    margin-bottom: auto;
 }
 
-// .about-team-photo {
-//     height: 340px;
-// }
+.about-team-photo {
+    margin-bottom: auto;
+}
+
 
 .about-team-title {
     margin-top: 10px;
