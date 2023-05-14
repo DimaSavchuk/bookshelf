@@ -73,7 +73,7 @@ function createTopBookCardList(arr) {
               )
               .join('')}
                 </ul>
-                <button class="bestsellers-btn" type="button" data-action="click">See more</button>
+                <button class="bestsellers-btn" type="button" data-action="click">SEE MORE</button>
             </div>`;
     })
     .join('');
