@@ -29,8 +29,9 @@ function scrollGallery() {
 
   if (position >= galleryItems.length) {
     arrow.style.transform = 'rotate(0deg)';
-    position = 0; // если дошли до конца, начинаем сначала
+    position = 0;
   }
+
   gallery.style.transform = `translateY(-${position * 11.2}%)`; // прокрутка
 }
 
