@@ -14,6 +14,7 @@ body.dark-theme
   > .authorization-form-group
   > .authorization-form-field
   > .authorization-form-input {
+  color: #ffffff;
   outline: 2px solid #f6f6f6;
 }
 
@@ -98,6 +99,7 @@ body.dark-theme
 
 .footer-js.dark-theme {
   background-color: #111111;
+  border: 1.5px solid #ffffff;
 }
 
 .dark_icon_footer {
@@ -123,5 +125,19 @@ body.dark-theme
 }
 
 .bestsellers.dark-theme > .bestsellers-card > .bestsellers-btn {
+  color: #ffffff;
+}
+
+.bestsellers.dark-theme > .bestsellers-title {
+  color: #ffffff;
+}
+
+.bestsellers.dark-theme
+  > .bestsellers-category-item
+  > .category-book-list
+  > .bestsellers-card-item
+  > .bestsellers-link
+  > .text-box
+  > .book-name {
   color: #ffffff;
 }
