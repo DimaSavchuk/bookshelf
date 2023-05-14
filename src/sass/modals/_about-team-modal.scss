@@ -58,12 +58,22 @@
 }
 
 .about-team-close-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    border-radius: 5%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    
     position: absolute;
-    right: 35;
-    top: 25;
+    top: 24px;
+    right: 24px;
+
+    cursor: pointer; 
 }
 
 .modal-icon {
+    
     fill: black;
 }
 
@@ -113,9 +123,4 @@
 .about-team-role {
     margin-bottom: 10px;
     font-size: 24px;
-}
-
-.about-team-details {
-    margin-bottom: 10px;
-    font-size: 18px;
 }
