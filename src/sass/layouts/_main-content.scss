@@ -22,6 +22,10 @@
   }
   @media screen and (min-width: 1440px) {
     display: flex;
-    gap: 40px;
+    // gap: 40px;
   }
+}
+
+.main-container {
+  padding-bottom: 40px;
 }

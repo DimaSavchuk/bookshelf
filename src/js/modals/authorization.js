@@ -3,8 +3,7 @@ import 'basiclightbox/dist/basicLightbox.min.css';
 // import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { signUpMarkup } from './auth-markup';
 import { signInMarkup } from './signin-markup';
-
-import { fetchTopBooksRequest } from '../partials/bestsellers';
+import { topBooksRequest } from '../requests/apiRequests';
 import { initializeApp } from 'firebase/app';
 import {
   getAuth,
@@ -53,7 +52,7 @@ window.addEventListener('DOMContentLoaded', event => {
   const layoutElement = document.querySelector('.layout');
   layoutElement.classList.add('is-loading');
 
-  Promise.all([authCheck(), fetchTopBooksRequest()]).then(() => {
+  Promise.all([authCheck(), topBooksRequest()]).then(() => {
     const loadingElement = document.querySelector('.js-loading');
     const layoutElement = document.querySelector('.layout');
 

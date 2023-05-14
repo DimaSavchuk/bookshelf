@@ -70,6 +70,12 @@
 
 .support-link img {
   filter: brightness(0) invert(1);
+  transition: filter 500ms cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+.support-link:hover img,
+.support-link:focus img {
+  filter: none;
 }
 
 .support-btn {
@@ -122,7 +128,7 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1440px) {
   .support {
     width: 356px;
     height: 490px;
