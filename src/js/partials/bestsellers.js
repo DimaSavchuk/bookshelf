@@ -1,4 +1,3 @@
-
  const refs = {
     bestSellersGalery: document.querySelector('.bestsellers'),
    };
@@ -151,4 +150,3 @@ export function makeMarkupBook(books) {
     const stringFinal = stringExceptLastWord +` <span class="bestsellers-title-span">${lastWord}</span>`;
     return stringFinal;
   }
-  

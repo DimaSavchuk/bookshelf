@@ -1,29 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Bookshelf</title>
 
     <!--Favicon-->
-    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./favicon/favicon-16x16.png"
+    />
 
     <script src="./index.js" type="module"></script>
-    <link rel="stylesheet" href="./sass/index.scss">
-</head>
+    <link rel="stylesheet" href="./sass/index.scss" />
+  </head>
 
-<body>
-    <include src="./partials/header.html"></include>
-    <include src="./partials/main-content.html"></include>
-    <include src="./partials/footer.html"></include>
+  <body>
+    <div class="layout">
+      <include src="./partials/loading-overlay.html"></include>
+      <include src="./partials/header.html"></include>
+      <include src="./partials/main-content.html"></include>
+      <include src="./partials/footer.html"></include>
 
-    <include src="./partials/modals/authorization.html"></include>
-    <include src="./partials/modals/about-team-modal.html"></include>
-</body>
-
+      <include src="./partials/modals/authorization.html"></include>
+      <include src="./partials/modals/about-team-modal.html"></include>
+    </div>
+  </body>
 </html>

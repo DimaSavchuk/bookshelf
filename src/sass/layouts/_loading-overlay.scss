@@ -1,0 +1,94 @@
+.loading-overlay {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  box-shadow: 0 10px 10px #f5f5f71a;
+  background: radial-gradient(
+    183.6% 183.01% at 59.76% -23.42%,
+    #4f2ee8 18.03%,
+    #fff 100%
+  );
+}
+
+.loading-overlay-hide {
+  animation: slideUp 1.75s ease forwards;
+}
+
+.loading-overlay-logo-container {
+  width: 250px;
+  height: 100px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+  animation: loading-container-animation 3s infinite;
+
+  img {
+    width: 100%;
+    height: auto;
+    animation: loading-icon-animation 3s infinite;
+  }
+}
+
+$perspective: 250px;
+
+@keyframes loading-container-animation {
+  0% {
+    transform: perspective($perspective) rotateX(0deg) rotateY(0deg);
+  }
+
+  50% {
+    transform: perspective($perspective) rotateX(180deg) rotateY(0deg);
+  }
+
+  100% {
+    transform: perspective($perspective) rotateX(180deg) rotateY(-180deg);
+  }
+}
+
+@keyframes loading-icon-animation {
+  0% {
+    transform: perspective($perspective) rotateX(0deg) rotateY(0deg);
+  }
+
+  15% {
+    transform: perspective($perspective) rotateX(0deg) rotateY(0deg);
+  }
+
+  16% {
+    transform: perspective($perspective) rotateX(180deg) rotateY(0deg);
+  }
+
+  50% {
+    transform: perspective($perspective) rotateX(180deg) rotateY(0deg);
+  }
+
+  65% {
+    transform: perspective($perspective) rotateX(180deg) rotateY(0deg);
+  }
+
+  66% {
+    transform: perspective($perspective) rotateX(180deg) rotateY(180deg);
+  }
+
+  100% {
+    transform: perspective($perspective) rotateX(180deg) rotateY(180deg);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-110vh);
+  }
+}
