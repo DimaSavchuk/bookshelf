@@ -1,3 +1,28 @@
-@import "../layouts/header";
-@import "./sellected-books";
-@import "../layouts/footer";
+@import '../layouts/header';
+@import './sellected-books';
+@import '../layouts/footer';
+
+.container {
+  outline: 1px solid tomato;
+}
+
+.shopping-list {
+  background: #d0d0d0;
+  padding-top: 40px;
+  padding-bottom: 302px;
+  @media screen and (min-width: 768px) {
+    padding-bottom: 394px;
+  }
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    padding-bottom: 157px;
+  }
+}
+
+aside {
+  display: none;
+  @media screen and (min-width: 1440px) {
+    display: block;
+    margin-right: 40px;
+  }
+}
