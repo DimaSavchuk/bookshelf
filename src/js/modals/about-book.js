@@ -41,7 +41,10 @@ function clickOnbook(event) {
         // modal.insertAdjacentHTML('beforeend', markupCardBookInfo(data));
         console.log(modal);
         const instanceBook = basicLightbox.create(
-          markupCardBookInfo(data)
+            markupCardBookInfo(data),
+            {
+                className: 'custom-lightbox'
+            }
           //         `
           //   <h1>Not closable</h1>
           //   <p>It's not possible to close this lightbox with a click.</p>
@@ -189,3 +192,4 @@ function markupCardBookInfo(data, flag) {
           </p>
       </div>`;
 }
+
