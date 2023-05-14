@@ -4,7 +4,6 @@ import { loadTopBooksOnClick } from '../partials/bestsellers';
 
 
 window.addEventListener('DOMContentLoaded', event => {
-  console.log('DOM fully loaded and parsed');
   const layoutElement = document.querySelector('.layout');
   layoutElement.classList.add('is-loading');
 

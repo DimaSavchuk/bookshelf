@@ -38,25 +38,9 @@ logOutMobile.addEventListener('click', onSignOutBtn);
 
 const auth = getAuth();
 
-// TODO: Introduce main entry file and move this logic there
-// window.addEventListener('DOMContentLoaded', event => {
-//   console.log('DOM fully loaded and parsed');
-//   const layoutElement = document.querySelector('.layout');
-//   layoutElement.classList.add('is-loading');
-
-//   Promise.all([authCheck(), topBooksRequest()]).then(() => {
-//     const loadingElement = document.querySelector('.js-loading');
-//     const layoutElement = document.querySelector('.layout');
-
-//     loadingElement.classList.add('loading-overlay-hide');
-//     layoutElement.classList.remove('is-loading');
-//   });
-// });
-
 export function authCheck() {
   onAuthStateChanged(auth, user => {
     if (user) {
-      console.log(user);
       signUpBtn.classList.add('authorized');
       authorizedBtn.classList.replace('unauthorized', 'authorized');
       userLoggedName.forEach(item => {
@@ -79,7 +63,6 @@ function onSignUpBtn(e) {
   e.preventDefault();
 
   instance.show(() => {
-    console.log('instance show');
     const AuthForm = document.getElementById('authorization-form');
     const signInModalEl = document.getElementById('sign-in');
 
@@ -92,8 +75,6 @@ function onSignUpBtn(e) {
 
     function onSubmit(evt) {
       evt.preventDefault();
-
-      console.log('submit');
 
       if (evt.target.name === 'name') {
         AuthForm.elements.name.value = evt.target.value.trim();
@@ -115,11 +96,9 @@ function onSignUpBtn(e) {
         .then(userCredential => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
 
           updateProfile(user, {
             displayName: name,
-            photoURL: 'https://example.com/jane-q-user/profile.jpg',
           })
             .then(() => {
               // Profile updated!
@@ -178,7 +157,6 @@ function onSignUpBtn(e) {
               const errorCode = error.code;
               const errorMessage = error.message;
               Notify.failure(errorMessage);
-              console.error('errorMessage', errorMessage);
               // return
             });
           instanceSignIn.removeEventListener('click', onSignUpBtn);
