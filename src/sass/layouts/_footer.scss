@@ -12,8 +12,10 @@
   display: flex;
   align-items: center;
 
-  padding-top: 18px;
-  padding-bottom: 18px;
+
+    padding-top: 42px;
+    padding-bottom: 42px;
+
 }
 
 .footer-button {
@@ -36,4 +38,10 @@
   margin-right: 4px;
   font-size: 22px;
   line-height: 1.31818;
+}
+
+.footer-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
