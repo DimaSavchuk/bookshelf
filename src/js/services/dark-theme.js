@@ -14,7 +14,6 @@ const refs = {
   logoFooterLightEl: document.querySelector('.light_icon_footer'),
   logoFooterDarkEl: document.querySelector('.dark_icon_footer'),
   bookNameEl: document.querySelector('.bestsellers'),
-  // modalAuthEl: document.querySelector('.modal-auth'),
 };
 
 const arrayEl = [
@@ -29,7 +28,6 @@ const arrayEl = [
   refs.logoFooterLightEl,
   refs.logoFooterDarkEl,
   refs.bookNameEl,
-  // refs.modalAuthEl,
 ];
 
 const switcherEl = document.querySelector('.js-switch-theme');
@@ -43,15 +41,6 @@ onLoadDarkTheme();
 // Функція для зміни теми сторінки
 function onClick() {
   arrayEl.map(element => element.classList.toggle('dark-theme'));
-
-  // refs.jsCategoryListEl.classList.toggle('dark-theme');
-  // refs.bodyEl.classList.toggle('dark-theme');
-  // refs.headerEl.classList.toggle('dark-theme');
-  // refs.titleEl.classList.toggle('dark-theme');
-  // refs.logoLightEl.classList.toggle('dark-theme');
-  // refs.logoDarkEl.classList.toggle('dark-theme');
-  // refs.headerNavLink.classList.toggle('dark-theme');
-  // refs.bookNameEl.classList.toggle('dark-theme');
 
   if (localStorage.getItem(STORAGE_KEY) === 'true') {
     localStorage.removeItem(STORAGE_KEY);
@@ -67,13 +56,5 @@ function onLoadDarkTheme() {
   if (value) {
     switcherEl.setAttribute('checked', true);
     arrayEl.map(element => element.classList.add('dark-theme'));
-    // refs.bodyEl.classList.add('dark-theme');
-    // refs.headerEl.classList.add('dark-theme');
-    // refs.titleEl.classList.add('dark-theme');
-    // refs.logoLightEl.classList.add('dark-theme');
-    // refs.logoDarkEl.classList.add('dark-theme');
-    // refs.headerNavLink.classList.add('dark-theme');
-    // refs.bookNameEl.classList.add('dark-theme');
-    // refs.jsCategoryListEl.classList.add('dark-theme');
   }
 }
