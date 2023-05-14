@@ -116,20 +116,22 @@ export function createTopBookCardList(arr) {
 export function makeMarkupBook(books) {
   const markup = books
     .map(({ _id, book_image, title, author }) => {
-      return ` <li class="bestsellers-card-item" id="${_id}">
-        <a href="" class="bestsellers-link project-transit"> 
+      return ` 
+      <li class="bestsellers-card-item" id="${_id}">
+      <a href="" class="bestsellers-link project-transit" id="${_id}"> 
         <!-- box-menu -->
         <div class="box">
-            <p class = "overlay">Quick View</p>  
-            <img class="gallery__image" src="${book_image}" >
+            <p class = "overlay" id="${_id}">Quick View</p>  
+            <img class="gallery__image" src="${book_image}" id="${_id}">
             </div>
          <!-- box-menu -->
          <div class="text-box">
-          <h3 class="book-name">${title}</h3>
-          <p class="author">${author}</p>
+          <h3 class="book-name">${title} id="${_id}"</h3>
+          <p class="author">${author} id="${_id}"</p>
           </div>
           </a>
-         </li>`;
+         </li>
+        `;
     })
     .join('');
   return markup;
