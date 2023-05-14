@@ -34,7 +34,7 @@ async function loadTopBooksOnClick(event) {
 
 refs.bestSellersGalery.addEventListener('click', onCattegoryButtonElClick);
 
-async function onCattegoryButtonElClick(event) {
+export async function onCattegoryButtonElClick(event) {
   if (event.target.nodeName !== 'BUTTON') {
     return;
   }
@@ -137,7 +137,7 @@ export function makeMarkupBook(books) {
 
 // ===========================================================================
 
-function createAllCategoryList(data, cattegoryName) {
+export function createAllCategoryList(data, cattegoryName) {
   refs.bestSellersGalery.innerHTML = `<h2 class="bestsellers-title">${changeColorStyleInTitle(
     cattegoryName
   )}</h2>
@@ -148,7 +148,7 @@ function createAllCategoryList(data, cattegoryName) {
                   </div>`;
 }
 // ===========================================================================
-function changeColorStyleInTitle(category) {
+export function changeColorStyleInTitle(category) {
   const titleToArray = category.trim().split(' ');
   const lastWord = titleToArray[titleToArray.length - 1];
   const stringExceptLastWord = titleToArray
