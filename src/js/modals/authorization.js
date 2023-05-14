@@ -40,12 +40,10 @@ const signOutBtn = document.querySelector('.js-signOut');
 const logOutMobile = document.querySelector('.js-logOut');
 const logOutWndw = document.querySelector('.js-logout');
 const userLoggedName = document.querySelectorAll('.js-name');
-console.log(signOutBtn);
 
 signUpBtn.addEventListener('click', onSignUpBtn);
 signOutBtn.addEventListener('click', onSignOutBtn);
 logOutMobile.addEventListener('click', onSignOutBtn);
-authorizedBtn.addEventListener('click', onAuthorizedBtn);
 
 const auth = getAuth();
 
@@ -212,23 +210,23 @@ function onSignUpBtn(e) {
   });
 }
 
-// function onAuthorizedBtn(e) {
-//   e.preventDefault();
-//   logOutWndw.classList.toggle('logouthidn');
-// }
-
-function onAuthorizedBtn(e) {
-  e.preventDefault();
-  logOutWndw.classList.toggle('logouthidn');
-
-  if (!logOutWndw.classList.contains('logouthidn')) {
-    window.addEventListener('mouseup', function (evt) {
-      if (evt.target != logOutWndw && evt.target.parentNode != logOutWndw) {
-        logOutWndw.classList.add('logouthidn');
-      }
-    });
+// This logic hides/shows the logout popover window
+// for signout
+document.body.addEventListener('click', function (evt) {
+  if (
+    evt.target.closest('.js-user-bar') &&
+    logOutWndw.classList.contains('logouthidn')
+  ) {
+    return logOutWndw.classList.remove('logouthidn');
   }
-}
+
+  if (
+    !evt.target.closest('.js-logout') &&
+    !logOutWndw.classList.contains('logouthidn')
+  ) {
+    return logOutWndw.classList.add('logouthidn');
+  }
+});
 
 function onSignOutBtn() {
   signOut(auth);
