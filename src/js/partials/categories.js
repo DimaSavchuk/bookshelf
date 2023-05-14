@@ -1,4 +1,15 @@
+import { listenerCount } from 'process';
+import { categoryRequest } from '../requests/apiRequests';
+import { apiInstance } from '../services/api';
+import {
+  changeColorStyleInTitle,
+  createAllCategoryList,
+  loadTopBooksOnClick,
+} from './bestsellers';
+
 const list = document.querySelector('.category-list');
+const categoryTitle = document.querySelector('.bestsellers-title');
+const bestSellersGalery = document.querySelector('.bestsellers');
 
 export function category() {
   fetch('https://books-backend.p.goit.global/books/category-list')
@@ -20,9 +31,47 @@ export function category() {
         })
         .join('');
 
-      list.insertAdjacentHTML('afterbegin', markup);
+      list.insertAdjacentHTML('beforeend', markup);
+      categoryListener();
     })
     .catch(error => {
       console.error('Сталася помилка при запиті:', error);
     });
+}
+
+function categoryListener() {
+  list.addEventListener('click', handleCategoryClick);
+}
+
+function handleCategoryClick(event) {
+  event.preventDefault();
+  const target = event.target;
+
+  if (target.classList.contains('category-link')) {
+    const categoryName = target.textContent;
+
+    if (target.textContent === 'All category') {
+      categoryTitle.innerHTML = `Best Sellers Books`;
+      loadTopBooksOnClick();
+    } else {
+      categoryTitle.innerHTML = `${changeColorStyleInTitle(categoryName)}`;
+      try {
+        categoryRequest(categoryName)
+          .then(data => {
+            if (data.length === 0 || data === undefined) {
+              Notiflix.Notify.failure(
+                "Sorry, we didn't find anything according to your request."
+              );
+              return;
+            }
+
+            bestSellersGalery.innerHTML = '';
+            createAllCategoryList(data, categoryName);
+          })
+          .catch(err => console.log(err));
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+  }
 }
