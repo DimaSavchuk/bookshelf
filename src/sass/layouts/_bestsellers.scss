@@ -143,13 +143,13 @@
   display: flex;
   width: 100%;
   height: 50px;
-  overflow: hidden;
+  // overflow: hidden;
   flex-direction: column;
   text-overflow: ellipsis;
 }
 
 .book-name {
-  overflow: hidden;
+  // overflow: hidden;
   // flex-wrap: nowrap;
   width: 100%;
   // height: 100%;
@@ -251,7 +251,6 @@
   // }
   .box {
     width: 218px;
-
   }
   .gallery__image {
     height: 316px;
@@ -263,9 +262,9 @@
   }
   // -----------------
 
-.category-book-list {
-  gap: 40px 25px;
-}
+  .category-book-list {
+    gap: 40px 25px;
+  }
 }
 
 //  ------------------------- TABLET -------------------------
@@ -288,7 +287,6 @@
   }
   .box {
     width: 180px;
-
   }
   .bestsellers-card-item {
     // height: 306px;
@@ -304,9 +302,9 @@
 
   //-----------------------------
 
-.category-book-list {
-  gap: 40px 24px;
-}
+  .category-book-list {
+    gap: 40px 24px;
+  }
 }
 
 //  ------------------------- DESKTOP -------------------------
