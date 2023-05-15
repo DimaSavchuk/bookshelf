@@ -273,8 +273,9 @@
   .bestsellers-list {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     margin-bottom: 32px;
-    gap: 24px;
+    gap: 22px;
     width: 996px;
     height: 306px;
     border-radius: 0px;
