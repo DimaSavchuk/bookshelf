@@ -13,6 +13,9 @@ const addItemToLockal = document.querySelector('.add-to-sopping-list');
 // ----------------Scroll block---------------
 const bodyScroll = document.querySelector('body');
 //================================================
+
+console.log(modalIsOpen);
+
 import Notiflix from 'notiflix';
 export const STORAGE_KEY = 'shoppingbookId';
 
