@@ -1,95 +1,65 @@
-import * as basicLightbox from 'basiclightbox';
-import 'basiclightbox/dist/basicLightbox.min.css';
 import { booksRequest } from '../requests/apiRequests';
 
-import Notiflix from 'notiflix';
-const modal = document.querySelector('.modal');
+const bodyEl = document.querySelector('body');
+const modalAboutBook = document.querySelector('.about-book-modal');
 const bestSellersGalery = document.querySelector('.bestsellers');
+const modalIsOpen = document.querySelector('.backdrop');
+const modalBookPictureWrapEl = document.querySelector(
+  '.modal-about-book-content'
+);
+const modalBookInfoWrapEl = document.querySelector('.modal-about-book-info');
+const modalShopLinks = document.querySelector('.modal-shop-link');
+const addItemToLockal = document.querySelector('.add-to-sopping-list');
 
-bestSellersGalery.addEventListener('click', clickOnbook);
+bestSellersGalery.addEventListener('click', clickOnBook);
 
-function clickOnbook(event) {
+function clickOnBook(event) {
   event.preventDefault();
   const bookID = event.target.id;
 
   console.log(bookID);
-  try {
-    booksRequest(bookID)
-      .then(data => {
-        if (data.length === 0 || data === undefined) {
-          Notiflix.Notify.failure(
-            "Sorry, we didn't find anything according to your request."
-          );
-          return;
-        }
 
-        console.log(data);
-
-        // modal.insertAdjacentHTML('beforeend', markupCardBookInfo(data));
-        console.log(modal);
-        const instanceBook = basicLightbox.create(
-          markupCardBookInfo(data),
-          {
-            className: 'custom-lightbox modal',
-          }
-          //         `
-          //   <h1>Not closable</h1>
-          //   <p>It's not possible to close this lightbox with a click.</p>
-          // `
-        );
-
-        instanceBook.show(() => {
-          markupCardBookInfo(data);
-        });
-      })
-      .catch(err => console.log(err));
-  } catch (error) {
-    console.log(error);
+  if (!bookID) {
+    return;
   }
+
+  booksRequest(bookID).then(data => {
+    renderModalCard(data);
+    openModal();
+    addItemToLockal.addEventListener('click', onAddItemClick);
+
+    function onAddItemClick() {
+      console.log(data);
+    }
+  });
 }
 
-function markupCardBookInfo(data, flag) {
-  const classDescription = flag ? '' : 'visually-hidden';
-  const buttonText = flag
-    ? 'REMOVE FROM SHOPPING LIST'
-    : 'ADD TO SHOPPING LIST';
-  const buttonClass = flag ? 'book_removefrom_list' : 'book_addto_list';
-  const { book_image, list_name, author, description, title, buy_links } = data;
-  return `<div class="book_info_card">
-          <button class="modal-info-close" type="button" data-modal-close>
-              <svg class="close-modal-info" width="24" height="24">
-                  <use href="/src/images/x-close.svg"></use>
-              </svg>
-          </button>
-          <div class="modal-book-card-wrapper">
-          <div class="modal-book-picture-wrapper">
-          <img src="${book_image}" alt="${title}" class="book_info_img">
-          </div>
-          <h2 class="book_info_name">${list_name}</h2>
-          <p class="book_info_author">${author}</p>
-          <p class="book_info_description">${description} N/A</p>
-          <ul class="info-logo-container">
-            <li>
-              <a href="${buy_links[0].url}" class="book-store-link first" target="_blank">
-          
-              </a>
-            </li>
-            <li>
-              <a href="${buy_links[1].url}" class="book-store-link second" target="_blank">
-                  
-              </a>
-            </li>
-            <li>
-              <a href="${buy_links[4].url}" class="book-store-link thirt" target="_blank">
-                  
-              </a>
-            </li>
-          </ul>
-          </div>
-          <button class="btn-book-info ${buttonClass}" type="button" id="addRemoveBookButton">${buttonText}</button>
-          <p class="book-infoBtn-explanation is-hidden ${classDescription}">
-          Сongratulations! You have added the book to the shopping list. 
-          To delete, press the button “Remove from the shopping list”.
-          </p>
-      </div>`;
+function openModal() {
+  modalAboutBook.classList.add('is-hidden');
+  modalAboutBook.classList.remove('is-hidden');
+  modalIsOpen.classList.add('is-open');
+  modalIsOpen.classList.remove('is-hidden');
+  bodyEl.classList.add('modal-open');
+}
+
+function renderModalCard(data) {
+  const {
+    book_image: bookImg,
+    author,
+    list_name: listName,
+    description,
+    buy_links: buyLinks,
+    title,
+    _id: id,
+  } = data;
+
+  const modalImgMarkup = `<img src="${bookImg}" class="modal-book-img" />
+<div calass="modal-about-book-info">
+  <h3 class="modal-book-title">${title}</h3>
+  <p class="modal-book-author">${author}</p>
+  <p class="modal-book-description">${description}</p>
+</div>`;
+
+  console.log(modalImgMarkup);
+  modalBookPictureWrapEl.innerHTML = modalImgMarkup;
 }
