@@ -10,6 +10,8 @@ const modalBookPictureWrapEl = document.querySelector(
 const modalBookInfoWrapEl = document.querySelector('.modal-about-book-info');
 const modalShopLinks = document.querySelector('.modal-shop-link');
 const addItemToLockal = document.querySelector('.add-to-sopping-list');
+// ----------------Scroll block---------------
+const bodyScroll = document.querySelector('body');
 //================================================
 import Notiflix from 'notiflix';
 export const STORAGE_KEY = 'shoppingbookId';
@@ -57,6 +59,8 @@ function openModal() {
   modalIsOpen.classList.add('is-open');
   modalIsOpen.classList.remove('is-hidden');
   bodyEl.classList.add('modal-open');
+  // ----------------Scroll block---------------
+  bodyScroll.classList.add('no-scroll');
 }
 
 function renderModalCard(data) {
