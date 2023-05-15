@@ -5,6 +5,7 @@ const API_URL = 'https://books-backend.p.goit.global/books/top-books';
 const SHOPPING_LIST_LOCAL_STORAGE_KEY = 'ShoppingList';
 let booksFromLocalStorage;
 
+
 const refs = {
     sellectedBooksList: document.querySelector('.sellected-books-list'),
     noBooksSection: document.querySelector('.books-not-available'),
@@ -24,6 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if(booksFromLocalStorage && booksFromLocalStorage.length > 0){
         renderBooks(booksFromLocalStorage);
         hideEmptyMessage();
+        setPagination();
+    }
+    else{
+      paginationContainer.style.display = 'none';
     }
   }
 
@@ -91,6 +96,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if(!booksFromLocalStorage || booksFromLocalStorage.length < 1) {
         showEmptyMessage();
+        paginationContainer.style.display = 'none';
+    }
+    else
+    {
+      recalculatePages();
     }
   }
 
@@ -101,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function deleteBookFromList(bookId){
     const bookElement = document.getElementById(bookId.toString());
-    bookElement.style.display = 'none';
+    bookElement.remove();
   }
 
   // Only for test
@@ -165,4 +175,203 @@ const save = (key, value) => {
 
 
 
+//    Pagination
+const paginationNumbers = document.getElementById("pagination-numbers");
+const paginatedList = document.getElementById("paginated-list");
+const nextButton = document.getElementById("next-button");
+const prevButton = document.getElementById("prev-button");
+const paginationContainer = document.getElementById("pagination-container");
+let listItems;
+const paginationLimit = 3;
+let pageCount;
+let currentPage;
 
+function setPagination() {
+  listItems = paginatedList.querySelectorAll("li");
+  pageCount = Math.ceil(listItems.length / paginationLimit);
+
+  if (pageCount < 2)
+  {
+    paginationContainer.style.display = 'none';
+    return;
+  }
+
+  getPaginationNumbers();
+  setCurrentPage(1);
+  setNextAndPreviousButtons();
+
+  document.querySelectorAll(".pagination-number").forEach((button) => {
+    const pageIndex = Number(button.getAttribute("page-index"));
+    if (pageIndex) {
+      button.addEventListener("click", () => {
+        setCurrentPage(pageIndex);
+      });
+    }
+  });
+}
+
+const getPaginationNumbers = () => {
+  for (let i = 1; i <= pageCount; i++) {
+    appendPageNumber(i);
+  }
+};
+
+const appendPageNumber = (index) => {
+  const pageNumber = document.createElement("button");
+  pageNumber.className = "pagination-number";
+  pageNumber.innerHTML = index;
+  pageNumber.setAttribute("page-index", index);
+  pageNumber.setAttribute("aria-label", "Page " + index);
+  paginationNumbers.appendChild(pageNumber);
+};
+
+const setCurrentPage = (pageNum) => {
+  currentPage = pageNum;
+  
+  handleActivePageNumber();
+  handlePageButtonsStatus();
+
+  const prevRange = (pageNum - 1) * paginationLimit;
+  const currRange = pageNum * paginationLimit;
+
+  listItems.forEach((item, index) => {
+    item.style.display = 'none';
+    if (index >= prevRange && index < currRange) {
+      item.style.display = 'flex';
+    }
+  });
+};
+
+function setNextAndPreviousButtons (){
+  prevButton.addEventListener("click", () => {
+    setCurrentPage(currentPage - 1);
+  });
+  nextButton.addEventListener("click", () => {
+    setCurrentPage(currentPage + 1);
+  });
+}
+ 
+const handleActivePageNumber = () => {
+  document.querySelectorAll(".pagination-number").forEach((button) => {
+    button.classList.remove("active");
+    
+    const pageIndex = Number(button.getAttribute("page-index"));
+    if (pageIndex == currentPage) {
+      button.classList.add("active");
+    }
+  });
+};
+
+const disableButton = (button) => {
+  button.classList.add("disabled");
+  button.setAttribute("disabled", true);
+};
+
+const enableButton = (button) => {
+  button.classList.remove("disabled");
+  button.removeAttribute("disabled");
+};
+
+const handlePageButtonsStatus = () => {
+  if (currentPage === 1) {
+    disableButton(prevButton);
+  } else {
+    enableButton(prevButton);
+  }
+  if (pageCount === currentPage) {
+    disableButton(nextButton);
+  } else {
+    enableButton(nextButton);
+  }
+};
+
+const recalculatePages = () => {
+  paginationNumbers.innerHTML = '';
+  listItems = paginatedList.querySelectorAll("li");
+  pageCount = Math.ceil(listItems.length / paginationLimit);
+  
+  if (pageCount < 2)
+  {
+    paginationContainer.style.display = 'none';
+    
+    return;
+  }
+
+if (currentPage > pageCount)
+{
+  currentPage = pageCount;
+}
+
+  getPaginationNumbers();
+  setCurrentPage(currentPage);
+  setNextAndPreviousButtons();
+
+  document.querySelectorAll(".pagination-number").forEach((button) => {
+    const pageIndex = Number(button.getAttribute("page-index"));
+    if (pageIndex) {
+      button.addEventListener("click", () => {
+        setCurrentPage(pageIndex);
+        
+      });
+      console.log( setCurrentPage(pageIndex));
+    }
+  });
+}
+
+
+
+// window.addEventListener("load", () => {
+//   getPaginationNumbers();
+// });
+
+
+
+// jsonData.forEach((item, index) => {
+//   elementContainer.innerHTML = ''
+//   if (index >= prevRange && index < currRange) {
+//     elementContainer.appendChild(item)
+//   }
+// });
+
+
+
+// window.addEventListener("load", () => {
+  
+// });
+
+
+
+
+
+
+
+
+
+// ONO EST
+// const setCurrentPage = (pageNum) => {
+//   currentPage = pageNum;
+// };
+
+// const setCurrentPage = (pageNum) => {
+//   currentPage = pageNum;
+  
+//   const prevRange = (pageNum - 1) * paginationLimit;
+//   const currRange = pageNum * paginationLimit;
+// };
+
+// const setCurrentPage = (pageNum) => {
+//   currentPage = pageNum;
+  
+//   const prevRange = (pageNum - 1) * paginationLimit;
+//   const currRange = pageNum * paginationLimit;
+//   listItems.forEach((item, index) => {
+//     item.classList.add("hidden");
+//     if (index >= prevRange && index < currRange) {
+//       item.classList.remove("hidden");
+//     }
+//   });
+// };
+// window.addEventListener("load", () => {
+//   getPaginationNumbers();
+//   setCurrentPage(1);
+// });
