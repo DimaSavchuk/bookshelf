@@ -46,6 +46,14 @@ function handleCategoryClick(event) {
   if (target.classList.contains('category-link')) {
     const categoryName = target.textContent;
 
+    const categoryItems = document.querySelectorAll('.category-item');
+    categoryItems.forEach(item => {
+      item.classList.remove('active');
+    });
+
+    // Добавление класса 'active' к текущему пункту меню
+    target.parentNode.classList.add('active');
+
     if (target.textContent === 'All category') {
       categoryTitle.innerHTML = `Best Sellers Books`;
       loadTopBooksOnClick();
