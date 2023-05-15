@@ -14,14 +14,12 @@
 }
 
 .bestsellers-title-color {
-  color: #111111;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  // color: $lt-main-text-color;
+  color: $lt-main-text-color;
 }
 
 .bestsellers-title-span {
-  color: #4f2ee8;
-  // color: $main-accent-color;
+  color: $main-accent-color;
 }
 
 .bestsellers-card {
@@ -34,10 +32,9 @@
 }
 
 .bestsellers-title-book {
-  margin-bottom: 18px;
-  color: #b4afaf;
+  // margin-bottom: 18px;
+  color: $ld-discription-text-color;
   font-family: DM Sans;
-  // color: $ld-discription-text-color;
   font-size: 14px;
   font-weight: 400;
   line-height: 24px;
@@ -157,8 +154,7 @@
   text-overflow: ellipsis;
   margin-top: 14px;
   margin-bottom: 4px;
-  color: #111111;
-  // color: $lt-main-text-color;
+  color: $lt-main-text-color;
   font-family: DM Sans;
   font-size: 16px;
   font-weight: 700;
@@ -169,8 +165,7 @@
 }
 
 .author {
-  // color: $ld-discription-text-color;
-  color: #b4afaf;
+  color: $ld-discription-text-color;
   font-family: DM Sans;
   font-size: 12px;
   font-style: italic;
@@ -240,6 +235,7 @@
   }
   .bestsellers-card-item {
     // height: 366px;
+    width: 218px;
     border-radius: 0px;
   }
   // .bestsellers-card-item:nth-child(n) {
@@ -271,7 +267,7 @@
   .bestsellers-card {
     display: flex;
     width: 996px;
-    height: 426px;
+    height: 430px;
     margin-bottom: 40px;
   }
   .bestsellers-list {

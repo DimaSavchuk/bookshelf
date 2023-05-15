@@ -1,5 +1,5 @@
 .support {
-  width: 335px;
+  width: 100%;
   height: 352px;
   background: radial-gradient(
     183.6% 183.01% at 59.76% -23.42%,
@@ -15,6 +15,7 @@
 .support-title {
   display: flex;
   margin-bottom: 40px;
+  padding-right: 58px;
 }
 
 .support-name {

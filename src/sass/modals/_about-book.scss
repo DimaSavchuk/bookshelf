@@ -94,6 +94,12 @@
     color: #111111;
     margin-bottom: 40px;
   }
+  @media screen and (min-width: 768px) {
+    .basicLightbox__placeholder {
+      padding-left: 95px;
+      padding-right: 95px;
+    }
+  }
   // .layout {
   //   width: 100%;
   //   height: 100%;
