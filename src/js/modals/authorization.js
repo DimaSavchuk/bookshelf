@@ -28,6 +28,7 @@ const app = initializeApp(firebaseConfig);
 const signUpBtn = document.querySelector('.js-authorization');
 const authorizedBtn = document.querySelector('.js-user-bar');
 const signOutBtn = document.querySelector('.js-signOut');
+const headerNavEl = document.querySelector('.js-header-nav');
 const logOutMobile = document.querySelector('.js-logOut');
 const logOutWndw = document.querySelector('.js-logout');
 const userLoggedName = document.querySelectorAll('.js-name');
@@ -46,10 +47,14 @@ export function authCheck() {
       userLoggedName.forEach(item => {
         item.innerHTML = user.displayName;
       });
+      headerNavEl.classList.replace('unauthorized', 'authorized');
+      logOutMobile.classList.add('authorized');
     } else {
       // User is signed out
       signUpBtn.classList.remove('authorized');
       authorizedBtn.classList.replace('authorized', 'unauthorized');
+      headerNavEl.classList.replace('authorized', 'unauthorized');
+      logOutMobile.classList.remove('authorized');
     }
 
     const loadingElement = document.querySelector('.js-loading');

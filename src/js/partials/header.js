@@ -25,6 +25,7 @@ function backToTop() {
   const closeMenuBtn = document.querySelector('.js-close-menu');
   const navigation = document.querySelector('.header-nav');
   const authPerson = document.querySelector('.user-wrap.authorized')
+  const signUpUser = document.querySelector('.user-sign-up');
 
   const toggleMenu = () => {
     const isMenuOpen = openMenuBtn.getAttribute('aria-expanded') === 'true' || false;
@@ -35,6 +36,7 @@ function backToTop() {
     closeMenuBtn.classList.toggle('is-open');
     navigation.classList.toggle('mobile');
     authPerson.classList.toggle('mobile');
+    signUpUser.classList.toggle('mobile');
 
     // const scrollLockMethod = !isMenuOpen
     //   ? 'disableBodyScroll'
