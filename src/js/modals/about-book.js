@@ -43,7 +43,7 @@ function clickOnbook(event) {
         const instanceBook = basicLightbox.create(
             markupCardBookInfo(data),
             {
-                className: 'custom-lightbox'
+                className: 'custom-lightbox modal'
             }
           //         `
           //   <h1>Not closable</h1>
@@ -164,26 +164,36 @@ function markupCardBookInfo(data, flag) {
     : 'ADD TO SHOPPING LIST';
   const buttonClass = flag ? 'book_removefrom_list' : 'book_addto_list';
   const { book_image, list_name, author, description, title, buy_links } = data;
-  return `<div class="book_info_card">
+    return `<div class="book_info_card">
           <button class="modal-info-close" type="button" data-modal-close>
               <svg class="close-modal-info" width="24" height="24">
-                  <use href="./images/symbol-defs.svg#close"></use>
+                  <use href="../../images/sprite.svg#icon-x-close"></use>
               </svg>
           </button>
+          <div class=".modal-book-card-wrapper">
+          <div class=".modal-book-picture-wrapper">
           <img src="${book_image}" alt="${title}" class="book_info_img">
+          </div>
           <h2 class="book_info_name">${list_name}</h2>
           <p class="book_info_author">${author}</p>
           <p class="book_info_description">${description}</p>
-          <div class="info-logo-container">
+          <ul class="info-logo-container">
+            <li>
               <a href="${buy_links[0].url}" class="book-store-link" target="_blank">
-                  <img src="" alt="Amazon" class="store-info-book" width="62" height="19">
+                  <img src="../../images/amazon.png" alt="Amazon" class="store-info-book" width="62" height="19">
               </a>
+            </li>
+            <li>
               <a href="${buy_links[1].url}" class="book-store-link" target="_blank">
-                  <img src="" alt="Apple Books" class="store-info-book" width="32" height="32">
+                  <img src="../../images/iphone.png" alt="Apple Books" class="store-info-book" width="32" height="32">
               </a>
+            </li>
+            <li>
               <a href="${buy_links[4].url}" class="book-store-link" target="_blank">
-                  <img src="" alt="Bookshop" class="store-info-book" width="38" height="36">
+                  <img src="../../images/pile-of-books.png" alt="Bookshop" class="store-info-book" width="38" height="36">
               </a>
+            </li>
+          </ul>
           </div>
           <button class="btn-book-info ${buttonClass}" type="button" id="addRemoveBookButton">${buttonText}</button>
           <p class="book-infoBtn-explanation ${classDescription}">
