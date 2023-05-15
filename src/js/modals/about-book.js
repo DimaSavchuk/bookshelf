@@ -36,17 +36,16 @@ function clickOnBook(event) {
 
     function onAddItemClick() {
       console.log(data);
-      
+
       //===============================================
       shoppingList.push(data);
       console.log(shoppingList);
 
       Notiflix.Notify.success(
-        "Сongratulations! You have added the book to the shopping list. To delete, press the button Remove from the shopping list");
-      
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(shoppingList));
-        //===============================================
-
+        'Сongratulations! You have added the book to the shopping list. To delete, press the button Remove from the shopping list'
+      );
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(shoppingList));
+      //===============================================
     }
   });
 }
@@ -57,6 +56,18 @@ function openModal() {
   modalIsOpen.classList.add('is-open');
   modalIsOpen.classList.remove('is-hidden');
   bodyEl.classList.add('modal-open');
+}
+
+modalIsOpen.addEventListener('click', closeModal);
+
+function closeModal(event) {
+  if (
+    event.target.classList.contains('backdrop') ||
+    event.target.classList.contains('close-modal')
+  ) {
+    modalIsOpen.classList.add('is-hidden');
+    bodyEl.classList.remove('modal-open');
+  }
 }
 
 function renderModalCard(data) {
@@ -70,13 +81,14 @@ function renderModalCard(data) {
     _id: id,
   } = data;
 
-  const modalImgMarkup = `<img src="${bookImg}" class="modal-book-img" />
-<div calass="modal-about-book-info">
-  <h3 class="modal-book-title">${title}</h3>
-  <p class="modal-book-author">${author}</p>
-  <p class="modal-book-description">${description}</p>
-</div>`;
+  const modalImgMarkup = `
+    <button class="close-modal">Закрити</button>
+    <img src="${bookImg}" class="modal-book-img" />
+    <div calass="modal-about-book-info">
+      <h3 class="modal-book-title">${title}</h3>
+      <p class="modal-book-author">${author}</p>
+      <p class="modal-book-description">${description}</p>
+    </div>`;
 
-  console.log(modalImgMarkup);
   modalBookPictureWrapEl.innerHTML = modalImgMarkup;
 }

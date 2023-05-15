@@ -277,4 +277,41 @@
       background: url(../images/shopping/shop1.png);
     }
   }
+  .pagination-container {
+    display: flex;
+    align-items: center;
+    // position: absolute;
+    bottom: 0;
+    justify-content: center;
+    padding-bottom: 40px;
+    @media screen and (min-width: 768px) {
+    }
+  }
+  .pagination-number,
+  .pagination-button {
+    font-size: 18px;
+    background-color: transparent;
+    border: 1px solid #111111;
+    color: #111111;
+    margin: 8px 8px;
+    cursor: pointer;
+    height: 38px;
+    width: 38px;
+    border-radius: 50px;
+  }
+  .pagination-number:hover,
+  .pagination-button:not(.disabled):hover {
+    background: #111111;
+  }
+  // .pagination-button.active:hover {
+  //   background: #eac645;
+  // }
+  .pagination-number.active {
+    color: #ffffff;
+    background: #111111;
+  }
+  .pagination-button.active {
+    color: #111111;
+    background: #eac645;
+  }
 }

@@ -1,56 +1,55 @@
 import axios from 'axios';
- //import { save, load } from './localStorageService.js';
+//import { save, load } from './localStorageService.js';
+import { STORAGE_KEY } from '../../modals/about-book';
 
 const API_URL = 'https://books-backend.p.goit.global/books/top-books';
 const SHOPPING_LIST_LOCAL_STORAGE_KEY = 'ShoppingList';
 let booksFromLocalStorage;
 
-
 const refs = {
-    sellectedBooksList: document.querySelector('.sellected-books-list'),
-    noBooksSection: document.querySelector('.books-not-available'),
+  sellectedBooksList: document.querySelector('.sellected-books-list'),
+  noBooksSection: document.querySelector('.books-not-available'),
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-    // Only for test
-    InitializeShoppingListTest();
+document.addEventListener('DOMContentLoaded', () => {
+  // Only for test
+  // InitializeShoppingListTest();
 
-    InitializeShoppingList();
-  });
+  InitializeShoppingList();
+});
 
-  function InitializeShoppingList()
-  {
-    booksFromLocalStorage = load(SHOPPING_LIST_LOCAL_STORAGE_KEY);
+function InitializeShoppingList() {
+  booksFromLocalStorage = load(STORAGE_KEY);
 
-    if(booksFromLocalStorage && booksFromLocalStorage.length > 0){
-        renderBooks(booksFromLocalStorage);
-        hideEmptyMessage();
-        setPagination();
-    }
-    else{
-      paginationContainer.style.display = 'none';
-    }
+  if (booksFromLocalStorage && booksFromLocalStorage.length > 0) {
+    renderBooks(booksFromLocalStorage);
+    hideEmptyMessage();
+    setPagination();
+  } else {
+    paginationContainer.style.display = 'none';
   }
+}
 
-  function hideEmptyMessage(){
-    refs.noBooksSection.style.display = 'none';
-  }
+function hideEmptyMessage() {
+  refs.noBooksSection.style.display = 'none';
+}
 
-  function showEmptyMessage(){
-    refs.noBooksSection.style.display = 'block';
-  }
+function showEmptyMessage() {
+  refs.noBooksSection.style.display = 'block';
+}
 
-  function renderBooks(books) {
-    let markupBooks = books.map(
-        ({
-            _id,
-            title,
-            author,
-            book_image,
-            description,
-            list_name,
-            buy_links,
-    }) => {
+function renderBooks(books) {
+  let markupBooks = books
+    .map(
+      ({
+        _id,
+        title,
+        author,
+        book_image,
+        description,
+        list_name,
+        buy_links,
+      }) => {
         let amazonLink = buy_links.find(book => book.name == 'Amazon').url;
         let appleLink = buy_links.find(book => book.name == 'Apple Books').url;
         let bookshopLink = buy_links.find(book => book.name == 'Bookshop').url;
@@ -77,121 +76,119 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             </div>
             </div>
-        </li>`
-    })
-    .join('');
-   refs.sellectedBooksList.insertAdjacentHTML('beforeend', markupBooks);
-   bindDeleteButtonsEvents();
-  }
-
-  function bindDeleteButtonsEvents(){
-    let deleteButtonRefs = document.querySelectorAll('.delete-book-button');
-    deleteButtonRefs.forEach(book => book.addEventListener('click', deleteBook));
-  }
-
-  function deleteBook(e){
-    const bookId = e.srcElement.id;
-    deleteBookFromLocalStorage(bookId);
-    deleteBookFromList(bookId);
-
-    if(!booksFromLocalStorage || booksFromLocalStorage.length < 1) {
-        showEmptyMessage();
-        paginationContainer.style.display = 'none';
-    }
-    else
-    {
-      recalculatePages();
-    }
-  }
-
-  function deleteBookFromLocalStorage(bookId){
-    booksFromLocalStorage = booksFromLocalStorage.filter(book => book._id !== bookId);
-    save(SHOPPING_LIST_LOCAL_STORAGE_KEY, booksFromLocalStorage);
-  }
-
-  function deleteBookFromList(bookId){
-    const bookElement = document.getElementById(bookId.toString());
-    bookElement.remove();
-  }
-
-  // Only for test
-async function InitializeShoppingListTest() {
-    
-      try {
-        let mappedBookList;
-        const response = await axios.get(`${API_URL}`);
-        if(response && response.data)
-        {
-            let bookslist = response.data[0].books;
-            mappedBookList = bookslist.map(({
-                _id,
-                title,
-                author,
-                book_image,
-                description,
-                list_name,
-                buy_links,
-            }) =>  ({ _id, title, author, book_image, description, list_name, buy_links }));
-        }
-        console.log(mappedBookList);
-
-        if(mappedBookList && mappedBookList.length > 0) {
-            save(SHOPPING_LIST_LOCAL_STORAGE_KEY, mappedBookList);
-        }
-
-        return response.data;
-      } catch (error) {
-         console.error(error.toJSON());
+        </li>`;
       }
-    }
+    )
+    .join('');
+  refs.sellectedBooksList.insertAdjacentHTML('beforeend', markupBooks);
+  bindDeleteButtonsEvents();
+}
+
+function bindDeleteButtonsEvents() {
+  let deleteButtonRefs = document.querySelectorAll('.delete-book-button');
+  deleteButtonRefs.forEach(book => book.addEventListener('click', deleteBook));
+}
+
+function deleteBook(e) {
+  const bookId = e.srcElement.id;
+  deleteBookFromLocalStorage(bookId);
+  deleteBookFromList(bookId);
+
+  if (!booksFromLocalStorage || booksFromLocalStorage.length < 1) {
+    showEmptyMessage();
+    paginationContainer.style.display = 'none';
+  } else {
+    recalculatePages();
+  }
+}
+
+function deleteBookFromLocalStorage(bookId) {
+  booksFromLocalStorage = booksFromLocalStorage.filter(
+    book => book._id !== bookId
+  );
+  save(SHOPPING_LIST_LOCAL_STORAGE_KEY, booksFromLocalStorage);
+}
+
+function deleteBookFromList(bookId) {
+  const bookElement = document.getElementById(bookId.toString());
+  bookElement.remove();
+}
+
+// Only for test
+// async function InitializeShoppingListTest() {
+
+//       try {
+//         let mappedBookList;
+//         const response = await axios.get(`${API_URL}`);
+//         if(response && response.data)
+//         {
+//             let bookslist = response.data[0].books;
+//             mappedBookList = bookslist.map(({
+//                 _id,
+//                 title,
+//                 author,
+//                 book_image,
+//                 description,
+//                 list_name,
+//                 buy_links,
+//             }) =>  ({ _id, title, author, book_image, description, list_name, buy_links }));
+//         }
+//         console.log(mappedBookList);
+
+//         if(mappedBookList && mappedBookList.length > 0) {
+//             save(SHOPPING_LIST_LOCAL_STORAGE_KEY, mappedBookList);
+//         }
+
+//         return response.data;
+//       } catch (error) {
+//          console.error(error.toJSON());
+//       }
+//     }
 
 //LocalStorageService
 const save = (key, value) => {
-    try {
-      const serializedState = JSON.stringify(value);
-      localStorage.setItem(key, serializedState);
-    } catch (error) {
-      console.error("Set state error: ", error.message);
-    }
-  };
-  
-  const load = key => {
-    try {
-      const serializedState = localStorage.getItem(key);
-      return serializedState === null ? undefined : JSON.parse(serializedState);
-    } catch (error) {
-      console.error("Get state error: ", error.message);
-    }
-  };
+  try {
+    const serializedState = JSON.stringify(value);
+    localStorage.setItem(key, serializedState);
+  } catch (error) {
+    console.error('Set state error: ', error.message);
+  }
+};
+
+const load = key => {
+  try {
+    const serializedState = localStorage.getItem(key);
+    return serializedState === null ? undefined : JSON.parse(serializedState);
+  } catch (error) {
+    console.error('Get state error: ', error.message);
+  }
+};
 // --------------------------
 
 //  let text = 'это вопрос религии, или объективные причины есть? =) Для некого универсального плагина,...';
- 
+
 // let sliced = text.slice(0, 15);
 // if (sliced.length < text.length) {
 // sliced += '...';
 // }
 // console.log(sliced);
 
-
-
 //    Pagination
-const paginationNumbers = document.getElementById("pagination-numbers");
-const paginatedList = document.getElementById("paginated-list");
-const nextButton = document.getElementById("next-button");
-const prevButton = document.getElementById("prev-button");
-const paginationContainer = document.getElementById("pagination-container");
+const paginationNumbers = document.getElementById('pagination-numbers');
+const paginatedList = document.getElementById('paginated-list');
+const nextButton = document.getElementById('next-button');
+const prevButton = document.getElementById('prev-button');
+const paginationContainer = document.getElementById('pagination-container');
 let listItems;
 const paginationLimit = 3;
 let pageCount;
 let currentPage;
 
 function setPagination() {
-  listItems = paginatedList.querySelectorAll("li");
+  listItems = paginatedList.querySelectorAll('li');
   pageCount = Math.ceil(listItems.length / paginationLimit);
 
-  if (pageCount < 2)
-  {
+  if (pageCount < 2) {
     paginationContainer.style.display = 'none';
     return;
   }
@@ -200,10 +197,10 @@ function setPagination() {
   setCurrentPage(1);
   setNextAndPreviousButtons();
 
-  document.querySelectorAll(".pagination-number").forEach((button) => {
-    const pageIndex = Number(button.getAttribute("page-index"));
+  document.querySelectorAll('.pagination-number').forEach(button => {
+    const pageIndex = Number(button.getAttribute('page-index'));
     if (pageIndex) {
-      button.addEventListener("click", () => {
+      button.addEventListener('click', () => {
         setCurrentPage(pageIndex);
       });
     }
@@ -216,18 +213,18 @@ const getPaginationNumbers = () => {
   }
 };
 
-const appendPageNumber = (index) => {
-  const pageNumber = document.createElement("button");
-  pageNumber.className = "pagination-number";
+const appendPageNumber = index => {
+  const pageNumber = document.createElement('button');
+  pageNumber.className = 'pagination-number';
   pageNumber.innerHTML = index;
-  pageNumber.setAttribute("page-index", index);
-  pageNumber.setAttribute("aria-label", "Page " + index);
+  pageNumber.setAttribute('page-index', index);
+  pageNumber.setAttribute('aria-label', 'Page ' + index);
   paginationNumbers.appendChild(pageNumber);
 };
 
-const setCurrentPage = (pageNum) => {
+const setCurrentPage = pageNum => {
   currentPage = pageNum;
-  
+
   handleActivePageNumber();
   handlePageButtonsStatus();
 
@@ -242,34 +239,34 @@ const setCurrentPage = (pageNum) => {
   });
 };
 
-function setNextAndPreviousButtons (){
-  prevButton.addEventListener("click", () => {
+function setNextAndPreviousButtons() {
+  prevButton.addEventListener('click', () => {
     setCurrentPage(currentPage - 1);
   });
-  nextButton.addEventListener("click", () => {
+  nextButton.addEventListener('click', () => {
     setCurrentPage(currentPage + 1);
   });
 }
- 
+
 const handleActivePageNumber = () => {
-  document.querySelectorAll(".pagination-number").forEach((button) => {
-    button.classList.remove("active");
-    
-    const pageIndex = Number(button.getAttribute("page-index"));
+  document.querySelectorAll('.pagination-number').forEach(button => {
+    button.classList.remove('active');
+
+    const pageIndex = Number(button.getAttribute('page-index'));
     if (pageIndex == currentPage) {
-      button.classList.add("active");
+      button.classList.add('active');
     }
   });
 };
 
-const disableButton = (button) => {
-  button.classList.add("disabled");
-  button.setAttribute("disabled", true);
+const disableButton = button => {
+  button.classList.add('disabled');
+  button.setAttribute('disabled', true);
 };
 
-const enableButton = (button) => {
-  button.classList.remove("disabled");
-  button.removeAttribute("disabled");
+const enableButton = button => {
+  button.classList.remove('disabled');
+  button.removeAttribute('disabled');
 };
 
 const handlePageButtonsStatus = () => {
@@ -287,44 +284,37 @@ const handlePageButtonsStatus = () => {
 
 const recalculatePages = () => {
   paginationNumbers.innerHTML = '';
-  listItems = paginatedList.querySelectorAll("li");
+  listItems = paginatedList.querySelectorAll('li');
   pageCount = Math.ceil(listItems.length / paginationLimit);
-  
-  if (pageCount < 2)
-  {
+
+  if (pageCount < 2) {
     paginationContainer.style.display = 'none';
-    
+
     return;
   }
 
-if (currentPage > pageCount)
-{
-  currentPage = pageCount;
-}
+  if (currentPage > pageCount) {
+    currentPage = pageCount;
+  }
 
   getPaginationNumbers();
   setCurrentPage(currentPage);
   setNextAndPreviousButtons();
 
-  document.querySelectorAll(".pagination-number").forEach((button) => {
-    const pageIndex = Number(button.getAttribute("page-index"));
+  document.querySelectorAll('.pagination-number').forEach(button => {
+    const pageIndex = Number(button.getAttribute('page-index'));
     if (pageIndex) {
-      button.addEventListener("click", () => {
+      button.addEventListener('click', () => {
         setCurrentPage(pageIndex);
-        
       });
-      console.log( setCurrentPage(pageIndex));
+      console.log(setCurrentPage(pageIndex));
     }
   });
-}
-
-
+};
 
 // window.addEventListener("load", () => {
 //   getPaginationNumbers();
 // });
-
-
 
 // jsonData.forEach((item, index) => {
 //   elementContainer.innerHTML = ''
@@ -333,19 +323,9 @@ if (currentPage > pageCount)
 //   }
 // });
 
-
-
 // window.addEventListener("load", () => {
-  
+
 // });
-
-
-
-
-
-
-
-
 
 // ONO EST
 // const setCurrentPage = (pageNum) => {
@@ -354,14 +334,14 @@ if (currentPage > pageCount)
 
 // const setCurrentPage = (pageNum) => {
 //   currentPage = pageNum;
-  
+
 //   const prevRange = (pageNum - 1) * paginationLimit;
 //   const currRange = pageNum * paginationLimit;
 // };
 
 // const setCurrentPage = (pageNum) => {
 //   currentPage = pageNum;
-  
+
 //   const prevRange = (pageNum - 1) * paginationLimit;
 //   const currRange = pageNum * paginationLimit;
 //   listItems.forEach((item, index) => {
