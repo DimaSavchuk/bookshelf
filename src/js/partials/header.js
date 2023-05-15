@@ -57,7 +57,6 @@ function backToTop() {
     authPerson.classList.remove('mobile');
 
     openMenuBtn.setAttribute('aria-expanded', false);
-    bodyScrollLock.enableBodyScroll(document.body);
   });
 })();
 
