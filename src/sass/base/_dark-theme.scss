@@ -157,6 +157,7 @@ body.dark-theme
 .about-team-window.dark-theme,
 .about-team-window.dark-theme > .about-team-list > .about-team-item {
   background-color: #202024;
+  box-shadow: 0 0 0 2px #4f2ee84d;
 }
 
 .about-team-window.dark-theme
@@ -172,9 +173,8 @@ body.dark-theme
   color: #ffffff;
 }
 
-.about-team-window.dark-theme > .about-team-close-modal {
-  background-color: #202024;
-  border: 1px solid #ffffff;
+.about-team-window.dark-theme > .modal-icon {
+  fill: #ffffff;
 }
 
 .bestsellers.dark-theme
@@ -261,4 +261,20 @@ body.dark-theme
 .about-book-modal.dark-theme .modal-close-btn {
   background-color: transparent;
   border: none;
+}
+
+.about-team-window::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.about-team-window.dark-theme::-webkit-scrollbar-thumb {
+  background: #111111;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #111111;
 }
