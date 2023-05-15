@@ -1,0 +1,282 @@
+body.dark-theme {
+  background-color: #202024;
+}
+
+body.dark-theme > .basicLightbox > .basicLightbox__placeholder > .modal-auth {
+  background-color: #202024;
+}
+
+body.dark-theme
+  > .basicLightbox
+  > .basicLightbox__placeholder
+  > .modal-auth
+  > .modal-authorization-form
+  > .authorization-form-group
+  > .authorization-form-field
+  > .authorization-form-input {
+  color: #ffffff;
+  outline: 2px solid #f6f6f6;
+}
+
+body.dark-theme
+  > .basicLightbox
+  > .basicLightbox__placeholder
+  > .modal-auth
+  > .modal-authorization-form
+  > .authorization-form-group
+  > .authorization-form-field
+  > .authorization-form-label {
+  background-color: transparent;
+  color: #f6f6f6;
+}
+
+body.dark-theme
+  > .basicLightbox
+  > .basicLightbox__placeholder
+  > .modal-auth
+  > .modal-authorization-form
+  > .authorization-form-button {
+  background-color: #f6f6f6;
+  color: #202024;
+}
+
+body.dark-theme
+  > .basicLightbox
+  > .basicLightbox__placeholder
+  > .modal-auth
+  > .sign-action-group
+  > .js_sign_in {
+  color: #f6f6f6;
+  opacity: 50%;
+}
+
+.js-category-list::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.js-category-list.dark-theme::-webkit-scrollbar-thumb {
+  background-color: #111111;
+  opacity: 60%;
+}
+
+.header-section.dark-theme {
+  background-color: #111111;
+  border: 1.5px solid #ffffff;
+}
+
+.shopping.dark-theme {
+  color: #ffffff;
+}
+
+.bestsellers-title.dark-theme {
+  color: #ffffff;
+}
+
+.dark_icon {
+  display: none;
+}
+
+.dark_icon.dark-theme {
+  display: block;
+}
+
+.light_icon.dark-theme {
+  display: none;
+}
+
+.js-category-list.dark-theme > .category-item > .category-link {
+  color: #ffffff;
+  opacity: 60%;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.js-category-list.dark-theme > .category-item:hover > .category-link,
+.js-category-list.dark-theme > .category-item:focus > .category-link {
+  color: #eac645;
+  opacity: 100%;
+}
+
+.footer-js.dark-theme {
+  background-color: #111111;
+  border: 1.5px solid #ffffff;
+}
+
+.dark_icon_footer {
+  display: none;
+}
+
+.dark_icon_footer.dark-theme {
+  display: block;
+}
+
+.light_icon_footer.dark-theme {
+  display: none;
+}
+
+.bestsellers.dark-theme
+  > .bestsellers-card
+  > .bestsellers-list
+  > .bestsellers-card-item
+  > .bestsellers-link
+  > .text-box
+  > .book-name {
+  color: #ffffff;
+}
+
+.bestsellers.dark-theme > .bestsellers-card > .bestsellers-btn {
+  color: #ffffff;
+}
+
+.bestsellers.dark-theme > .bestsellers-title {
+  color: #ffffff;
+}
+
+.bestsellers.dark-theme
+  > .bestsellers-category-item
+  > .category-book-list
+  > .bestsellers-card-item
+  > .bestsellers-link
+  > .text-box
+  > .book-name {
+  color: #ffffff;
+}
+
+.bestsellers.dark-theme
+  > .bestsellers-card
+  > .bestsellers-list
+  > .bestsellers-card-item:hover,
+.bestsellers.dark-theme
+  > .bestsellers-card
+  > .bestsellers-list
+  > .bestsellers-card-item:focus {
+  box-shadow: 0 0 0 5px #4f2ee84d;
+}
+
+.about-team-window.dark-theme,
+.about-team-window.dark-theme > .about-team-list > .about-team-item {
+  background-color: #202024;
+  box-shadow: 0 0 0 2px #4f2ee84d;
+}
+
+.about-team-window.dark-theme
+  > .about-team-list
+  > .about-team-item
+  > .about-team-inform
+  > .about-team-title,
+.about-team-window.dark-theme
+  > .about-team-list
+  > .about-team-item
+  > .about-team-inform
+  > .about-team-role {
+  color: #ffffff;
+}
+
+.about-team-window.dark-theme > .modal-icon {
+  fill: #ffffff;
+}
+
+.bestsellers.dark-theme
+  > .bestsellers-category-item
+  > .category-book-list
+  > .bestsellers-card-item:hover,
+.bestsellers.dark-theme
+  > .bestsellers-category-item
+  > .category-book-list
+  > .bestsellers-card-item:focus {
+  box-shadow: 0 0 0 5px #4f2ee84d;
+}
+
+body.dark-theme
+  > .basicLightbox
+  > .basicLightbox__placeholder
+  > .book_info_card {
+  background-color: #202024;
+}
+
+body.dark-theme
+  > .basicLightbox
+  > .basicLightbox__placeholder
+  > .book_info_card
+  > .modal-info-close {
+  background-color: #202024;
+  border: none;
+}
+
+body.dark-theme
+  > .basicLightbox
+  > .basicLightbox__placeholder
+  > .book_info_card
+  > .modal-book-card-wrapper
+  > .book_info_name {
+  color: #ffffff;
+}
+
+body.dark-theme
+  > .basicLightbox
+  > .basicLightbox__placeholder
+  > .book_info_card
+  > .modal-book-card-wrapper
+  > .book_info_description {
+  color: #ffffff;
+}
+
+body.dark-theme
+  > .basicLightbox
+  > .basicLightbox__placeholder
+  > .book_info_card
+  > .btn-book-info {
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.header-section.dark-theme
+  > .container
+  > .header-wrap
+  > .header-wrap-2
+  > .mobile-menu-btn
+  > .mobile-menu {
+  color: #ffffff;
+}
+
+// Modal_window-about_book
+.about-book-modal.dark-theme {
+  background-color: #202024;
+}
+
+.about-book-modal.dark-theme .modal-book-title {
+  color: #ffffff;
+}
+
+.about-book-modal.dark-theme .modal-book-description {
+  color: #ffffff;
+}
+
+.about-book-modal.dark-theme .add-to-sopping-list {
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.about-book-modal.dark-theme .modal-close-btn {
+  background-color: transparent;
+  border: none;
+}
+
+//about team
+.about-team-window::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.about-team-window.dark-theme::-webkit-scrollbar-thumb {
+  background: #111111;
+}
+
+//body scroll
+body::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #111111;
+}

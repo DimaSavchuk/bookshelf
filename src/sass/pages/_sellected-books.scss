@@ -29,6 +29,7 @@
     font-size: 32px;
     line-height: 1.19;
 
+
     letter-spacing: -0.04em;
 
     // padding-top: 40px;
@@ -61,33 +62,24 @@ span {
     margin-left: 178px;
     margin-right: 177px;
     padding-bottom: 394px;
-  }
-}
 
-@media screen and (min-width: 1440px) {
+  }
   .books-not-available {
+
     margin-left: 315px;
     padding-bottom: 157px;
+
   }
-}
-
-.no-books-text {
-  font-family: 'DM Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.29;
-
-  text-align: center;
-  letter-spacing: -0.02em;
-
-  color: rgba(0, 0, 0, 0.6);
-}
-@media screen and (min-width: 768px) {
-  .no-books-text {
-    font-size: 18px;
-    line-height: 1.33;
+  @media screen and (min-width: 768px) {
+    .books-not-available {
+      width: 349px;
+      height: 309px;
+      margin-top: 140px;
+      margin-left: 178px;
+      margin-right: 177px;
+    }
   }
+
 }
 
 img .books-not-available {
@@ -134,30 +126,28 @@ img .books-not-available {
     // border: 2px solid rgba(79, 46, 232, 0.4);
     // border-radius: 16px;
   }
-  @media screen and (min-width: 768px) {
-    max-width: none;
-    width: 704px;
-    padding: 24px;
-  }
-  @media screen and (min-width: 1440px) {
-    width: 996px;
-  }
-}
-
-.book-image {
-  width: 100px;
-  height: 142px;
-  display: inline-block;
-  margin-right: 14px;
-  margin-left: 0;
-  margin-top: 0;
-  border-radius: 8px;
 
   @media screen and (min-width: 768px) {
-    width: 116px;
-    height: 165px;
-    margin-right: 24px;
+    .no-books-text {
+      font-size: 18px;
+      line-height: 1.33;
+    }
   }
+  img {
+    width: 265px;
+    height: 198px;
+    margin-top: 14px;
+  }
+  @media screen and (min-width: 768px) {
+    img {
+      width: 322px;
+      height: 241px;
+      margin-top: 20px;
+      margin-left: 13.5px;
+      margin-right: 13.5px;
+    }
+  }
+
 }
 .book-info {
   display: flex;
@@ -229,11 +219,23 @@ img .books-not-available {
   }
   @media screen and (min-width: 768px) {
     width: auto;
+
+  }
+  .book-image {
+    width: 100px;
+    height: 142px;
+    display: inline-block;
+    margin-right: 14px;
+    margin-left: 0;
+    margin-top: 0;
+    border-radius: 8px;
+    @media screen and (min-width: 768px) {
+      width: 116px;
+      height: 165px;
+      margin-right: 24px;
+    }
   }
 
-  @media screen and (min-width: 1440px) {
-    margin-bottom: 8px;
-  }
 }
 .book-description {
   max-width: 138px;
@@ -259,17 +261,27 @@ img .books-not-available {
   @media screen and (min-width: 1440px) {
     // overflow: hidden;
     width: 808px;
-  }
-}
 
-.book-styles {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  @media screen and (min-width: 768px) {
-    align-items: baseline;
   }
+  .book-category {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.03em;
+    color: #b4afaf;
+    margin-bottom: 14px;
+    width: 144px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    @media screen and (min-width: 768px) {
+      width: auto;
+    }
+    @media screen and (min-width: 1440px) {
+      margin-bottom: 8px;
+    }
+  }
+
 }
 
 .book-author {
@@ -324,19 +336,25 @@ img .books-not-available {
   }
   @media screen and (min-width: 768px) {
     gap: 16px;
+
   }
-}
-.amazon {
-  width: 32px;
-  height: 11px;
-  border-radius: 0px;
-  background-size: cover;
-  background: url(../images/shopping/amazon.png);
-  @media screen and (min-width: 768px) {
-    width: 48px;
-    height: 15px;
-    background: url(../images/shopping/amazon1.png);
+  .book-author {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: -0.04em;
+    color: #b4afaf;
+    display: inline;
+    width: 97px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    @media screen and (min-width: 768px) {
+      width: auto;
+    }
   }
+
 }
 .amazon:hover,
 .amazon:focus {
@@ -348,10 +366,18 @@ img .books-not-available {
   height: 16px;
   background: url(../images/shopping/apple.png);
   @media screen and (min-width: 768px) {
+
     width: 28px;
-    height: 27px;
-    background: url(../images/shopping/aplle1.png);
+    height: 28px;
+    background: url(../images/shopping/trash.png);
+    @media screen and (min-width: 768px) {
+      padding: 8px;
+      width: 34px;
+      height: 34px;
+      background: url(../images/shopping/trash1.png);
+    }
   }
+
 }
 
 .apple:hover,
@@ -364,9 +390,37 @@ img .books-not-available {
   height: 16px;
   background: url(../images/shopping/shop.png);
   @media screen and (min-width: 768px) {
+
     width: 32px;
-    height: 30px;
-    background: url(../images/shopping/shop1.png);
+    height: 11px;
+    border-radius: 0px;
+    background-size: cover;
+    background: url(../images/shopping/amazon.png);
+    @media screen and (min-width: 768px) {
+      width: 48px;
+      height: 15px;
+      background: url(../images/shopping/amazon1.png);
+    }
+  }
+  .apple {
+    width: 16px;
+    height: 16px;
+    background: url(../images/shopping/apple.png);
+    @media screen and (min-width: 768px) {
+      width: 28px;
+      height: 27px;
+      background: url(../images/shopping/aplle1.png);
+    }
+  }
+  .shop {
+    width: 16px;
+    height: 16px;
+    background: url(../images/shopping/shop.png);
+    @media screen and (min-width: 768px) {
+      width: 32px;
+      height: 30px;
+      background: url(../images/shopping/shop1.png);
+    }
   }
 }
 .shop:hover,

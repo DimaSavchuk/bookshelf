@@ -5,7 +5,7 @@ category();
 const refs = {
   bodyEl: document.querySelector('body'),
   headerEl: document.querySelector('.header-section'),
-  headerNavLink: document.querySelector('.shopping'),
+  headerNavLinkEl: document.querySelector('.shopping'),
   logoLightEl: document.querySelector('.light_icon'),
   logoDarkEl: document.querySelector('.dark_icon'),
   titleEl: document.querySelector('.bestsellers-title'),
@@ -13,14 +13,15 @@ const refs = {
   footerEl: document.querySelector('.footer-js'),
   logoFooterLightEl: document.querySelector('.light_icon_footer'),
   logoFooterDarkEl: document.querySelector('.dark_icon_footer'),
-
-  // bookNameEl: document.querySelector('.book-name'),
+  bookNameEl: document.querySelector('.bestsellers'),
+  aboutTeamEL: document.querySelector('.about-team-window'),
+  aboutBookModalEl: document.querySelector('.about-book-modal'),
 };
 
 const arrayEl = [
   refs.bodyEl,
   refs.headerEl,
-  refs.headerNavLink,
+  refs.headerNavLinkEl,
   refs.logoLightEl,
   refs.logoDarkEl,
   refs.titleEl,
@@ -28,6 +29,9 @@ const arrayEl = [
   refs.footerEl,
   refs.logoFooterLightEl,
   refs.logoFooterDarkEl,
+  refs.bookNameEl,
+  refs.aboutTeamEL,
+  refs.aboutBookModalEl,
 ];
 
 const switcherEl = document.querySelector('.js-switch-theme');
@@ -41,15 +45,6 @@ onLoadDarkTheme();
 // Функція для зміни теми сторінки
 function onClick() {
   arrayEl.map(element => element.classList.toggle('dark-theme'));
-
-  // refs.jsCategoryListEl.classList.toggle('dark-theme');
-  // refs.bodyEl.classList.toggle('dark-theme');
-  // refs.headerEl.classList.toggle('dark-theme');
-  // refs.titleEl.classList.toggle('dark-theme');
-  // refs.logoLightEl.classList.toggle('dark-theme');
-  // refs.logoDarkEl.classList.toggle('dark-theme');
-  // refs.headerNavLink.classList.toggle('dark-theme');
-  // refs.bookNameEl.classList.toggle('dark-theme');
 
   if (localStorage.getItem(STORAGE_KEY) === 'true') {
     localStorage.removeItem(STORAGE_KEY);
@@ -65,13 +60,5 @@ function onLoadDarkTheme() {
   if (value) {
     switcherEl.setAttribute('checked', true);
     arrayEl.map(element => element.classList.add('dark-theme'));
-    // refs.bodyEl.classList.add('dark-theme');
-    // refs.headerEl.classList.add('dark-theme');
-    // refs.titleEl.classList.add('dark-theme');
-    // refs.logoLightEl.classList.add('dark-theme');
-    // refs.logoDarkEl.classList.add('dark-theme');
-    // refs.headerNavLink.classList.add('dark-theme');
-    // refs.bookNameEl.classList.add('dark-theme');
-    // refs.jsCategoryListEl.classList.add('dark-theme');
   }
 }

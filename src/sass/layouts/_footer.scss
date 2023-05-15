@@ -1,37 +1,47 @@
 .footer-section {
-    border: 1.5px solid #111111;
-    border-radius: 0px 0px 8px 8px;
-    background-color: #fff;
+  background-color: #ffffff;
+  border: 1.5px solid #111111;
+  border-radius: 8px 8px 0px 0px;
+  max-width: 1440px;
+  margin: 0 auto;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 
 .footer-section .container {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 
-    padding-top: 18px;
-    padding-bottom: 18px;
+
+    padding-top: 42px;
+    padding-bottom: 42px;
+
 }
 
-
 .footer-button {
-    display: flex;
-    align-items: center;
-    padding: 4px 12px;
-    margin-left:  auto;
+  display: flex;
+  align-items: center;
+  padding: 4px 12px;
+  margin-left: auto;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    background: #4f2ee8;
-    border-radius: 36px;
-    border-color: #4f2ee8;
+  background: #4f2ee8;
+  border-radius: 36px;
+  border-color: #4f2ee8;
 }
 
 .footer-button-text {
-    letter-spacing: -.02em;
-    color: #fff;
-    margin-left: 9px;
-    margin-right: 4px;
-    font-size: 22px;
-    line-height: 1.31818;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-left: 9px;
+  margin-right: 4px;
+  font-size: 22px;
+  line-height: 1.31818;
+}
+
+.footer-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

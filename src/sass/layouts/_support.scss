@@ -1,5 +1,5 @@
 .support {
-  width: 335px;
+  width: 100%;
   height: 352px;
   background: radial-gradient(
     183.6% 183.01% at 59.76% -23.42%,
@@ -15,6 +15,7 @@
 .support-title {
   display: flex;
   margin-bottom: 40px;
+  padding-right: 58px;
 }
 
 .support-name {
@@ -43,7 +44,7 @@
 }
 
 .support-wrapper {
-  transition: transform 500ms;
+  transition: transform 500ms cubic-bezier(0.65, 0.05, 0.36, 1);
 }
 
 .support-item {
@@ -70,6 +71,12 @@
 
 .support-link img {
   filter: brightness(0) invert(1);
+  transition: filter 500ms cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+.support-link:hover img,
+.support-link:focus img {
+  filter: none;
 }
 
 .support-btn {
@@ -122,7 +129,7 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1440px) {
   .support {
     width: 356px;
     height: 490px;

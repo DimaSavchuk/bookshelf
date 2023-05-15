@@ -60,7 +60,7 @@ const signUpMarkup = ` <div class="modal-auth">
   
    <div class="sign-action-group">
       <p class="modal-sign-action active">Sign up</p>
-      <p class="modal-sign-action" id="sign-in">Sign in</p>
+      <p class="modal-sign-action js_sign_in" id="sign-in">Sign in</p>
     </div>
 </div>`;
 

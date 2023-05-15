@@ -1,10 +1,8 @@
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
-// import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { signUpMarkup } from './auth-markup';
 import { signInMarkup } from './signin-markup';
-
-import { fetchTopBooksRequest } from '../partials/bestsellers';
 import { initializeApp } from 'firebase/app';
 import {
   getAuth,
@@ -15,8 +13,6 @@ import {
   signOut,
 } from 'firebase/auth';
 
-// import { getDatabase } from 'firebase/database';
-
 const firebaseConfig = {
   apiKey: 'AIzaSyAqWH2icjWY7IpUhAf_OC5YhETKs4dKhp4',
   authDomain: 'bookshelf-8fd9e.firebaseapp.com',
@@ -24,59 +20,41 @@ const firebaseConfig = {
   storageBucket: 'bookshelf-8fd9e.appspot.com',
   messagingSenderId: '750642504872',
   appId: '1:750642504872:web:4ecdb00b8b46247efb4e9d',
-  databaseURL:
-    'https://bookshelf-8fd9e-default-rtdb.europe-west1.firebasedatabase.app/',
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Initialize Realtime Database and get a reference to the service
-// const database = getDatabase(app);
-
 const signUpBtn = document.querySelector('.js-authorization');
 const authorizedBtn = document.querySelector('.js-user-bar');
 const signOutBtn = document.querySelector('.js-signOut');
+const headerNavEl = document.querySelector('.js-header-nav');
 const logOutMobile = document.querySelector('.js-logOut');
 const logOutWndw = document.querySelector('.js-logout');
 const userLoggedName = document.querySelectorAll('.js-name');
-console.log(signOutBtn);
 
 signUpBtn.addEventListener('click', onSignUpBtn);
 signOutBtn.addEventListener('click', onSignOutBtn);
 logOutMobile.addEventListener('click', onSignOutBtn);
-authorizedBtn.addEventListener('click', onAuthorizedBtn);
 
 const auth = getAuth();
-
-// TODO: Introduce main entry file and move this logic there
-window.addEventListener('DOMContentLoaded', event => {
-  console.log('DOM fully loaded and parsed');
-  const layoutElement = document.querySelector('.layout');
-  layoutElement.classList.add('is-loading');
-
-  Promise.all([authCheck(), fetchTopBooksRequest()]).then(() => {
-    const loadingElement = document.querySelector('.js-loading');
-    const layoutElement = document.querySelector('.layout');
-
-    loadingElement.classList.add('loading-overlay-hide');
-    layoutElement.classList.remove('is-loading');
-  });
-});
 
 export function authCheck() {
   onAuthStateChanged(auth, user => {
     if (user) {
-      console.log(user);
       signUpBtn.classList.add('authorized');
       authorizedBtn.classList.replace('unauthorized', 'authorized');
       userLoggedName.forEach(item => {
         item.innerHTML = user.displayName;
       });
+      headerNavEl.classList.replace('unauthorized', 'authorized');
+      logOutMobile.classList.add('authorized');
     } else {
       // User is signed out
       signUpBtn.classList.remove('authorized');
       authorizedBtn.classList.replace('authorized', 'unauthorized');
+      headerNavEl.classList.replace('authorized', 'unauthorized');
+      logOutMobile.classList.remove('authorized');
     }
 
     const loadingElement = document.querySelector('.js-loading');
@@ -90,7 +68,6 @@ function onSignUpBtn(e) {
   e.preventDefault();
 
   instance.show(() => {
-    console.log('instance show');
     const AuthForm = document.getElementById('authorization-form');
     const signInModalEl = document.getElementById('sign-in');
 
@@ -103,8 +80,6 @@ function onSignUpBtn(e) {
 
     function onSubmit(evt) {
       evt.preventDefault();
-
-      console.log('submit');
 
       if (evt.target.name === 'name') {
         AuthForm.elements.name.value = evt.target.value.trim();
@@ -119,19 +94,16 @@ function onSignUpBtn(e) {
       let password = AuthForm.elements.password.value;
 
       if (!name || !email || !password) {
-        return;
-        // return Notify.warning('Please enter all information');
+        return Notify.warning('Please enter all information');
       }
 
       createUserWithEmailAndPassword(auth, email, password, name)
         .then(userCredential => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
 
           updateProfile(user, {
             displayName: name,
-            photoURL: 'https://example.com/jane-q-user/profile.jpg',
           })
             .then(() => {
               // Profile updated!
@@ -146,7 +118,7 @@ function onSignUpBtn(e) {
         .catch(error => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          // Notify.failure(errorMessage);
+          Notify.failure(errorMessage);
           // ..
         });
 
@@ -184,19 +156,12 @@ function onSignUpBtn(e) {
               // Signed in
 
               const user = userCredential.user;
-              console.log(user);
-              //   localStorage.setItem(
-              //     KEY_USERPROFILE,
-              //     JSON.stringify(userProfileObj)
-              //   );
-
               window.location.reload();
             })
             .catch(error => {
               const errorCode = error.code;
               const errorMessage = error.message;
-              // Notify.failure(errorMessage);
-              console.error('errorMessage', errorMessage);
+              Notify.failure(errorMessage);
               // return
             });
           instanceSignIn.removeEventListener('click', onSignUpBtn);
@@ -212,23 +177,23 @@ function onSignUpBtn(e) {
   });
 }
 
-// function onAuthorizedBtn(e) {
-//   e.preventDefault();
-//   logOutWndw.classList.toggle('logouthidn');
-// }
-
-function onAuthorizedBtn(e) {
-  e.preventDefault();
-  logOutWndw.classList.toggle('logouthidn');
-
-  if (!logOutWndw.classList.contains('logouthidn')) {
-    window.addEventListener('mouseup', function (evt) {
-      if (evt.target != logOutWndw && evt.target.parentNode != logOutWndw) {
-        logOutWndw.classList.add('logouthidn');
-      }
-    });
+// This logic hides/shows the logout popover window
+// for signout
+document.body.addEventListener('click', function (evt) {
+  if (
+    evt.target.closest('.js-user-bar') &&
+    logOutWndw.classList.contains('logouthidn')
+  ) {
+    return logOutWndw.classList.remove('logouthidn');
   }
-}
+
+  if (
+    !evt.target.closest('.js-logout') &&
+    !logOutWndw.classList.contains('logouthidn')
+  ) {
+    return logOutWndw.classList.add('logouthidn');
+  }
+});
 
 function onSignOutBtn() {
   signOut(auth);
