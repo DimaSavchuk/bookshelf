@@ -1,0 +1,77 @@
+.backdrop {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(17, 17, 17, 0.4);
+  z-index: 20;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.about-book-modal {
+  width: 90%;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: white;
+  position: fixed;
+  z-index: 21;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  border-radius: 18px;
+  border: 2px solid #111111;
+  .modal-close-btn {
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+  .modal-book-img {
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 14px;
+    padding-top: 40px;
+    width: 287px;
+    height: 408px;
+  }
+  .modal-book-title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.12em;
+    color: #111111;
+    padding-bottom: 4px;
+  }
+  .modal-book-author {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.17px;
+    color: #b4afaf;
+    margin-bottom: 18px;
+  }
+  .modal-shop-list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  .add-to-sopping-list {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    padding: 14px 28px;
+    border: 2px solid #4f2ee8;
+    border-radius: 40px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.29em;
+    text-transform: uppercase;
+    color: #111111;
+  }
+}
