@@ -1,5 +1,5 @@
 .categories-container {
-    padding-left: 0;
+  padding-left: 0;
 }
 
 @media (max-width: 767px) {
@@ -10,9 +10,7 @@
     overflow-y: scroll;
     list-style-type: none;
     margin-top: 0;
-    padding-left: 0;
   }
-
   .category-item {
     font-family: 'DM Sans';
     padding-bottom: 24px;
@@ -22,12 +20,10 @@
     letter-spacing: -0.02em;
     color: rgba(17, 17, 17, 0.6);
   }
-
   .category-link {
     text-decoration: none;
     color: inherit;
   }
-
   .category-item:hover,
   .category-item:focus {
     font-family: 'DM Sans';
@@ -45,13 +41,12 @@
   .category-list {
     margin-top: 40px;
     height: 472px;
-    width: 356px;
+    width: 337px;
     overflow-y: scroll;
     list-style-type: none;
     margin-top: 0;
     padding-left: 0;
   }
-
   .category-item {
     font-family: 'DM Sans';
     padding-bottom: 32px;
@@ -61,12 +56,10 @@
     letter-spacing: -0.02em;
     color: rgba(17, 17, 17, 0.6);
   }
-
   .category-link {
     text-decoration: none;
     color: inherit;
   }
-
   .category-item:hover,
   .category-item:focus {
     font-family: 'DM Sans';
@@ -80,19 +73,16 @@
   }
 }
 
-
 ::-webkit-scrollbar {
   width: 8px;
   height: 167px;
 }
-
 
 ::-webkit-scrollbar-thumb {
   background: #e0e0e0;
   border-radius: 12px;
 }
 
-
 ::-webkit-scrollbar-track {
-  background-color: #f1f1f1; 
+  background-color: #f1f1f1;
 }
