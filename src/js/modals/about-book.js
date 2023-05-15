@@ -10,7 +10,13 @@ const modalBookPictureWrapEl = document.querySelector(
 const modalBookInfoWrapEl = document.querySelector('.modal-about-book-info');
 const modalShopLinks = document.querySelector('.modal-shop-link');
 const addItemToLockal = document.querySelector('.add-to-sopping-list');
+//================================================
+import Notiflix from 'notiflix';
+export const STORAGE_KEY = 'shoppingbookId';
 
+let shoppingList = [];
+
+//===============================================
 bestSellersGalery.addEventListener('click', clickOnBook);
 
 function clickOnBook(event) {
@@ -30,6 +36,17 @@ function clickOnBook(event) {
 
     function onAddItemClick() {
       console.log(data);
+      
+      //===============================================
+      shoppingList.push(data);
+      console.log(shoppingList);
+
+      Notiflix.Notify.success(
+        "Сongratulations! You have added the book to the shopping list. To delete, press the button Remove from the shopping list");
+      
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(shoppingList));
+        //===============================================
+
     }
   });
 }
