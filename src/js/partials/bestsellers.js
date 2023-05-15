@@ -9,7 +9,6 @@ import Notiflix from 'notiflix';
 
 window.addEventListener('DOMContentLoaded', loadTopBooksOnClick);
 
-
 export async function loadTopBooksOnClick(event) {
   try {
     topBooksRequest()
@@ -128,8 +127,8 @@ export function makeMarkupBook(books) {
             </div>
          <!-- box-menu -->
          <div class="text-box">
-          <h3 class="book-name">${title} id="${_id}"</h3>
-          <p class="author">${author} id="${_id}"</p>
+          <h3 class="book-name" id="${_id}">${title} </h3>
+          <p class="author" id="${_id}">${author}</p>
           </div>
           </a>
          </li>
