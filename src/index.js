@@ -1,3 +1,4 @@
+import './js/services/loadingcheck-main-page';
 import './js/modals/authorization';
 import './js/partials/header';
 import './js/partials/main-content';

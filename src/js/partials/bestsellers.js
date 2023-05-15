@@ -8,7 +8,9 @@ import Notiflix from 'notiflix';
 // ===========================================================================
 
 window.addEventListener('DOMContentLoaded', loadTopBooksOnClick);
-async function loadTopBooksOnClick(event) {
+
+
+export async function loadTopBooksOnClick(event) {
   try {
     topBooksRequest()
       .then(data => {
