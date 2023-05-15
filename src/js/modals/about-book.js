@@ -36,9 +36,11 @@ function clickOnBook(event) {
 
     function onAddItemClick() {
       console.log(data);
+      
       //===============================================
       shoppingList.push(data);
       console.log(shoppingList);
+
       Notiflix.Notify.success(
         "Сongratulations! You have added the book to the shopping list. To delete, press the button Remove from the shopping list");
       
