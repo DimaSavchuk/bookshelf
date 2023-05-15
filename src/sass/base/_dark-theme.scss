@@ -239,3 +239,26 @@ body.dark-theme
   > .mobile-menu {
   color: #ffffff;
 }
+
+// Modal_window-about_book
+.about-book-modal.dark-theme {
+  background-color: #202024;
+}
+
+.about-book-modal.dark-theme .modal-book-title {
+  color: #ffffff;
+}
+
+.about-book-modal.dark-theme .modal-book-description {
+  color: #ffffff;
+}
+
+.about-book-modal.dark-theme .add-to-sopping-list {
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.about-book-modal.dark-theme .modal-close-btn {
+  background-color: transparent;
+  border: none;
+}
