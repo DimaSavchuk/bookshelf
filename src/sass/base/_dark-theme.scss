@@ -26,6 +26,7 @@ body.dark-theme
   > .authorization-form-group
   > .authorization-form-field
   > .authorization-form-label {
+  background-color: transparent;
   color: #f6f6f6;
 }
 
@@ -161,10 +162,12 @@ body.dark-theme
 .about-team-window.dark-theme
   > .about-team-list
   > .about-team-item
+  > .about-team-inform
   > .about-team-title,
 .about-team-window.dark-theme
   > .about-team-list
   > .about-team-item
+  > .about-team-inform
   > .about-team-role {
   color: #ffffff;
 }
@@ -172,4 +175,67 @@ body.dark-theme
 .about-team-window.dark-theme > .about-team-close-modal {
   background-color: #202024;
   border: 1px solid #ffffff;
+}
+
+.bestsellers.dark-theme
+  > .bestsellers-category-item
+  > .category-book-list
+  > .bestsellers-card-item:hover,
+.bestsellers.dark-theme
+  > .bestsellers-category-item
+  > .category-book-list
+  > .bestsellers-card-item:focus {
+  box-shadow: 0 0 0 5px #4f2ee84d;
+}
+
+body.dark-theme
+  > .basicLightbox
+  > .basicLightbox__placeholder
+  > .book_info_card {
+  background-color: #202024;
+}
+
+body.dark-theme
+  > .basicLightbox
+  > .basicLightbox__placeholder
+  > .book_info_card
+  > .modal-info-close {
+  background-color: #202024;
+  border: none;
+}
+
+body.dark-theme
+  > .basicLightbox
+  > .basicLightbox__placeholder
+  > .book_info_card
+  > .modal-book-card-wrapper
+  > .book_info_name {
+  color: #ffffff;
+}
+
+body.dark-theme
+  > .basicLightbox
+  > .basicLightbox__placeholder
+  > .book_info_card
+  > .modal-book-card-wrapper
+  > .book_info_description {
+  color: #ffffff;
+}
+
+body.dark-theme
+  > .basicLightbox
+  > .basicLightbox__placeholder
+  > .book_info_card
+  > .btn-book-info {
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.header-section.dark-theme
+  > .container
+  > .header-wrap
+  > .header-wrap-2
+  > .mobile-menu-btn
+  > .mobile-menu {
+  color: #ffffff;
 }

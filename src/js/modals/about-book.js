@@ -61,8 +61,8 @@ function markupCardBookInfo(data, flag) {
                   <use href="/src/images/x-close.svg"></use>
               </svg>
           </button>
-          <div class=".modal-book-card-wrapper">
-          <div class=".modal-book-picture-wrapper">
+          <div class="modal-book-card-wrapper">
+          <div class="modal-book-picture-wrapper">
           <img src="${book_image}" alt="${title}" class="book_info_img">
           </div>
           <h2 class="book_info_name">${list_name}</h2>
