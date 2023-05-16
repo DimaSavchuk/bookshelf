@@ -25,6 +25,7 @@ function backToTop() {
   const navigation = document.querySelector('.header-nav');
   const authPerson = document.querySelector('.js-user-bar');
   const signUpUser = document.querySelector('.user-sign-up');
+  const bodyEl = document.querySelector("body");
 
   const toggleMenu = () => {
     const isMenuOpen =
@@ -37,6 +38,7 @@ function backToTop() {
     navigation.classList.toggle('mobile');
     authPerson.classList.toggle('mobile');
     signUpUser.classList.toggle('mobile');
+    bodyEl.classList.toggle("no-scroll");
 
     // const scrollLockMethod = !isMenuOpen
     //   ? 'disableBodyScroll'
