@@ -1,5 +1,6 @@
 .shopping-list {
   padding-top: 40px;
+  padding-bottom: 40px;
   // padding-bottom: 302px;
   @media screen and (min-width: 768px) {
     // padding-bottom: 394px;
@@ -318,4 +319,7 @@
   //   color: #111111;
   //   background: #eac645;
   // }
+}
+.hide{
+  display: none;
 }
