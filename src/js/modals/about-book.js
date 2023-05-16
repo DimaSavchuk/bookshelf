@@ -1,28 +1,33 @@
 import { booksRequest } from '../requests/apiRequests';
-
-const bodyEl = document.querySelector('body');
-const modalAboutBook = document.querySelector('.about-book-modal');
-const bestSellersGalery = document.querySelector('.bestsellers');
-const modalIsOpen = document.querySelector('.backdrop');
-const modalBookPictureWrapEl = document.querySelector(
-  '.modal-about-book-content'
-);
-const modalBookInfoWrapEl = document.querySelector('.modal-about-book-info');
-const modalShopLinks = document.querySelector('.modal-shop-link');
-const addItemToLockal = document.querySelector('.add-to-sopping-list');
-// ----------------Scroll block---------------
-const bodyScroll = document.querySelector('body');
-//================================================
-
-console.log(modalIsOpen);
-
 import Notiflix from 'notiflix';
-export const STORAGE_KEY = 'shoppingbookId';
 
+const refs = {
+  bodyEl: document.querySelector('body'),
+  bestsellersSectionEl: document.querySelector('.bestsellers'),
+  backdropEl: document.querySelector('.backdrop'),
+  aboutBookModalEl: document.querySelector('.about-book-modal'),
+  aboutBookModalCloseEl: document.querySelector('.about-book-modal-close'),
+  aboutBookModalImgEl: document.querySelector('.about-book-modal-img'),
+  aboutBookModalDescriptionEl: document.querySelector(
+    '.about-book-modal-description'
+  ),
+  aboutBookModalLinkEl: document.querySelectorAll('.about-book-modal-link'),
+  modalActionBtnEl: document.querySelector('.add-to-sopping-list'),
+  congratulationsTextEl: document.querySelector('.congratulations-text'),
+};
+
+const STORAGE_KEY = 'shoppingbookId';
 let shoppingList = [];
 
-//===============================================
-bestSellersGalery.addEventListener('click', clickOnBook);
+refs.aboutBookModalCloseEl.addEventListener('click', closeModal);
+
+function closeModal() {
+  refs.aboutBookModalEl.classList.add('is-hidden');
+  refs.backdropEl.classList.add('is-hidden');
+  refs.bodyEl.classList.remove('no-scroll');
+}
+
+refs.bestsellersSectionEl.addEventListener('click', clickOnBook);
 
 function clickOnBook(event) {
   event.preventDefault();
@@ -37,44 +42,26 @@ function clickOnBook(event) {
   booksRequest(bookID).then(data => {
     renderModalCard(data);
     openModal();
-    addItemToLockal.addEventListener('click', onAddItemClick);
+    refs.modalActionBtnEl.addEventListener('click', onAddItemClick);
 
     function onAddItemClick() {
       console.log(data);
 
-      //===============================================
       shoppingList.push(data);
       console.log(shoppingList);
 
       Notiflix.Notify.success(
-        'Сongratulations! You have added the book to the shopping list. To delete, press the button Remove from the shopping list'
+        'Вітаємо! Ви додали книгу до списку покупок. Щоб видалити, натисніть кнопку "Видалити зі списку покупок".'
       );
       localStorage.setItem(STORAGE_KEY, JSON.stringify(shoppingList));
-      //===============================================
     }
   });
 }
 
 function openModal() {
-  modalAboutBook.classList.add('is-hidden');
-  modalAboutBook.classList.remove('is-hidden');
-  modalIsOpen.classList.add('is-open');
-  modalIsOpen.classList.remove('is-hidden');
-  bodyEl.classList.add('modal-open');
-  // ----------------Scroll block---------------
-  bodyScroll.classList.add('no-scroll');
-}
-
-modalIsOpen.addEventListener('click', closeModal);
-
-function closeModal(event) {
-  if (
-    event.target.classList.contains('backdrop') ||
-    event.target.classList.contains('close-modal')
-  ) {
-    modalIsOpen.classList.add('is-hidden');
-    bodyEl.classList.remove('modal-open');
-  }
+  refs.aboutBookModalEl.classList.remove('is-hidden');
+  refs.backdropEl.classList.remove('is-hidden');
+  refs.bodyEl.classList.add('no-scroll');
 }
 
 function renderModalCard(data) {
@@ -89,13 +76,15 @@ function renderModalCard(data) {
   } = data;
 
   const modalImgMarkup = `
-    <button class="close-modal">Закрити</button>
-    <img src="${bookImg}" class="modal-book-img" />
-    <div calass="modal-about-book-info">
+    <img src="${bookImg}" class="modal-book-img" />`;
+
+  const modalDescriptionMarkup = `
+    <div class="modal-about-book-info">
       <h3 class="modal-book-title">${title}</h3>
       <p class="modal-book-author">${author}</p>
       <p class="modal-book-description">${description}</p>
     </div>`;
 
-  modalBookPictureWrapEl.innerHTML = modalImgMarkup;
+  refs.aboutBookModalImgEl.innerHTML = modalImgMarkup;
+  refs.aboutBookModalDescriptionEl.innerHTML = modalDescriptionMarkup;
 }

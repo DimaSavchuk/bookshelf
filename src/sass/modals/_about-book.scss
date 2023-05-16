@@ -28,6 +28,9 @@
     right: 10px;
     top: 10px;
   }
+  .modal-close-btn-icon {
+    fill: #111111;
+  }
   .modal-book-img {
     margin-right: auto;
     margin-left: auto;
@@ -75,6 +78,7 @@
     color: #111111;
   }
 }
+
 // ----------------Scroll block---------------
 .no-scroll {
   overflow: hidden;
