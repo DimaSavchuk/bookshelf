@@ -36,7 +36,7 @@
 }
 
 .support-list {
-  width: 159px;
+  width: auto;
   height: 188px;
   margin-bottom: 16px;
   padding-left: 40px;
@@ -111,7 +111,7 @@
   fill: #ffffff;
 }
 
-@media screen and (max-width: 325px) {
+@media screen and (max-width: 354px) {
   .support {
     width: 100%;
   }
@@ -131,7 +131,6 @@
   .support-btn {
     width: 38px;
     height: 38px;
-    margin-left: 109px;
   }
   .support-btn-icon {
     width: 13px;
@@ -146,8 +145,5 @@
   }
   .support-list {
     margin-bottom: 40px;
-  }
-  .support-btn {
-    margin-left: 119px;
   }
 }
