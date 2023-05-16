@@ -3,7 +3,7 @@ import axios from 'axios';
 import { STORAGE_KEY } from '../../modals/about-book';
 
 const API_URL = 'https://books-backend.p.goit.global/books/top-books';
-const SHOPPING_LIST_LOCAL_STORAGE_KEY = 'ShoppingList';
+// const SHOPPING_LIST_LOCAL_STORAGE_KEY = 'ShoppingList';
 let booksFromLocalStorage;
 
 const refs = {
@@ -14,17 +14,22 @@ const refs = {
 document.addEventListener('DOMContentLoaded', () => {
   // Only for test
   // InitializeShoppingListTest();
-
   InitializeShoppingList();
+  // fix current page + bestsellerssection
+  const hideBestsellers = document.querySelector('.bestsellers');
+  const homePage = document.querySelector('.js-home');
+  const shopPage = document.querySelector('.js-shop');
+  hideBestsellers.classList.add('hide');
+  homePage.classList.remove('current');
+  shopPage.classList.add('current');
 });
 
 function InitializeShoppingList() {
   booksFromLocalStorage = load(STORAGE_KEY);
-
   if (booksFromLocalStorage && booksFromLocalStorage.length > 0) {
-    renderBooks(booksFromLocalStorage);
+    renderBooks();
     hideEmptyMessage();
-    setPagination();
+    setPagination(1);
   } else {
     paginationContainer.style.display = 'none';
   }
@@ -38,8 +43,8 @@ function showEmptyMessage() {
   refs.noBooksSection.style.display = 'block';
 }
 
-function renderBooks(books) {
-  let markupBooks = books
+function renderBooks() {
+  let markupBooks = booksFromLocalStorage
     .map(
       ({
         _id,
@@ -70,9 +75,9 @@ function renderBooks(books) {
             <h3 class="book-author">${author}</h3>
             <div class="trading-platforms-list list">
             <a href=""></a>
-            <a href="${amazonLink}" class="amazon"></a>
-            <a href="${appleLink}" class="apple"></a>
-            <a href="${bookshopLink}" class="shop"></a>
+            <a href="${amazonLink}" class="amazon" target="_blank" rel="noreferrer noopener"></a>
+            <a href="${appleLink}" class="apple" target="_blank" rel="noreferrer noopener"></a>
+            <a href="${bookshopLink}" class="shop" target="_blank" rel="noreferrer noopener"></a>
             </div>
             </div>
             </div>
@@ -98,7 +103,9 @@ function deleteBook(e) {
     showEmptyMessage();
     paginationContainer.style.display = 'none';
   } else {
-    recalculatePages();
+    clearPage();
+    renderBooks();
+    setPagination(currentPage);
   }
 }
 
@@ -106,7 +113,7 @@ function deleteBookFromLocalStorage(bookId) {
   booksFromLocalStorage = booksFromLocalStorage.filter(
     book => book._id !== bookId
   );
-  save(SHOPPING_LIST_LOCAL_STORAGE_KEY, booksFromLocalStorage);
+  save(STORAGE_KEY, booksFromLocalStorage);
 }
 
 function deleteBookFromList(bookId) {
@@ -114,36 +121,50 @@ function deleteBookFromList(bookId) {
   bookElement.remove();
 }
 
+function clearPage() {
+  refs.sellectedBooksList.innerHTML = '';
+  paginationNumbers.innerHTML = '';
+}
+
 // Only for test
 // async function InitializeShoppingListTest() {
+//   try {
+//     let mappedBookList;
+//     const response = await axios.get(`${API_URL}`);
+//     if (response && response.data) {
+//       let bookslist = response.data[0].books;
+//       bookslist = bookslist.concat(response.data[1].books);
+//       bookslist = bookslist.concat(response.data[2].books);
 
-//       try {
-//         let mappedBookList;
-//         const response = await axios.get(`${API_URL}`);
-//         if(response && response.data)
-//         {
-//             let bookslist = response.data[0].books;
-//             mappedBookList = bookslist.map(({
-//                 _id,
-//                 title,
-//                 author,
-//                 book_image,
-//                 description,
-//                 list_name,
-//                 buy_links,
-//             }) =>  ({ _id, title, author, book_image, description, list_name, buy_links }));
-//         }
-//         console.log(mappedBookList);
-
-//         if(mappedBookList && mappedBookList.length > 0) {
-//             save(SHOPPING_LIST_LOCAL_STORAGE_KEY, mappedBookList);
-//         }
-
-//         return response.data;
-//       } catch (error) {
-//          console.error(error.toJSON());
-//       }
+//       mappedBookList = bookslist.map(
+//         ({
+//           _id,
+//           title,
+//           author,
+//           book_image,
+//           description,
+//           list_name,
+//           buy_links,
+//         }) => ({
+//           _id,
+//           title,
+//           author,
+//           book_image,
+//           description,
+//           list_name,
+//           buy_links,
+//         })
+//       );
 //     }
+//     if (mappedBookList && mappedBookList.length > 0) {
+//       save(SHOPPING_LIST_LOCAL_STORAGE_KEY, mappedBookList);
+//     }
+
+//     return response.data;
+//   } catch (error) {
+//     console.error(error.toJSON());
+//   }
+// }
 
 //LocalStorageService
 const save = (key, value) => {
@@ -165,14 +186,6 @@ const load = key => {
 };
 // --------------------------
 
-//  let text = 'это вопрос религии, или объективные причины есть? =) Для некого универсального плагина,...';
-
-// let sliced = text.slice(0, 15);
-// if (sliced.length < text.length) {
-// sliced += '...';
-// }
-// console.log(sliced);
-
 //    Pagination
 const paginationNumbers = document.getElementById('pagination-numbers');
 const paginatedList = document.getElementById('paginated-list');
@@ -180,11 +193,11 @@ const nextButton = document.getElementById('next-button');
 const prevButton = document.getElementById('prev-button');
 const paginationContainer = document.getElementById('pagination-container');
 let listItems;
-const paginationLimit = 3;
+const paginationLimit = window.screen.width >= 768 ? 3 : 4;
 let pageCount;
 let currentPage;
 
-function setPagination() {
+function setPagination(page) {
   listItems = paginatedList.querySelectorAll('li');
   pageCount = Math.ceil(listItems.length / paginationLimit);
 
@@ -193,8 +206,12 @@ function setPagination() {
     return;
   }
 
+  if (page > pageCount) {
+    page = pageCount;
+  }
+
   getPaginationNumbers();
-  setCurrentPage(1);
+  setCurrentPage(page);
   setNextAndPreviousButtons();
 
   document.querySelectorAll('.pagination-number').forEach(button => {
@@ -281,77 +298,3 @@ const handlePageButtonsStatus = () => {
     enableButton(nextButton);
   }
 };
-
-const recalculatePages = () => {
-  paginationNumbers.innerHTML = '';
-  listItems = paginatedList.querySelectorAll('li');
-  pageCount = Math.ceil(listItems.length / paginationLimit);
-
-  if (pageCount < 2) {
-    paginationContainer.style.display = 'none';
-
-    return;
-  }
-
-  if (currentPage > pageCount) {
-    currentPage = pageCount;
-  }
-
-  getPaginationNumbers();
-  setCurrentPage(currentPage);
-  setNextAndPreviousButtons();
-
-  document.querySelectorAll('.pagination-number').forEach(button => {
-    const pageIndex = Number(button.getAttribute('page-index'));
-    if (pageIndex) {
-      button.addEventListener('click', () => {
-        setCurrentPage(pageIndex);
-      });
-      console.log(setCurrentPage(pageIndex));
-    }
-  });
-};
-
-// window.addEventListener("load", () => {
-//   getPaginationNumbers();
-// });
-
-// jsonData.forEach((item, index) => {
-//   elementContainer.innerHTML = ''
-//   if (index >= prevRange && index < currRange) {
-//     elementContainer.appendChild(item)
-//   }
-// });
-
-// window.addEventListener("load", () => {
-
-// });
-
-// ONO EST
-// const setCurrentPage = (pageNum) => {
-//   currentPage = pageNum;
-// };
-
-// const setCurrentPage = (pageNum) => {
-//   currentPage = pageNum;
-
-//   const prevRange = (pageNum - 1) * paginationLimit;
-//   const currRange = pageNum * paginationLimit;
-// };
-
-// const setCurrentPage = (pageNum) => {
-//   currentPage = pageNum;
-
-//   const prevRange = (pageNum - 1) * paginationLimit;
-//   const currRange = pageNum * paginationLimit;
-//   listItems.forEach((item, index) => {
-//     item.classList.add("hidden");
-//     if (index >= prevRange && index < currRange) {
-//       item.classList.remove("hidden");
-//     }
-//   });
-// };
-// window.addEventListener("load", () => {
-//   getPaginationNumbers();
-//   setCurrentPage(1);
-// });

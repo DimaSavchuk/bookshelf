@@ -141,7 +141,7 @@
 .text-box {
   display: flex;
   width: 100%;
-  height: 50px;
+  // height: 50px;
   padding-left: 5px;
   padding-right: 5px;
   // overflow: hidden;
@@ -150,7 +150,7 @@
 }
 
 .book-name {
-  overflow: hidden;
+  // overflow: hidden;
   // flex-wrap: nowrap;
   width: 100%;
   // height: 100%;
@@ -270,7 +270,7 @@
   .bestsellers-card {
     display: flex;
     width: 996px;
-    height: 430px;
+    // height: 430px;
     margin-bottom: 40px;
   }
   .bestsellers-list {
@@ -280,7 +280,7 @@
     margin-bottom: 32px;
     gap: 22px;
     width: 996px;
-    height: 306px;
+    // height: 306px;
     border-radius: 0px;
   }
   .box {

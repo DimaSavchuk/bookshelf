@@ -1,8 +1,10 @@
 import { listenerCount } from 'process';
 import { categoryRequest } from '../requests/apiRequests';
 import { apiInstance } from '../services/api';
+
 import { topBooksRequest } from '../requests/apiRequests';
 import { changeColorStyleInTitle, createAllCategoryList, createTopBookCardList } from './bestsellers';
+
 
 const list = document.querySelector('.category-list');
 const categoryTitle = document.querySelector('.bestsellers-title');
@@ -131,7 +133,23 @@ function handleCategoryClick(event) {
   event.preventDefault();
   const target = event.target;
   if (target.classList.contains('category-link')) {
-    const categoryName = target.textContent;  
+
+    const categoryName = target.textContent;
+
+    const categoryItems = document.querySelectorAll('.category-item');
+    categoryItems.forEach(item => {
+      item.classList.remove('active');
+    });
+
+    // Добавление класса 'active' к текущему пункту меню
+    target.parentNode.classList.add('active');
+    if (target.textContent == 'All categories') {
+      //location.reload();
+      // categoryTitle.innerHTML = `Best Sellers Books`;
+      // loadTopBooksOnClick();
+    } else {
+
+      
       categoryTitle.innerHTML = `${changeColorStyleInTitle(categoryName)}`;
       try {
         categoryRequest(categoryName)
