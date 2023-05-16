@@ -222,6 +222,7 @@ function showSignInForm() {
               .querySelector('.authorization-form-button')
               .removeAttribute('disabled', 'disabled');
           });
+        
       };
 
       signInForm.addEventListener('submit', onSignInFormSubmit);
