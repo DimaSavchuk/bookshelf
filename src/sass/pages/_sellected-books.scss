@@ -320,6 +320,27 @@
   //   background: #eac645;
   // }
 }
-.hide{
+
+.hide {
   display: none;
+}
+
+.pagination-number:hover,
+.pagination-button:not(.disabled):hover {
+  background: #eac645;
+}
+
+.pagination-button.disabled {
+  background: #111111;
+  color: #ffffff;
+}
+
+.pagination-number.active {
+  color: #ffffff;
+  background: #111111;
+}
+
+.pagination-button.active {
+  color: #111111;
+  background: #eac645;
 }
