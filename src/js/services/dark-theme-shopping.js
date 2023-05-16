@@ -1,7 +1,3 @@
-import { category } from '../partials/categories';
-
-category();
-
 const refs = {
   bodyShoppingEl: document.querySelector('.shopping-dark-js'),
 };

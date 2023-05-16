@@ -1,8 +1,7 @@
-import { save, load } from '../../services/localstorage-service.js';
-import { STORAGE_KEY } from '../../modals/about-book';
-import PaginationService from '../../services/pagination-service.js'
+import { save, load } from './services/localstorage-service';
+import { STORAGE_KEY } from './about-book';
+import PaginationService from './services/pagination-service';
 
-const API_URL = 'https://books-backend.p.goit.global/books/top-books';
 let booksFromLocalStorage;
 const paginationService = new PaginationService();
 
@@ -27,10 +26,8 @@ window.onresize = rerenderBooksOnResize;
 function InitializeShoppingList() {
   booksFromLocalStorage = load(STORAGE_KEY);
 
-
   if (isBooksAvailable()) {
-
-//   if (booksFromLocalStorage && booksFromLocalStorage.length > 0) {
+    //   if (booksFromLocalStorage && booksFromLocalStorage.length > 0) {
 
     renderBooks();
     hideEmptyMessage();
@@ -42,7 +39,7 @@ function InitializeShoppingList() {
 
 const isBooksAvailable = () => {
   return booksFromLocalStorage && booksFromLocalStorage.length > 0;
-}
+};
 
 function hideEmptyMessage() {
   refs.noBooksSection.style.display = 'none';
@@ -116,7 +113,7 @@ function deleteBook(e) {
   }
 }
 
-function rerenderBooks(){
+function rerenderBooks() {
   clearPage();
   renderBooks();
   paginationService.setPagination(paginationService.currentPage);
@@ -139,10 +136,13 @@ function clearPage() {
   paginationService.clearPaginationButtons();
 }
 
-function rerenderBooksOnResize(){
+function rerenderBooksOnResize() {
   let newPaginationLimit = window.screen.width >= 768 ? 3 : 4;
 
-  if (isBooksAvailable() && newPaginationLimit != paginationService.paginationLimit) {
+  if (
+    isBooksAvailable() &&
+    newPaginationLimit != paginationService.paginationLimit
+  ) {
     paginationService.paginationLimit = newPaginationLimit;
     rerenderBooks();
   }

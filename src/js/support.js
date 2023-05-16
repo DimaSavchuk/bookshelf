@@ -1,4 +1,4 @@
-import { supportList } from '../services/support-list';
+import { supportList } from './services/support-list';
 
 const gallery = document.querySelector('.support-wrapper');
 const galleryBtn = document.querySelector('.support-btn');

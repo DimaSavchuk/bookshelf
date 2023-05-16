@@ -1,4 +1,4 @@
-import { category } from '../partials/categories';
+import { category } from '../categories';
 
 category();
 
