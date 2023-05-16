@@ -281,7 +281,6 @@ input:checked + .slider:before {
 }
 .header-nav.mobile {
   display: block;
-
   position: fixed;
   top: 247px;
   left: 129px;
@@ -294,8 +293,7 @@ input:checked + .slider:before {
   align-items: flex-start;
   gap: 17px;
 }
-<<<<<<< Updated upstream
-=======
+
 .header-nav.mobile.unauthorized{
   display: none;
 }
@@ -303,7 +301,11 @@ input:checked + .slider:before {
   overflow: hidden;
 }
 
->>>>>>> Stashed changes
+
+// .header-nav.mobile.unauthorized{
+//   display: none;
+// }
+
 .user-wrap.authorized.mobile {
   display: flex;
   align-items: center;
@@ -327,12 +329,13 @@ input:checked + .slider:before {
   }
 }
 
+
 .user-sign-up.mobile {
-<<<<<<< Updated upstream
-=======
+
+  
   @media screen and (max-width: 767px) {
->>>>>>> Stashed changes
   display: flex;
+
   align-items: center;
 
   position: fixed;
@@ -355,6 +358,8 @@ input:checked + .slider:before {
     line-height: 1.29;
 
   }
+  }
+ 
 }
 .user-sign-up.mobile.authorized {
   display: none;
@@ -376,4 +381,8 @@ input:checked + .slider:before {
 }
 .mobile-logout-btn > svg {
   color: #eac645;
+}
+// ----------------Scroll block---------------
+.no-scroll {
+  overflow: hidden;
 }
