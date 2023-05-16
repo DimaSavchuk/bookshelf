@@ -33,7 +33,8 @@ export async function loadTopBooksOnClick(event) {
 
 // ===========================================================================
 
-refs.bestSellersGalery.addEventListener('click', onCattegoryButtonElClick);
+  refs.bestSellersGalery.addEventListener('click', onCattegoryButtonElClick);
+
 
 export async function onCattegoryButtonElClick(event) {
   if (event.target.nodeName !== 'BUTTON') {

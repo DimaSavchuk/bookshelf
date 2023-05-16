@@ -1,10 +1,10 @@
-import axios from 'axios';
-//import { save, load } from './localStorageService.js';
+import { save, load } from '../../services/localstorage-service.js';
 import { STORAGE_KEY } from '../../modals/about-book';
+import PaginationService from '../../services/pagination-service.js'
 
 const API_URL = 'https://books-backend.p.goit.global/books/top-books';
-// const SHOPPING_LIST_LOCAL_STORAGE_KEY = 'ShoppingList';
 let booksFromLocalStorage;
+const paginationService = new PaginationService();
 
 const refs = {
   sellectedBooksList: document.querySelector('.sellected-books-list'),
@@ -12,21 +12,25 @@ const refs = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Only for test
-  // InitializeShoppingListTest();
   InitializeShoppingList();
 });
+
+window.onresize = rerenderBooksOnResize;
 
 function InitializeShoppingList() {
   booksFromLocalStorage = load(STORAGE_KEY);
 
-  if (booksFromLocalStorage && booksFromLocalStorage.length > 0) {
+  if (isBooksAvailable()) {
     renderBooks();
     hideEmptyMessage();
-    setPagination(1);
+    paginationService.setPagination(1);
   } else {
-    paginationContainer.style.display = 'none';
+    paginationService.hidePaginationContainer();
   }
+}
+
+const isBooksAvailable = () => {
+  return booksFromLocalStorage && booksFromLocalStorage.length > 0;
 }
 
 function hideEmptyMessage() {
@@ -64,7 +68,7 @@ function renderBooks() {
             </div>
             
             <p class="book-category">${list_name}</p>
-            <p class="book-description">David Burroughs was once a devoted father to his three-year-old son Matthew, living a dream life just a short drive away from the working-class suburb where he and his wife, Cheryl, first fell in love--until one fateful night when David woke suddenly to discover Matthew had been murdered while David was asleep just down the hall.</p>
+            <p class="book-description">A scientist and single mother living in California in the 1960s becomes a star on a TV cooking show. Read by Miranda Raison, Pandora Sykes and the author. 11 hours, 55 minutes unabridged.A scientist and single mother living in California in the 1960s becomes a star on a TV cooking show. Read by Miranda Raison, Pandora Sykes and the author. 11 hours, 55 minutes unabridged.</p>
             <div class="book-styles">
             <h3 class="book-author">${author}</h3>
             <div class="trading-platforms-list list">
@@ -93,14 +97,18 @@ function deleteBook(e) {
   deleteBookFromLocalStorage(bookId);
   deleteBookFromList(bookId);
 
-  if (!booksFromLocalStorage || booksFromLocalStorage.length < 1) {
-    showEmptyMessage();
-    paginationContainer.style.display = 'none';
+  if (isBooksAvailable()) {
+    rerenderBooks();
   } else {
-    clearPage();
-    renderBooks();
-    setPagination(currentPage);
+    showEmptyMessage();
+    paginationService.hidePaginationContainer();
   }
+}
+
+function rerenderBooks(){
+  clearPage();
+  renderBooks();
+  paginationService.setPagination(paginationService.currentPage);
 }
 
 function deleteBookFromLocalStorage(bookId) {
@@ -117,178 +125,14 @@ function deleteBookFromList(bookId) {
 
 function clearPage() {
   refs.sellectedBooksList.innerHTML = '';
-  paginationNumbers.innerHTML = '';
+  paginationService.clearPaginationButtons();
 }
 
-// Only for test
-// async function InitializeShoppingListTest() {
-//   try {
-//     let mappedBookList;
-//     const response = await axios.get(`${API_URL}`);
-//     if (response && response.data) {
-//       let bookslist = response.data[0].books;
-//       bookslist = bookslist.concat(response.data[1].books);
-//       bookslist = bookslist.concat(response.data[2].books);
+function rerenderBooksOnResize(){
+  let newPaginationLimit = window.screen.width >= 768 ? 3 : 4;
 
-//       mappedBookList = bookslist.map(
-//         ({
-//           _id,
-//           title,
-//           author,
-//           book_image,
-//           description,
-//           list_name,
-//           buy_links,
-//         }) => ({
-//           _id,
-//           title,
-//           author,
-//           book_image,
-//           description,
-//           list_name,
-//           buy_links,
-//         })
-//       );
-//     }
-//     if (mappedBookList && mappedBookList.length > 0) {
-//       save(SHOPPING_LIST_LOCAL_STORAGE_KEY, mappedBookList);
-//     }
-
-//     return response.data;
-//   } catch (error) {
-//     console.error(error.toJSON());
-//   }
-// }
-
-//LocalStorageService
-const save = (key, value) => {
-  try {
-    const serializedState = JSON.stringify(value);
-    localStorage.setItem(key, serializedState);
-  } catch (error) {
-    console.error('Set state error: ', error.message);
+  if (isBooksAvailable() && newPaginationLimit != paginationService.paginationLimit) {
+    paginationService.paginationLimit = newPaginationLimit;
+    rerenderBooks();
   }
-};
-
-const load = key => {
-  try {
-    const serializedState = localStorage.getItem(key);
-    return serializedState === null ? undefined : JSON.parse(serializedState);
-  } catch (error) {
-    console.error('Get state error: ', error.message);
-  }
-};
-// --------------------------
-
-//    Pagination
-const paginationNumbers = document.getElementById('pagination-numbers');
-const paginatedList = document.getElementById('paginated-list');
-const nextButton = document.getElementById('next-button');
-const prevButton = document.getElementById('prev-button');
-const paginationContainer = document.getElementById('pagination-container');
-let listItems;
-const paginationLimit = window.screen.width >= 768 ? 3 : 4;
-let pageCount;
-let currentPage;
-
-function setPagination(page) {
-  listItems = paginatedList.querySelectorAll('li');
-  pageCount = Math.ceil(listItems.length / paginationLimit);
-
-  if (pageCount < 2) {
-    paginationContainer.style.display = 'none';
-    return;
-  }
-
-  if (page > pageCount) {
-    page = pageCount;
-  }
-
-  getPaginationNumbers();
-  setCurrentPage(page);
-  setNextAndPreviousButtons();
-
-  document.querySelectorAll('.pagination-number').forEach(button => {
-    const pageIndex = Number(button.getAttribute('page-index'));
-    if (pageIndex) {
-      button.addEventListener('click', () => {
-        setCurrentPage(pageIndex);
-      });
-    }
-  });
 }
-
-const getPaginationNumbers = () => {
-  for (let i = 1; i <= pageCount; i++) {
-    appendPageNumber(i);
-  }
-};
-
-const appendPageNumber = index => {
-  const pageNumber = document.createElement('button');
-  pageNumber.className = 'pagination-number';
-  pageNumber.innerHTML = index;
-  pageNumber.setAttribute('page-index', index);
-  pageNumber.setAttribute('aria-label', 'Page ' + index);
-  paginationNumbers.appendChild(pageNumber);
-};
-
-const setCurrentPage = pageNum => {
-  currentPage = pageNum;
-
-  handleActivePageNumber();
-  handlePageButtonsStatus();
-
-  const prevRange = (pageNum - 1) * paginationLimit;
-  const currRange = pageNum * paginationLimit;
-
-  listItems.forEach((item, index) => {
-    item.style.display = 'none';
-    if (index >= prevRange && index < currRange) {
-      item.style.display = 'flex';
-    }
-  });
-};
-
-function setNextAndPreviousButtons() {
-  prevButton.addEventListener('click', () => {
-    setCurrentPage(currentPage - 1);
-  });
-  nextButton.addEventListener('click', () => {
-    setCurrentPage(currentPage + 1);
-  });
-}
-
-const handleActivePageNumber = () => {
-  document.querySelectorAll('.pagination-number').forEach(button => {
-    button.classList.remove('active');
-
-    const pageIndex = Number(button.getAttribute('page-index'));
-    if (pageIndex == currentPage) {
-      button.classList.add('active');
-    }
-  });
-};
-
-const disableButton = button => {
-  button.classList.add('disabled');
-  button.setAttribute('disabled', true);
-};
-
-const enableButton = button => {
-  button.classList.remove('disabled');
-  button.removeAttribute('disabled');
-};
-
-const handlePageButtonsStatus = () => {
-  if (currentPage === 1) {
-    disableButton(prevButton);
-  } else {
-    enableButton(prevButton);
-  }
-  if (pageCount === currentPage) {
-    disableButton(nextButton);
-  } else {
-    enableButton(nextButton);
-  }
-};
