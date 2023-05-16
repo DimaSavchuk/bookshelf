@@ -32,10 +32,12 @@ const headerNavEl = document.querySelector('.js-header-nav');
 const logOutMobile = document.querySelector('.js-logOut');
 const logOutWndw = document.querySelector('.js-logout');
 const userLoggedName = document.querySelectorAll('.js-name');
+
+document.querySelector('.js-authorization').onclick = showSignUpForm;
+
 // ----------------Scroll block---------------
 const bodyScroll = document.querySelector('body');
 
-signUpBtn.addEventListener('click', onSignUpBtn);
 signOutBtn.addEventListener('click', onSignOutBtn);
 logOutMobile.addEventListener('click', onSignOutBtn);
 
@@ -63,134 +65,181 @@ export function authCheck() {
   });
 }
 
-const instance = basicLightbox.create(signUpMarkup, {
-  onShow: () => {
-    // ----------------Scroll block---------------
-    bodyScroll.classList.add('no-scroll');
-  },
-  onClose: () => {
-    bodyScroll.classList.remove('no-scroll');
-  },
-});
-const instanceSignIn = basicLightbox.create(signInMarkup, {
-  onShow: () => {
-    // ----------------Scroll block---------------
-    bodyScroll.classList.add('no-scroll');
-  },
-  onClose: () => {
-    bodyScroll.classList.remove('no-scroll');
-  },
-});
+function showSignUpForm() {
+  const instanceSignUp = basicLightbox.create(signUpMarkup, {
+    onShow: signUpModalInstance => {
+      // ----------------Scroll block---------------
+      bodyScroll.classList.add('no-scroll');
 
-function onSignUpBtn(e) {
-  e.preventDefault();
+      signUpModalInstance
+        .element()
+        .querySelector('.js-close-modal-btn').onclick =
+        signUpModalInstance.close;
 
-  instance.show(() => {
-    const AuthForm = document.getElementById('authorization-form');
-    const signInModalEl = document.getElementById('sign-in');
-    AuthForm.addEventListener('submit', onSubmit);
-    signInModalEl.addEventListener('click', onSignInClick);
+      const signUpForm = signUpModalInstance
+        .element()
+        .querySelector('#signup-form');
 
-    AuthForm.elements.name.value = '';
-    AuthForm.elements.email.value = '';
-    AuthForm.elements.password.value = '';
+      signUpForm.elements.name.value = '';
+      signUpForm.elements.email.value = '';
+      signUpForm.elements.password.value = '';
 
-    function onSubmit(evt) {
-      evt.preventDefault();
+      const onSignUpFormSubmit = evt => {
+        evt.preventDefault();
 
-      if (evt.target.name === 'name') {
-        AuthForm.elements.name.value = evt.target.value.trim();
-      } else if (evt.target.name === 'email') {
-        AuthForm.elements.email.value = evt.target.value.trim();
-      } else if (evt.target.name === 'password') {
-        AuthForm.elements.password.value.trim = evt.target.value.trim();
-      }
-
-      let name = AuthForm.elements.name.value;
-      let email = AuthForm.elements.email.value;
-      let password = AuthForm.elements.password.value;
-
-      if (!name || !email || !password) {
-        return Notify.warning('Please enter all information');
-      }
-
-      createUserWithEmailAndPassword(auth, email, password, name)
-        .then(userCredential => {
-          // Signed in
-          const user = userCredential.user;
-
-          updateProfile(user, {
-            displayName: name,
-          })
-            .then(() => {
-              // Profile updated!
-
-              window.location.reload();
-            })
-            .catch(error => {
-              // An error occurred
-              // ...
-            });
-        })
-        .catch(error => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          Notify.failure(errorMessage);
-          // ..
-        });
-
-      AuthForm.removeEventListener('submit', onSubmit);
-      instance.close();
-    }
-
-    function onSignInClick(e) {
-      instance.close();
-
-      instanceSignIn.show(() => {
-        const signInForm = document.getElementById('signin-form');
-        const signUpModalEl = document.getElementById('sign-up');
-        signInForm.addEventListener('submit', onSignInSubmit);
-        signUpModalEl.addEventListener('click', onSignUpBtn);
-
-        signInForm.elements.email.value = '';
-        signInForm.elements.password.value = '';
-
-        function onSignInSubmit(evt) {
-          evt.preventDefault();
-
-          if (evt.target.name === 'email') {
-            signInForm.elements.email.value = evt.target.value.trim();
-          } else if (evt.target.name === 'password') {
-            signInForm.elements.password.value = evt.target.value.trim();
-          }
-
-          const email = signInForm.elements.email.value;
-          const password = signInForm.elements.password.value;
-
-          signInWithEmailAndPassword(auth, email, password)
-            .then(userCredential => {
-              // Signed in
-
-              const user = userCredential.user;
-              window.location.reload();
-            })
-            .catch(error => {
-              const errorCode = error.code;
-              const errorMessage = error.message;
-              Notify.failure(errorMessage);
-              // return
-            });
-          instanceSignIn.removeEventListener('click', onSignUpBtn);
-          instanceSignIn.close();
+        if (evt.target.name === 'name') {
+          signUpForm.elements.name.value = evt.target.value.trim();
+        } else if (evt.target.name === 'email') {
+          signUpForm.elements.email.value = evt.target.value.trim();
+        } else if (evt.target.name === 'password') {
+          signUpForm.elements.password.value.trim = evt.target.value.trim();
         }
 
-        function onSignUpBtn(evt) {
-          instanceSignIn.close();
-          instance.show();
+        let name = signUpForm.elements.name.value;
+        let email = signUpForm.elements.email.value;
+        let password = signUpForm.elements.password.value;
+
+        if (!name || !email || !password) {
+          return Notify.warning('Please enter all information');
+        }
+
+        signUpModalInstance
+          .element()
+          .querySelector('.authorization-form-button')
+          .setAttribute('disabled', 'disabled');
+
+        createUserWithEmailAndPassword(auth, email, password, name)
+          .then(userCredential => {
+            // Signed in
+            const user = userCredential.user;
+
+            updateProfile(user, {
+              displayName: name,
+            })
+              .then(() => {
+                // Profile updated!
+                signUpModalInstance.close();
+                window.location.reload();
+              })
+              .catch(error => {
+                // An error occurred
+                // ...
+              });
+          })
+          .catch(error => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            Notify.failure(errorMessage);
+          });
+      };
+
+      signUpForm.addEventListener('submit', onSignUpFormSubmit);
+
+      signUpModalInstance.element().querySelector('#sign-in').onclick = () => {
+        signUpModalInstance.close();
+        showSignInForm();
+      };
+
+      document.addEventListener('keydown', e => {
+        if (e.code === 'Escape') {
+          signUpModalInstance.close();
         }
       });
-    }
+    },
+    onClose: signUpModalInstance => {
+      bodyScroll.classList.remove('no-scroll');
+
+      document.removeEventListener('keydown', e => {
+        if (e.code === 'Escape') {
+          signUpModalInstance.close();
+        }
+      });
+    },
   });
+
+  instanceSignUp.show();
+}
+
+function showSignInForm() {
+  const instanceSignIn = basicLightbox.create(signInMarkup, {
+    onShow: signInModalInstance => {
+      // ----------------Scroll block---------------
+      bodyScroll.classList.add('no-scroll');
+
+      signInModalInstance
+        .element()
+        .querySelector('.js-close-modal-btn').onclick =
+        signInModalInstance.close;
+
+      const signInForm = signInModalInstance
+        .element()
+        .querySelector('#signin-form');
+
+      signInForm.elements.email.value = '';
+      signInForm.elements.password.value = '';
+
+      const onSignInFormSubmit = evt => {
+        evt.preventDefault();
+
+        if (evt.target.name === 'email') {
+          signInForm.elements.email.value = evt.target.value.trim();
+        } else if (evt.target.name === 'password') {
+          signInForm.elements.password.value = evt.target.value.trim();
+        }
+
+        const email = signInForm.elements.email.value;
+        const password = signInForm.elements.password.value;
+
+        if (!email || !password) {
+          return Notify.warning('Please enter all information');
+        }
+
+        signInModalInstance
+          .element()
+          .querySelector('.authorization-form-button')
+          .setAttribute('disabled', 'disabled');
+
+        signInWithEmailAndPassword(auth, email, password)
+          .then(userCredential => {
+            // Signed in
+
+            const user = userCredential.user;
+            signInModalInstance.close();
+            window.location.reload();
+          })
+          .catch(error => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            Notify.failure(errorMessage);
+            // return
+          });
+      };
+
+      signInForm.addEventListener('submit', onSignInFormSubmit);
+
+      signInModalInstance.element().querySelector('#sign-up').onclick = () => {
+        signInModalInstance.close();
+        showSignUpForm();
+      };
+
+      document.addEventListener('keydown', e => {
+        if (e.code === 'Escape') {
+          signInModalInstance.close();
+        }
+      });
+    },
+    onClose: signInModalInstance => {
+      bodyScroll.classList.remove('no-scroll');
+
+      document.removeEventListener('keydown', e => {
+        if (e.code === 'Escape') {
+          signInModalInstance.close();
+        }
+      });
+    },
+  });
+
+  instanceSignIn.show();
 }
 
 // This logic hides/shows the logout popover window
