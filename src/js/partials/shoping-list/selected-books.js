@@ -15,11 +15,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // Only for test
   // InitializeShoppingListTest();
   InitializeShoppingList();
+  // fix current page + bestsellerssection
+  const hideBestsellers = document.querySelector('.bestsellers');
+  const homePage = document.querySelector('.js-home');
+  const shopPage = document.querySelector('.js-shop');
+  hideBestsellers.classList.add('hide');
+  homePage.classList.remove('current');
+  shopPage.classList.add('current');
 });
 
 function InitializeShoppingList() {
   booksFromLocalStorage = load(STORAGE_KEY);
-
   if (booksFromLocalStorage && booksFromLocalStorage.length > 0) {
     renderBooks();
     hideEmptyMessage();
