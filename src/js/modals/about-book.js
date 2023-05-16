@@ -19,6 +19,8 @@ const refs = {
 export const STORAGE_KEY = 'shoppingbookId';
 let shoppingList = [];
 
+let onAddItemClick = null;
+
 refs.aboutBookModalCloseEl.addEventListener('click', closeModal);
 
 function closeModal() {
@@ -49,7 +51,7 @@ function clickOnBook(event) {
     console.log(checkAuth.classList.contains('authorized'));
     if (checkAuth.classList.contains('authorized')) {
       refs.modalActionBtnEl.addEventListener('click', onAddItemClick);
-      function onAddItemClick() {
+      onAddItemClick = function onAddItemClick() {
         console.log(data);
 
         const bookIndex = shoppingList.findIndex(book => book.id === data._id);
@@ -67,7 +69,7 @@ function clickOnBook(event) {
           );
         }
         localStorage.setItem(STORAGE_KEY, JSON.stringify(shoppingList));
-      }
+      };
       const storedBooks = JSON.parse(localStorage.getItem(STORAGE_KEY));
       if (storedBooks && storedBooks.some(book => book.id === data._id)) {
         refs.modalActionBtnEl.textContent = 'REMOVE FROM SHOPPING LIST';
