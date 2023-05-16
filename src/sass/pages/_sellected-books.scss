@@ -2,6 +2,7 @@
   padding-top: 40px;
   padding-bottom: 40px;
   // padding-bottom: 302px;
+
   @media screen and (min-width: 768px) {
     // padding-bottom: 394px;
   }
@@ -19,6 +20,8 @@
   .sellected-books {
     padding-left: 0;
     padding-right: 0;
+    @media only screen and (min-width: 320px) and (max-width: 375px) {
+    }
   }
   .sellected-books-title {
     font-family: 'DM Sans';
@@ -106,6 +109,9 @@
     background: #ffffff;
     border: 2px solid rgba(79, 46, 232, 0.4);
     border-radius: 16px;
+    @media only screen and (min-width: 320px) and (max-width: 375px) {
+      max-width: 280px;
+    }
     @media screen and (min-width: 768px) {
       max-width: none;
       width: 704px;
@@ -151,6 +157,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
     color: #111111;
+    @media only screen and (min-width: 320px) and (max-width: 375px) {
+      max-width: 95px;
+    }
     @media screen and (min-width: 768px) {
       margin-bottom: 4px;
       width: auto;
@@ -167,6 +176,9 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    @media only screen and (min-width: 320px) and (max-width: 375px) {
+      max-width: 95px;
+    }
     @media screen and (min-width: 768px) {
       width: auto;
     }
@@ -184,6 +196,9 @@
     letter-spacing: -0.04em;
     margin-bottom: 14px;
     overflow: auto;
+    @media only screen and (min-width: 320px) and (max-width: 375px) {
+      max-width: 143px;
+    }
     @media screen and (min-width: 768px) {
       max-width: none;
       width: 508px;
@@ -215,6 +230,9 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    @media only screen and (min-width: 320px) and (max-width: 375px) {
+      max-width: 42px;
+    }
     @media screen and (min-width: 768px) {
       width: auto;
     }
@@ -243,6 +261,12 @@
     gap: 8px;
     align-items: center;
     justify-content: flex-end;
+    @media screen and (max-width: 360px) {
+      column-gap: 2vw;
+    }
+    @media screen and (max-width: 319.98px) {
+      column-gap: 6.4px;
+    }
     @media screen and (min-width: 768px) {
       gap: 16px;
     }
@@ -308,17 +332,19 @@
   .pagination-button:not(.disabled):hover {
     background: #eac645;
   }
-  // .pagination-button.active:hover {
-  //   background: #eac645;
-  // }
-  // .pagination-number.active {
-  //   color: #ffffff;
-  //   background: #111111;
-  // }
-  // .pagination-button.active {
-  //   color: #111111;
-  //   background: #eac645;
-  // }
+  .pagination-button.disabled {
+    background: #111111;
+    color: #ffffff;
+  }
+
+  .pagination-number.active {
+    color: #ffffff;
+    background: #111111;
+  }
+  .pagination-button.active {
+    color: #111111;
+    background: #eac645;
+  }
 }
 
 .hide {

@@ -2,7 +2,7 @@ const refs = {
   bestSellersGalery: document.querySelector('.bestsellers'),
 };
 
-import { topBooksRequest, categoryRequest } from '../requests/apiRequests';
+import { topBooksRequest, categoryRequest } from './requests/apiRequests';
 import Notiflix from 'notiflix';
 
 // ===========================================================================

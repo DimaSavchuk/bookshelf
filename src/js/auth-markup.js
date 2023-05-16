@@ -1,11 +1,8 @@
 const signUpMarkup = ` <div class="modal-auth">
- <button class="auth-close-btn">
-   <svg class="icon" width="10" height="10">
-          <use href="./images/sprite.svg#icon-x-close"></use>
-        </svg>
-  </button>
+ <button class="auth-close-btn js-close-modal-btn">
+ X</button>
 
-  <form class="modal-authorization-form" id="authorization-form" name="authorization_form">
+  <form class="modal-authorization-form" id="signup-form" name="authorization_form">
     <div
       class="authorization-form-group"
       role="group"

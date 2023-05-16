@@ -1,0 +1,73 @@
+//header
+.shopping-dark-js.dark-theme .header-section {
+  background-color: #111111;
+  border: 1.5px solid #ffffff;
+  border-radius: 0 0 8px 8px;
+}
+
+.shopping-dark-js.dark-theme .header-logo-icon.light_icon {
+  display: none;
+}
+
+.shopping-dark-js.dark-theme .header-logo-icon.dark_icon {
+  display: block;
+}
+
+.shopping-dark-js.dark-theme .js-home .header-nav-link {
+  color: #ffffff;
+}
+
+.shopping-dark-js.dark-theme .header-section .mobile-menu {
+  color: #ffffff;
+}
+
+//main
+.shopping-dark-js.dark-theme .sellected-books-title span {
+  color: #ffffff;
+}
+
+//footer
+.shopping-dark-js.dark-theme .footer-js {
+  background-color: #111111;
+  border: 1.5px solid #ffffff;
+  border-radius: 8px 8px 0 0;
+}
+
+.shopping-dark-js.dark-theme .light_icon_footer {
+  display: none;
+}
+
+.shopping-dark-js.dark-theme .dark_icon_footer {
+  display: block;
+}
+
+//sellected-books-list
+.shopping-dark-js.dark-theme .sellected-books-list .book-item {
+  background-color: #111111;
+}
+
+.shopping-dark-js.dark-theme .sellected-books-list .book-item .book-title {
+  color: #ffffff;
+}
+
+.shopping-dark-js.dark-theme .sellected-books-list .book-description {
+  color: #ffffff;
+}
+
+.shopping-dark-js.dark-theme
+  .sellected-books-list
+  .book-description::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.shopping-dark-js.dark-theme
+  .sellected-books-list
+  .book-description::-webkit-scrollbar-thumb {
+  background: #4f2ee8;
+}
+
+//no-book
+
+.shopping-dark-js.dark-theme .no-books-text {
+  color: #ffffff;
+}
