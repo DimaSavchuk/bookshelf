@@ -25,7 +25,11 @@ function backToTop() {
   const navigation = document.querySelector('.header-nav');
   const authPerson = document.querySelector('.js-user-bar');
   const signUpUser = document.querySelector('.user-sign-up');
-  const bodyEl = document.querySelector("body");
+
+  const bodyScroll = document.querySelector('body')
+
+  //const bodyEl = document.querySelector("body");
+
 
   const toggleMenu = () => {
     const isMenuOpen =
@@ -38,12 +42,17 @@ function backToTop() {
     navigation.classList.toggle('mobile');
     authPerson.classList.toggle('mobile');
     signUpUser.classList.toggle('mobile');
-    bodyEl.classList.toggle("no-scroll");
+
+    bodyScroll.classList.toggle('no-scroll');
+    
+
+    //bodyEl.classList.toggle("no-scroll");
 
     // const scrollLockMethod = !isMenuOpen
     //   ? 'disableBodyScroll'
     //   : 'enableBodyScroll';
     // bodyScrollLock[scrollLockMethod](document.body);
+
   };
 
   openMenuBtn.addEventListener('click', toggleMenu);
@@ -57,6 +66,8 @@ function backToTop() {
     closeMenuBtn.classList.remove('is-open');
     navigation.classList.remove('mobile');
     authPerson.classList.remove('mobile');
+    signUpUser.classList.remove('mobile');
+    bodyScroll.classList.remove('no-scroll');
 
     openMenuBtn.setAttribute('aria-expanded', false);
   });
