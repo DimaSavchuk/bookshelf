@@ -94,7 +94,6 @@ html {
   }
 }
 .user-name {
-
   font-size: 22px;
   margin-left: 9px;
   margin-right: 4px;
@@ -103,9 +102,8 @@ html {
   color: #ffffff;
   @media screen and (min-width: 768px) {
     margin-left: auto;
-  margin-right: auto;
+    margin-right: auto;
   }
-  
 }
 .user-icon {
   fill: #ffffff;
@@ -246,7 +244,6 @@ input:checked + .slider:before {
   width: 100vw;
   height: 100vh;
   padding: 20px 20px 80px 20px;
-  
 
   background-image: url(../images/back-img-menu.png),
     radial-gradient(
@@ -294,13 +291,12 @@ input:checked + .slider:before {
   gap: 17px;
 }
 
-.header-nav.mobile.unauthorized{
+.header-nav.mobile.unauthorized {
   display: none;
 }
 .no-scroll {
   overflow: hidden;
 }
-
 
 // .header-nav.mobile.unauthorized{
 //   display: none;
@@ -329,37 +325,32 @@ input:checked + .slider:before {
   }
 }
 
-
 .user-sign-up.mobile {
-
-  
   @media screen and (max-width: 767px) {
-  display: flex;
+    display: flex;
 
-  align-items: center;
+    align-items: center;
 
-  position: fixed;
-  top: 80px;
-  left: 20px;
-  z-index: 11;
- 
-  padding: 10px 21px;
+    position: fixed;
+    top: 80px;
+    left: 20px;
+    z-index: 11;
+
+    padding: 10px 21px;
     font-weight: 500;
-  font-size: 14px;
-  border: 1.5px solid #111111;
-  border-radius: 18px;
-  color:#111111;
+    font-size: 14px;
+    border: 1.5px solid #111111;
+    border-radius: 18px;
+    color: #111111;
 
-  animation: magic 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
+    animation: magic 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
 
-  .user-sign-up-text {
-      color:#111111;
+    .user-sign-up-text {
+      color: #111111;
       font-size: 14px;
-    line-height: 1.29;
-
+      line-height: 1.29;
+    }
   }
-  }
- 
 }
 .user-sign-up.mobile.authorized {
   display: none;
@@ -376,7 +367,7 @@ input:checked + .slider:before {
   border: 1.5px solid #111111;
   border-radius: 18px;
 }
-.mobile-logout-btn.authorized{
+.mobile-logout-btn.authorized {
   display: flex;
 }
 .mobile-logout-btn > svg {
