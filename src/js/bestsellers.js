@@ -121,8 +121,8 @@ export function makeMarkupBook(books) {
       <li class="bestsellers-card-item" id="${_id}">
       <a href="" class="bestsellers-link project-transit" id="${_id}"> 
         <!-- box-menu -->
-        <div class="box">
-            <p class = "overlay" id="${_id}">Quick View</p>  
+        <div class="bestsellers-box-menu">
+            <p class = "bestsellers-overlay" id="${_id}">Quick View</p>  
             <img class="gallery__image" src="${book_image}" id="${_id}">
             </div>
          <!-- box-menu -->
