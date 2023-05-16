@@ -15,6 +15,7 @@ html {
 }
 
 .header-wrap {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -281,9 +282,9 @@ input:checked + .slider:before {
 }
 .header-nav.mobile {
   display: block;
-  position: fixed;
+  position: absolute;
   top: 247px;
-  left: 129px;
+  left: 120px;
   z-index: 10;
   max-width: 375px;
   animation: magic 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
@@ -297,22 +298,15 @@ input:checked + .slider:before {
 .header-nav.mobile.unauthorized{
   display: none;
 }
-.no-scroll {
-  overflow: hidden;
-}
 
-
-// .header-nav.mobile.unauthorized{
-//   display: none;
-// }
 
 .user-wrap.authorized.mobile {
   display: flex;
   align-items: center;
-
-  position: fixed;
+  
+  position: absolute;
   top: 80px;
-  left: 20px;
+  right: 280px;
   z-index: 11;
 
   animation: magic 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
@@ -331,35 +325,43 @@ input:checked + .slider:before {
 
 
 .user-sign-up.mobile {
-
-  
+ 
   @media screen and (max-width: 767px) {
-  display: flex;
+    display: flex;
+    gap: 90px;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 80px;
+    right: 145px;
+    z-index: 11;
 
-  align-items: center;
+    width: 188px;
+    height: 48px;
+    padding: 14px 14px;
+      
+      background: #4F2EE8;
+      border: 1.5px solid #111111;
+      border-radius: 18px;
+    
+      animation: magic 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
 
-  position: fixed;
-  top: 80px;
-  left: 20px;
-  z-index: 11;
- 
-  padding: 10px 21px;
-    font-weight: 500;
-  font-size: 14px;
-  border: 1.5px solid #111111;
-  border-radius: 18px;
-  color:#111111;
-
-  animation: magic 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
-
-  .user-sign-up-text {
-      color:#111111;
+    .user-sign-up-text {
+      color: #FFFFFF;
+      font-family: 'DM Sans';
+      font-style: normal;
+      font-weight: 500;
       font-size: 14px;
-    line-height: 1.29;
+      line-height: 1.29;
+    
+    }
+  
+  } 
+}
 
-  }
-  }
- 
+.user-sign-up.mobile > svg {
+  color: #EAC645;
+
 }
 .user-sign-up.mobile.authorized {
   display: none;
