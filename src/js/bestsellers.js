@@ -2,7 +2,7 @@ const refs = {
   bestSellersGalery: document.querySelector('.bestsellers'),
 };
 
-import { topBooksRequest, categoryRequest } from '../requests/apiRequests';
+import { topBooksRequest, categoryRequest } from './requests/apiRequests';
 import Notiflix from 'notiflix';
 
 // ===========================================================================
@@ -33,8 +33,7 @@ export async function loadTopBooksOnClick() {
 
 // ===========================================================================
 
-  refs.bestSellersGalery.addEventListener('click', onCattegoryButtonElClick);
-
+refs.bestSellersGalery.addEventListener('click', onCattegoryButtonElClick);
 
 export async function onCattegoryButtonElClick(event) {
   if (event.target.nodeName !== 'BUTTON') {

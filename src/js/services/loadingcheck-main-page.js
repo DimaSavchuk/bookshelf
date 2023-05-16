@@ -1,7 +1,6 @@
 import { topBooksRequest } from '../requests/apiRequests';
-import { authCheck } from '../modals/authorization';
-import { loadTopBooksOnClick } from '../partials/bestsellers';
-
+import { authCheck } from '../authorization';
+import { loadTopBooksOnClick } from '../bestsellers';
 
 window.addEventListener('DOMContentLoaded', event => {
   const layoutElement = document.querySelector('.layout');

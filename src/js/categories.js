@@ -1,6 +1,4 @@
-import { listenerCount } from 'process';
-import { categoryRequest } from '../requests/apiRequests';
-import { apiInstance } from '../services/api';
+import { categoryRequest } from './requests/apiRequests';
 import { changeColorStyleInTitle, createAllCategoryList } from './bestsellers';
 import Notiflix from 'notiflix';
 
