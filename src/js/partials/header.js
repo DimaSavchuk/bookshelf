@@ -23,7 +23,7 @@ function backToTop() {
   const openMenuBtn = document.querySelector('.js-open-menu');
   const closeMenuBtn = document.querySelector('.js-close-menu');
   const navigation = document.querySelector('.header-nav');
-  const authPerson = document.querySelector('.user-wrap.authorized');
+  const authPerson = document.querySelector('.js-user-bar');
   const signUpUser = document.querySelector('.user-sign-up');
 
   const toggleMenu = () => {
