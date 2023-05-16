@@ -13,7 +13,8 @@ const refs = {
 
 document.addEventListener('DOMContentLoaded', () => {
   // Only for test
-  InitializeShoppingListTest();
+  // InitializeShoppingListTest();
+
   InitializeShoppingList();
 });
 
@@ -21,9 +22,9 @@ function InitializeShoppingList() {
   booksFromLocalStorage = load(STORAGE_KEY);
 
   if (booksFromLocalStorage && booksFromLocalStorage.length > 0) {
-    renderBooks();
+    renderBooks(booksFromLocalStorage);
     hideEmptyMessage();
-    setPagination(1);
+    setPagination();
   } else {
     paginationContainer.style.display = 'none';
   }
@@ -37,8 +38,8 @@ function showEmptyMessage() {
   refs.noBooksSection.style.display = 'block';
 }
 
-function renderBooks() {
-  let markupBooks = booksFromLocalStorage
+function renderBooks(books) {
+  let markupBooks = books
     .map(
       ({
         _id,
@@ -97,9 +98,7 @@ function deleteBook(e) {
     showEmptyMessage();
     paginationContainer.style.display = 'none';
   } else {
-    clearPage();
-    renderBooks();
-    setPagination(currentPage);
+    recalculatePages();
   }
 }
 
@@ -115,42 +114,36 @@ function deleteBookFromList(bookId) {
   bookElement.remove();
 }
 
-function clearPage(){
-  refs.sellectedBooksList.innerHTML = '';
-  paginationNumbers.innerHTML = '';
-}
-
 // Only for test
-async function InitializeShoppingListTest() {
+// async function InitializeShoppingListTest() {
 
-      try {
-        let mappedBookList;
-        const response = await axios.get(`${API_URL}`);
-        if(response && response.data)
-        {
-            let bookslist = response.data[0].books;
-            bookslist = bookslist.concat(response.data[1].books);
-            bookslist = bookslist.concat(response.data[2].books);
+//       try {
+//         let mappedBookList;
+//         const response = await axios.get(`${API_URL}`);
+//         if(response && response.data)
+//         {
+//             let bookslist = response.data[0].books;
+//             mappedBookList = bookslist.map(({
+//                 _id,
+//                 title,
+//                 author,
+//                 book_image,
+//                 description,
+//                 list_name,
+//                 buy_links,
+//             }) =>  ({ _id, title, author, book_image, description, list_name, buy_links }));
+//         }
+//         console.log(mappedBookList);
 
-            mappedBookList = bookslist.map(({
-                _id,
-                title,
-                author,
-                book_image,
-                description,
-                list_name,
-                buy_links,
-            }) =>  ({ _id, title, author, book_image, description, list_name, buy_links }));
-        }
-        if(mappedBookList && mappedBookList.length > 0) {
-            save(SHOPPING_LIST_LOCAL_STORAGE_KEY, mappedBookList);
-        }
+//         if(mappedBookList && mappedBookList.length > 0) {
+//             save(SHOPPING_LIST_LOCAL_STORAGE_KEY, mappedBookList);
+//         }
 
-        return response.data;
-      } catch (error) {
-         console.error(error.toJSON());
-      }
-    }
+//         return response.data;
+//       } catch (error) {
+//          console.error(error.toJSON());
+//       }
+//     }
 
 //LocalStorageService
 const save = (key, value) => {
@@ -172,9 +165,13 @@ const load = key => {
 };
 // --------------------------
 
+//  let text = 'это вопрос религии, или объективные причины есть? =) Для некого универсального плагина,...';
 
-
-
+// let sliced = text.slice(0, 15);
+// if (sliced.length < text.length) {
+// sliced += '...';
+// }
+// console.log(sliced);
 
 //    Pagination
 const paginationNumbers = document.getElementById('pagination-numbers');
@@ -183,11 +180,11 @@ const nextButton = document.getElementById('next-button');
 const prevButton = document.getElementById('prev-button');
 const paginationContainer = document.getElementById('pagination-container');
 let listItems;
-const paginationLimit = window.screen.width >= 768 ? 3 : 4;
+const paginationLimit = 3;
 let pageCount;
 let currentPage;
 
-function setPagination(page) {
+function setPagination() {
   listItems = paginatedList.querySelectorAll('li');
   pageCount = Math.ceil(listItems.length / paginationLimit);
 
@@ -196,12 +193,8 @@ function setPagination(page) {
     return;
   }
 
-  if(page > pageCount){
-    page = pageCount;
-  }
-
   getPaginationNumbers();
-  setCurrentPage(page);
+  setCurrentPage(1);
   setNextAndPreviousButtons();
 
   document.querySelectorAll('.pagination-number').forEach(button => {
@@ -288,3 +281,77 @@ const handlePageButtonsStatus = () => {
     enableButton(nextButton);
   }
 };
+
+const recalculatePages = () => {
+  paginationNumbers.innerHTML = '';
+  listItems = paginatedList.querySelectorAll('li');
+  pageCount = Math.ceil(listItems.length / paginationLimit);
+
+  if (pageCount < 2) {
+    paginationContainer.style.display = 'none';
+
+    return;
+  }
+
+  if (currentPage > pageCount) {
+    currentPage = pageCount;
+  }
+
+  getPaginationNumbers();
+  setCurrentPage(currentPage);
+  setNextAndPreviousButtons();
+
+  document.querySelectorAll('.pagination-number').forEach(button => {
+    const pageIndex = Number(button.getAttribute('page-index'));
+    if (pageIndex) {
+      button.addEventListener('click', () => {
+        setCurrentPage(pageIndex);
+      });
+      console.log(setCurrentPage(pageIndex));
+    }
+  });
+};
+
+// window.addEventListener("load", () => {
+//   getPaginationNumbers();
+// });
+
+// jsonData.forEach((item, index) => {
+//   elementContainer.innerHTML = ''
+//   if (index >= prevRange && index < currRange) {
+//     elementContainer.appendChild(item)
+//   }
+// });
+
+// window.addEventListener("load", () => {
+
+// });
+
+// ONO EST
+// const setCurrentPage = (pageNum) => {
+//   currentPage = pageNum;
+// };
+
+// const setCurrentPage = (pageNum) => {
+//   currentPage = pageNum;
+
+//   const prevRange = (pageNum - 1) * paginationLimit;
+//   const currRange = pageNum * paginationLimit;
+// };
+
+// const setCurrentPage = (pageNum) => {
+//   currentPage = pageNum;
+
+//   const prevRange = (pageNum - 1) * paginationLimit;
+//   const currRange = pageNum * paginationLimit;
+//   listItems.forEach((item, index) => {
+//     item.classList.add("hidden");
+//     if (index >= prevRange && index < currRange) {
+//       item.classList.remove("hidden");
+//     }
+//   });
+// };
+// window.addEventListener("load", () => {
+//   getPaginationNumbers();
+//   setCurrentPage(1);
+// });
