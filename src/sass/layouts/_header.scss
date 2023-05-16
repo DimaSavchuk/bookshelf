@@ -246,6 +246,7 @@ input:checked + .slider:before {
   width: 100vw;
   height: 100vh;
   padding: 20px 20px 80px 20px;
+  
 
   background-image: url(../images/back-img-menu.png),
     radial-gradient(
@@ -280,12 +281,11 @@ input:checked + .slider:before {
 }
 .header-nav.mobile {
   display: block;
-
   position: fixed;
   top: 247px;
   left: 129px;
   z-index: 10;
-
+  max-width: 375px;
   animation: magic 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
 }
 .header-nav.mobile > ul {
@@ -293,6 +293,19 @@ input:checked + .slider:before {
   align-items: flex-start;
   gap: 17px;
 }
+
+.header-nav.mobile.unauthorized{
+  display: none;
+}
+.no-scroll {
+  overflow: hidden;
+}
+
+
+// .header-nav.mobile.unauthorized{
+//   display: none;
+// }
+
 .user-wrap.authorized.mobile {
   display: flex;
   align-items: center;
@@ -316,15 +329,20 @@ input:checked + .slider:before {
   }
 }
 
+
 .user-sign-up.mobile {
+
+  
+  @media screen and (max-width: 767px) {
   display: flex;
+
   align-items: center;
 
   position: fixed;
   top: 80px;
   left: 20px;
   z-index: 11;
-
+ 
   padding: 10px 21px;
     font-weight: 500;
   font-size: 14px;
@@ -337,9 +355,11 @@ input:checked + .slider:before {
   .user-sign-up-text {
       color:#111111;
       font-size: 14px;
-line-height: 1.29;
+    line-height: 1.29;
 
   }
+  }
+ 
 }
 .user-sign-up.mobile.authorized {
   display: none;
@@ -361,4 +381,8 @@ line-height: 1.29;
 }
 .mobile-logout-btn > svg {
   color: #eac645;
+}
+// ----------------Scroll block---------------
+.no-scroll {
+  overflow: hidden;
 }

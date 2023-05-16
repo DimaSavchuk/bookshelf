@@ -1,4 +1,3 @@
-
 const scrollBtn = document.querySelector('.js-scroll-up');
 window.onscroll = function () {
   scrollFunction();
@@ -24,11 +23,17 @@ function backToTop() {
   const openMenuBtn = document.querySelector('.js-open-menu');
   const closeMenuBtn = document.querySelector('.js-close-menu');
   const navigation = document.querySelector('.header-nav');
-  const authPerson = document.querySelector('.user-wrap.authorized')
+  const authPerson = document.querySelector('.js-user-bar');
   const signUpUser = document.querySelector('.user-sign-up');
 
+  const bodyScroll = document.querySelector('body')
+
+  //const bodyEl = document.querySelector("body");
+
+
   const toggleMenu = () => {
-    const isMenuOpen = openMenuBtn.getAttribute('aria-expanded') === 'true' || false;
+    const isMenuOpen =
+      openMenuBtn.getAttribute('aria-expanded') === 'true' || false;
     openMenuBtn.setAttribute('aria-expanded', !isMenuOpen);
 
     mobileMenu.classList.toggle('is-open');
@@ -38,10 +43,16 @@ function backToTop() {
     authPerson.classList.toggle('mobile');
     signUpUser.classList.toggle('mobile');
 
+    bodyScroll.classList.toggle('no-scroll');
+    
+
+    //bodyEl.classList.toggle("no-scroll");
+
     // const scrollLockMethod = !isMenuOpen
     //   ? 'disableBodyScroll'
     //   : 'enableBodyScroll';
     // bodyScrollLock[scrollLockMethod](document.body);
+
   };
 
   openMenuBtn.addEventListener('click', toggleMenu);
@@ -55,9 +66,10 @@ function backToTop() {
     closeMenuBtn.classList.remove('is-open');
     navigation.classList.remove('mobile');
     authPerson.classList.remove('mobile');
+    signUpUser.classList.remove('mobile');
+    bodyScroll.classList.remove('no-scroll');
 
     openMenuBtn.setAttribute('aria-expanded', false);
-    bodyScrollLock.enableBodyScroll(document.body);
   });
 })();
 

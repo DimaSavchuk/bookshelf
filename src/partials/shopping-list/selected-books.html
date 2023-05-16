@@ -1,12 +1,39 @@
-<section class="sellected-books section">
-  <div class="sellected-books container">
-    <h1 class="sellected-books-title"><span>Shopping</span> List</h1>
-    <ul class="sellected-books-list list"></ul>
+<div class="container sellected-books">
+  <h1 class="sellected-books-title"><span>Shopping</span> List</h1>
+  <ul
+    class="sellected-books-list list"
+    id="paginated-list"
+    aria-live="polite"
+  ></ul>
+  <div class="pagination-container" id="pagination-container">
+    <button
+      class="pagination-button"
+      id="prev-button"
+      title="Previous page"
+      aria-label="Previous page"
+    >
+      &lt;
+    </button>
+
+    <div id="pagination-numbers"></div>
+
+    <button
+      class="pagination-button"
+      id="next-button"
+      title="Next page"
+      aria-label="Next page"
+    >
+      &gt;
+    </button>
   </div>
-  <div class="books-not-available">
-    <p class="no-books-text">
-      This page is empty, add some books and proceed to order.
-    </p>
-    <img src="/src/images/pile-of-books.png" alt="pile-of-books" />
-  </div>
-</section>
+</div>
+<div class="books-not-available">
+  <p class="no-books-text">
+    This page is empty, add some books and proceed to order.
+  </p>
+  <img
+    src="/src/images/pile-of-books.png"
+    alt="pile-of-books"
+    class="images-books"
+  />
+</div>

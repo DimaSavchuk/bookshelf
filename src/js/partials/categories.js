@@ -2,6 +2,7 @@ import { listenerCount } from 'process';
 import { categoryRequest } from '../requests/apiRequests';
 import { apiInstance } from '../services/api';
 import { changeColorStyleInTitle, createAllCategoryList } from './bestsellers';
+import Notiflix from 'notiflix';
 
 const list = document.querySelector('.category-list');
 const categoryTitle = document.querySelector('.bestsellers-title');
@@ -17,7 +18,7 @@ export function category() {
         arr.push(values);
       }
 
-      console.log(arr);
+      // console.log(arr);
 
       const markup = arr
         .map(item => {
@@ -46,9 +47,17 @@ function handleCategoryClick(event) {
   if (target.classList.contains('category-link')) {
     const categoryName = target.textContent;
 
-    if (target.textContent === 'All category') {
-      categoryTitle.innerHTML = `Best Sellers Books`;
-      loadTopBooksOnClick();
+    const categoryItems = document.querySelectorAll('.category-item');
+    categoryItems.forEach(item => {
+      item.classList.remove('active');
+    });
+
+    // Добавление класса 'active' к текущему пункту меню
+    target.parentNode.classList.add('active');
+    if (target.textContent == 'All categories') {
+      location.reload();
+      // categoryTitle.innerHTML = `Best Sellers Books`;
+      // loadTopBooksOnClick();
     } else {
       categoryTitle.innerHTML = `${changeColorStyleInTitle(categoryName)}`;
       try {

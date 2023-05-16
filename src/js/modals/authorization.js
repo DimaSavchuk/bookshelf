@@ -32,6 +32,8 @@ const headerNavEl = document.querySelector('.js-header-nav');
 const logOutMobile = document.querySelector('.js-logOut');
 const logOutWndw = document.querySelector('.js-logout');
 const userLoggedName = document.querySelectorAll('.js-name');
+// ----------------Scroll block---------------
+const bodyScroll = document.querySelector('body');
 
 signUpBtn.addEventListener('click', onSignUpBtn);
 signOutBtn.addEventListener('click', onSignOutBtn);
@@ -61,8 +63,24 @@ export function authCheck() {
   });
 }
 
-const instance = basicLightbox.create(signUpMarkup);
-const instanceSignIn = basicLightbox.create(signInMarkup);
+const instance = basicLightbox.create(signUpMarkup, {
+  onShow: () => {
+    // ----------------Scroll block---------------
+    bodyScroll.classList.add('no-scroll');
+  },
+  onClose: () => {
+    bodyScroll.classList.remove('no-scroll');
+  },
+});
+const instanceSignIn = basicLightbox.create(signInMarkup, {
+  onShow: () => {
+    // ----------------Scroll block---------------
+    bodyScroll.classList.add('no-scroll');
+  },
+  onClose: () => {
+    bodyScroll.classList.remove('no-scroll');
+  },
+});
 
 function onSignUpBtn(e) {
   e.preventDefault();
@@ -70,7 +88,6 @@ function onSignUpBtn(e) {
   instance.show(() => {
     const AuthForm = document.getElementById('authorization-form');
     const signInModalEl = document.getElementById('sign-in');
-
     AuthForm.addEventListener('submit', onSubmit);
     signInModalEl.addEventListener('click', onSignInClick);
 
@@ -132,7 +149,6 @@ function onSignUpBtn(e) {
       instanceSignIn.show(() => {
         const signInForm = document.getElementById('signin-form');
         const signUpModalEl = document.getElementById('sign-up');
-
         signInForm.addEventListener('submit', onSignInSubmit);
         signUpModalEl.addEventListener('click', onSignUpBtn);
 

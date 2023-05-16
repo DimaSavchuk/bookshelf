@@ -1,137 +1,139 @@
 .about-team-modal {
-    position: fixed;
-    top: -1;
-    left: -1;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
+  position: fixed;
+  top: -1;
+  left: -1;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
 
-    background-color: rgba(11, 11, 26, 0.801);
+  background-color: rgba(11, 11, 26, 0.801);
 
-    transition: visibility cubic-bezier(0.4, 0, 0.2, 1) 250ms,
+  transition: visibility cubic-bezier(0.4, 0, 0.2, 1) 250ms,
     opacity cubic-bezier(0.4, 0, 0.2, 1) 250ms;
 }
 
 .about-team-modal.is-hidden {
-    visibility: hidden;
-    opacity: 0;
-    pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .about-team-window {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    transform: translate(-50%, -50%);
-    padding: 70px 10px 10px 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  padding: 70px 10px 10px 10px;
 
+  background-color: white;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
 
-    background-color: white;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
-
-    transition: transform cubic-bezier(0.4, 0, 0.2, 1) 300ms, opacity cubic-bezier(0.4, 0, 0.2, 1) 300ms;
-    overflow-x:hidden;
+  transition: transform cubic-bezier(0.4, 0, 0.2, 1) 300ms,
+    opacity cubic-bezier(0.4, 0, 0.2, 1) 300ms;
+  overflow-x: hidden;
 }
 /* Screen tublet */
 @media screen and (min-width: 768px) {
-    .about-team-window {
+  .about-team-window {
     max-width: 768px;
     padding-left: 32px;
     padding-right: 32px;
-}
+  }
 }
 /* Screen desktop */
 @media screen and (min-width: 1440px) {
-    .about-team-window {
+  .about-team-window {
     max-width: 1440px;
     padding-left: 24px;
     padding-right: 24px;
-    }
+  }
 }
 
 .about-team-modal.is-hidden .about-team-window {
-    transform: translate(-100%, -100%);
-    opacity: 0;
+  transform: translate(-100%, -100%);
+  opacity: 0;
 }
 
 .about-team-close-modal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 28px;
-    border-radius: 5%;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    
-    position: absolute;
-    top: 24px;
-    right: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  background-color: transparent;
+  border-radius: 5%;
+  border: none;
 
-    cursor: pointer; 
+  position: absolute;
+  top: 24px;
+  right: 24px;
+
+  cursor: pointer;
 }
 
 .modal-icon {
-    
-    fill: black;
+  fill: black;
 }
 
 .about-team-list {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    
-    row-gap: 25px;
-    width: 320px;
-    margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  row-gap: 25px;
+  width: 320px;
+  margin: 0 auto;
 }
 
 @media screen and (min-width: 768px) {
-    .about-team-list {
+  .about-team-list {
     width: 728px;
     padding-left: 20px;
     padding-right: 32px;
     column-gap: 20px;
-}
+  }
 }
 
 /* Screen desktop */
 @media screen and (min-width: 1440px) {
-    .about-team-list {
+  .about-team-list {
     width: 1400px;
     padding-left: 14px;
     padding-right: 24px;
-    }
+  }
 }
 
 .about-team-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 320px;
-    height: 570px;
-    background-color: white;
-    margin-bottom: auto;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 320px;
+  height: 570px;
+  background-color: white;
+  margin-bottom: auto;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
 
 .about-team-photo {
-    width: 100%;
+  width: 100%;
 }
 
 .about-team-inform {
-    margin-top: auto;
+  margin-top: auto;
 }
 
 .about-team-title {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: 28px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 28px;
 }
 
 .about-team-role {
-    padding-bottom: 10px;
-    font-size: 24px;
+  padding-bottom: 10px;
+  font-size: 24px;
 }
