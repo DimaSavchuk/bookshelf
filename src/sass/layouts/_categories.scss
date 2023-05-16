@@ -31,7 +31,7 @@
   li.category-item.active {
     font-family: 'DM Sans';
     font-weight: 700;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.12;
     letter-spacing: -0.02em;
     text-transform: uppercase;
@@ -53,8 +53,10 @@
     padding-left: 0;
   }
   .category-item {
+    display: block;
+    height: 20px;
     font-family: 'DM Sans';
-    padding-bottom: 32px;
+    margin-bottom: 32px;
     font-weight: 400;
     font-size: 18px;
     line-height: 1.33;
