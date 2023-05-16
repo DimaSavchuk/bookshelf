@@ -41,7 +41,7 @@ function markupList(arr) {
       ({ title, url, img }, idx) =>
         `<div class="support-item">
             <p class="support-number">${(idx + 1).toString().padStart(2, 0)}</p>
-            <a class="support-link" href="${url}">
+            <a class="support-link" href="${url}" target="_blank" rel="noreferrer noopener">
               <img src="${img}" alt="${title}" />
             </a>
         </div>`

@@ -2,6 +2,7 @@ import { listenerCount } from 'process';
 import { categoryRequest } from '../requests/apiRequests';
 import { apiInstance } from '../services/api';
 import { changeColorStyleInTitle, createAllCategoryList } from './bestsellers';
+import Notiflix from 'notiflix';
 
 const list = document.querySelector('.category-list');
 const categoryTitle = document.querySelector('.bestsellers-title');
@@ -53,10 +54,10 @@ function handleCategoryClick(event) {
 
     // Добавление класса 'active' к текущему пункту меню
     target.parentNode.classList.add('active');
-
-    if (target.textContent === 'All category') {
-      categoryTitle.innerHTML = `Best Sellers Books`;
-      loadTopBooksOnClick();
+    if (target.textContent == 'All categories') {
+      location.reload();
+      // categoryTitle.innerHTML = `Best Sellers Books`;
+      // loadTopBooksOnClick();
     } else {
       categoryTitle.innerHTML = `${changeColorStyleInTitle(categoryName)}`;
       try {

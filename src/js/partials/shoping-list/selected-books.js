@@ -75,9 +75,9 @@ function renderBooks() {
             <h3 class="book-author">${author}</h3>
             <div class="trading-platforms-list list">
             <a href=""></a>
-            <a href="${amazonLink}" class="amazon"></a>
-            <a href="${appleLink}" class="apple"></a>
-            <a href="${bookshopLink}" class="shop"></a>
+            <a href="${amazonLink}" class="amazon" target="_blank" rel="noreferrer noopener"></a>
+            <a href="${appleLink}" class="apple" target="_blank" rel="noreferrer noopener"></a>
+            <a href="${bookshopLink}" class="shop" target="_blank" rel="noreferrer noopener"></a>
             </div>
             </div>
             </div>
