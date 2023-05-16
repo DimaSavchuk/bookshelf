@@ -43,34 +43,41 @@ function clickOnBook(event) {
   booksRequest(bookID).then(data => {
     renderModalCard(data);
     openModal();
-    refs.modalActionBtnEl.addEventListener('click', onAddItemClick);
+    //
+    console.log(refs.modalActionBtnEl);
+    const checkAuth = document.querySelector('.user-wrap');
+    console.log(checkAuth.classList.contains('authorized'));
+    if (checkAuth.classList.contains('authorized')) {
+      refs.modalActionBtnEl.addEventListener('click', onAddItemClick);
+      function onAddItemClick() {
+        console.log(data);
 
-    function onAddItemClick() {
-      console.log(data);
-
-      const bookIndex = shoppingList.findIndex(book => book.id === data._id);
-      if (bookIndex > -1) {
-        shoppingList.splice(bookIndex, 1);
-        refs.modalActionBtnEl.textContent = 'ADD TO SHOPPING LIST';
-        Notiflix.Notify.success(
-          'The book has been removed from the shopping list.'
-        );
-      } else {
-        shoppingList.push(data);
-        refs.modalActionBtnEl.textContent = 'REMOVE FROM SHOPPING LIST';
-        Notiflix.Notify.success(
-          'Congratulations! You have added the book to the shopping list. To remove, press the button "REMOVE FROM SHOPPING LIST".'
-        );
+        const bookIndex = shoppingList.findIndex(book => book.id === data._id);
+        if (bookIndex > -1) {
+          shoppingList.splice(bookIndex, 1);
+          refs.modalActionBtnEl.textContent = 'ADD TO SHOPPING LIST';
+          Notiflix.Notify.success(
+            'The book has been removed from the shopping list.'
+          );
+        } else {
+          shoppingList.push(data);
+          refs.modalActionBtnEl.textContent = 'REMOVE FROM SHOPPING LIST';
+          Notiflix.Notify.success(
+            'Congratulations! You have added the book to the shopping list. To remove, press the button "REMOVE FROM SHOPPING LIST".'
+          );
+        }
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(shoppingList));
       }
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(shoppingList));
-    }
-
-    const storedBooks = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    if (storedBooks && storedBooks.some(book => book.id === data._id)) {
-      refs.modalActionBtnEl.textContent = 'REMOVE FROM SHOPPING LIST';
+      const storedBooks = JSON.parse(localStorage.getItem(STORAGE_KEY));
+      if (storedBooks && storedBooks.some(book => book.id === data._id)) {
+        refs.modalActionBtnEl.textContent = 'REMOVE FROM SHOPPING LIST';
+      } else {
+        refs.modalActionBtnEl.textContent = 'ADD TO SHOPPING LIST';
+      }
     } else {
-      refs.modalActionBtnEl.textContent = 'ADD TO SHOPPING LIST';
+      refs.modalActionBtnEl.style.display = 'none';
     }
+    //
   });
 }
 
