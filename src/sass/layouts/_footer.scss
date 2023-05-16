@@ -51,3 +51,14 @@
 .no-scroll {
   overflow: hidden;
 }
+
+
+.footer-overlay {
+  opacity: 0;
+}
+
+.footer-overlay:hover,
+.footer-overlay:focus {
+  opacity: 1;
+  transition: opacity 1.5s;
+}
