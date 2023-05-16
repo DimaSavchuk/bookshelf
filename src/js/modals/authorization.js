@@ -130,6 +130,11 @@ function showSignUpForm() {
             const errorCode = error.code;
             const errorMessage = error.message;
             Notify.failure(errorMessage);
+
+            signUpModalInstance
+              .element()
+              .querySelector('.authorization-form-button')
+              .removeAttribute('disabled', 'disabled');
           });
       };
 
@@ -211,6 +216,11 @@ function showSignInForm() {
             const errorCode = error.code;
             const errorMessage = error.message;
             Notify.failure(errorMessage);
+
+            signInModalInstance
+              .element()
+              .querySelector('.authorization-form-button')
+              .removeAttribute('disabled', 'disabled');
             // return
           });
       };
