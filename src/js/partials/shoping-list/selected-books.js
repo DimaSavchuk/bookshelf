@@ -2,8 +2,8 @@ import axios from 'axios';
 //import { save, load } from './localStorageService.js';
 import { STORAGE_KEY } from '../../modals/about-book';
 
-const API_URL = 'https://books-backend.p.goit.global/books/top-books';
-const SHOPPING_LIST_LOCAL_STORAGE_KEY = 'ShoppingList';
+// const API_URL = 'https://books-backend.p.goit.global/books/top-books';
+// const SHOPPING_LIST_LOCAL_STORAGE_KEY = 'ShoppingList';
 let booksFromLocalStorage;
 
 const refs = {
@@ -13,7 +13,8 @@ const refs = {
 
 document.addEventListener('DOMContentLoaded', () => {
   // Only for test
-  InitializeShoppingListTest();
+  // InitializeShoppingListTest();
+
   InitializeShoppingList();
 });
 
@@ -21,9 +22,9 @@ function InitializeShoppingList() {
   booksFromLocalStorage = load(STORAGE_KEY);
 
   if (booksFromLocalStorage && booksFromLocalStorage.length > 0) {
-    renderBooks();
+    renderBooks(booksFromLocalStorage);
     hideEmptyMessage();
-    setPagination(1);
+    setPagination();
   } else {
     paginationContainer.style.display = 'none';
   }
@@ -115,42 +116,50 @@ function deleteBookFromList(bookId) {
   bookElement.remove();
 }
 
-function clearPage(){
+function clearPage() {
   refs.sellectedBooksList.innerHTML = '';
   paginationNumbers.innerHTML = '';
 }
 
 // Only for test
-async function InitializeShoppingListTest() {
+// async function InitializeShoppingListTest() {
+//   try {
+//     let mappedBookList;
+//     const response = await axios.get(`${API_URL}`);
+//     if (response && response.data) {
+//       let bookslist = response.data[0].books;
+//       bookslist = bookslist.concat(response.data[1].books);
+//       bookslist = bookslist.concat(response.data[2].books);
 
-      try {
-        let mappedBookList;
-        const response = await axios.get(`${API_URL}`);
-        if(response && response.data)
-        {
-            let bookslist = response.data[0].books;
-            bookslist = bookslist.concat(response.data[1].books);
-            bookslist = bookslist.concat(response.data[2].books);
+//       mappedBookList = bookslist.map(
+//         ({
+//           _id,
+//           title,
+//           author,
+//           book_image,
+//           description,
+//           list_name,
+//           buy_links,
+//         }) => ({
+//           _id,
+//           title,
+//           author,
+//           book_image,
+//           description,
+//           list_name,
+//           buy_links,
+//         })
+//       );
+//     }
+//     if (mappedBookList && mappedBookList.length > 0) {
+//       save(SHOPPING_LIST_LOCAL_STORAGE_KEY, mappedBookList);
+//     }
 
-            mappedBookList = bookslist.map(({
-                _id,
-                title,
-                author,
-                book_image,
-                description,
-                list_name,
-                buy_links,
-            }) =>  ({ _id, title, author, book_image, description, list_name, buy_links }));
-        }
-        if(mappedBookList && mappedBookList.length > 0) {
-            save(SHOPPING_LIST_LOCAL_STORAGE_KEY, mappedBookList);
-        }
-
-        return response.data;
-      } catch (error) {
-         console.error(error.toJSON());
-      }
-    }
+//     return response.data;
+//   } catch (error) {
+//     console.error(error.toJSON());
+//   }
+// }
 
 //LocalStorageService
 const save = (key, value) => {
@@ -172,10 +181,6 @@ const load = key => {
 };
 // --------------------------
 
-
-
-
-
 //    Pagination
 const paginationNumbers = document.getElementById('pagination-numbers');
 const paginatedList = document.getElementById('paginated-list');
@@ -196,7 +201,7 @@ function setPagination(page) {
     return;
   }
 
-  if(page > pageCount){
+  if (page > pageCount) {
     page = pageCount;
   }
 

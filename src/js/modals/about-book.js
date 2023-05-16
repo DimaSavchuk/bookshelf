@@ -16,7 +16,7 @@ const refs = {
   congratulationsTextEl: document.querySelector('.congratulations-text'),
 };
 
-const STORAGE_KEY = 'shoppingbookId';
+export const STORAGE_KEY = 'shoppingbookId';
 let shoppingList = [];
 
 refs.aboutBookModalCloseEl.addEventListener('click', closeModal);
