@@ -18,7 +18,7 @@ export function category() {
         arr.push(values);
       }
 
-      console.log(arr);
+      // console.log(arr);
 
       const markup = arr
         .map(item => {
