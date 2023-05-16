@@ -285,3 +285,26 @@ body::-webkit-scrollbar-thumb {
 .header-nav-link.dark-theme span {
   color: #ffffff;
 }
+
+//modal sign-in
+body.dark-theme .modal-sign-action.active {
+  color: #4f2ee8;
+  opacity: 100%;
+}
+
+body.dark-theme .modal-sign-action {
+  color: #f6f6f6;
+  opacity: 50%;
+}
+
+//modal about-book
+body.dark-theme .about-book-modal .about-book-modal-title {
+  color: #ffffff;
+}
+
+body.dark-theme .about-book-modal .about-book-modal-close {
+  background-color: transparent;
+}
+body.dark-theme .about-book-modal .about-book-modal-description {
+  color: #ffffff;
+}

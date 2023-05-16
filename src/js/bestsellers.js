@@ -2,14 +2,14 @@ const refs = {
   bestSellersGalery: document.querySelector('.bestsellers'),
 };
 
-import { topBooksRequest, categoryRequest } from '../requests/apiRequests';
+import { topBooksRequest, categoryRequest } from './requests/apiRequests';
 import Notiflix from 'notiflix';
 
 // ===========================================================================
 
 window.addEventListener('DOMContentLoaded', loadTopBooksOnClick);
 
-export async function loadTopBooksOnClick(event) {
+export async function loadTopBooksOnClick() {
   try {
     topBooksRequest()
       .then(data => {
