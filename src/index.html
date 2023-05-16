@@ -27,7 +27,6 @@
     />
 
     <script src="./index.js" type="module"></script>
-    <!-- <script src="./js/partials/footer.js" type="module"></script> -->
     <link rel="stylesheet" href="./sass/index.scss" />
   </head>
 
@@ -38,17 +37,16 @@
       <include src="./partials/main-content.html"></include>
       <include src="./partials/footer.html"></include>
 
-      <include src="./partials/modals/authorization.html"></include>
-      <include src="./partials/modals/about-team-modal.html"></include>
-
       <div class="backdrop is-hidden" data-modal-close>
         <div class="container">
           <div class="about-book-modal is-hidden">
-            <include src="./partials/modals/about-book.html"></include>
+            <include src="./partials/about-book.html"></include>
           </div>
-          <div class="errContainer is-hidden"></div>
         </div>
       </div>
+
+      <include src="./partials/authorization.html"></include>
+      <include src="./partials/about-team-modal.html"></include>
     </div>
   </body>
 </html>

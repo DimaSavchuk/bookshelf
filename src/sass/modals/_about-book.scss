@@ -134,7 +134,10 @@
 @media screen and (min-width: 768px) {
   .about-book-modal {
     width: 579px;
-    padding: 40px;
+    padding-top: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
     .about-book-modal-close {
       top: 24px;
       right: 24px;
