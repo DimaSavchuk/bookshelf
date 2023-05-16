@@ -25,6 +25,7 @@ function closeModal() {
   refs.aboutBookModalEl.classList.add('is-hidden');
   refs.backdropEl.classList.add('is-hidden');
   refs.bodyEl.classList.remove('no-scroll');
+  refs.modalActionBtnEl.removeEventListener('click', onAddItemClick);
 }
 
 refs.bestsellersSectionEl.addEventListener('click', clickOnBook);
@@ -42,19 +43,41 @@ function clickOnBook(event) {
   booksRequest(bookID).then(data => {
     renderModalCard(data);
     openModal();
-    refs.modalActionBtnEl.addEventListener('click', onAddItemClick);
+    //
+    console.log(refs.modalActionBtnEl);
+    const checkAuth = document.querySelector('.user-wrap');
+    console.log(checkAuth.classList.contains('authorized'));
+    if (checkAuth.classList.contains('authorized')) {
+      refs.modalActionBtnEl.addEventListener('click', onAddItemClick);
+      function onAddItemClick() {
+        console.log(data);
 
-    function onAddItemClick() {
-      console.log(data);
-
-      shoppingList.push(data);
-      console.log(shoppingList);
-
-      Notiflix.Notify.success(
-        'Вітаємо! Ви додали книгу до списку покупок. Щоб видалити, натисніть кнопку "Видалити зі списку покупок".'
-      );
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(shoppingList));
+        const bookIndex = shoppingList.findIndex(book => book.id === data._id);
+        if (bookIndex > -1) {
+          shoppingList.splice(bookIndex, 1);
+          refs.modalActionBtnEl.textContent = 'ADD TO SHOPPING LIST';
+          Notiflix.Notify.success(
+            'The book has been removed from the shopping list.'
+          );
+        } else {
+          shoppingList.push(data);
+          refs.modalActionBtnEl.textContent = 'REMOVE FROM SHOPPING LIST';
+          Notiflix.Notify.success(
+            'Congratulations! You have added the book to the shopping list. To remove, press the button "REMOVE FROM SHOPPING LIST".'
+          );
+        }
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(shoppingList));
+      }
+      const storedBooks = JSON.parse(localStorage.getItem(STORAGE_KEY));
+      if (storedBooks && storedBooks.some(book => book.id === data._id)) {
+        refs.modalActionBtnEl.textContent = 'REMOVE FROM SHOPPING LIST';
+      } else {
+        refs.modalActionBtnEl.textContent = 'ADD TO SHOPPING LIST';
+      }
+    } else {
+      refs.modalActionBtnEl.style.display = 'none';
     }
+    //
   });
 }
 
@@ -76,15 +99,19 @@ function renderModalCard(data) {
   } = data;
 
   const modalImgMarkup = `
-    <img src="${bookImg}" class="modal-book-img" />`;
+    <img src="${bookImg}" class="about-book-modal-img" />`;
 
   const modalDescriptionMarkup = `
-    <div class="modal-about-book-info">
-      <h3 class="modal-book-title">${title}</h3>
-      <p class="modal-book-author">${author}</p>
-      <p class="modal-book-description">${description}</p>
+    <div class="about-about-modal-book-info">
+      <h3 class="about-book-modal-title">${title}</h3>
+      <p class="about-book-modal-author">${author}</p>
+      <p class="about-book-modal-description">${description}</p>
     </div>`;
 
   refs.aboutBookModalImgEl.innerHTML = modalImgMarkup;
   refs.aboutBookModalDescriptionEl.innerHTML = modalDescriptionMarkup;
+
+  refs.aboutBookModalLinkEl[0].setAttribute('href', buyLinks[0].url);
+  refs.aboutBookModalLinkEl[1].setAttribute('href', buyLinks[1].url);
+  refs.aboutBookModalLinkEl[2].setAttribute('href', buyLinks[4].url);
 }

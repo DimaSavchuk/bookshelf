@@ -1,5 +1,5 @@
 .support {
-  width: 100%;
+  width: 335px;
   height: 352px;
   background: radial-gradient(
     183.6% 183.01% at 59.76% -23.42%,
@@ -8,14 +8,13 @@
   );
   box-shadow: 0px 10px 10px rgba(245, 245, 247, 0.1);
   border-radius: 16px;
-  padding-left: 40px;
   padding-top: 24px;
 }
 
 .support-title {
   display: flex;
   margin-bottom: 40px;
-  padding-right: 58px;
+  padding-left: 40px;
 }
 
 .support-name {
@@ -37,9 +36,10 @@
 }
 
 .support-list {
-  width: 159px;
+  width: auto;
   height: 188px;
   margin-bottom: 16px;
+  padding-left: 40px;
   overflow: hidden;
 }
 
@@ -87,7 +87,8 @@
   border-radius: 50%;
   cursor: pointer;
   border: none;
-  margin-left: 112px;
+  margin: 0 auto;
+
   transition: background-color 500ms cubic-bezier(0.65, 0.05, 0.36, 1),
     box-shadow 500ms cubic-bezier(0.65, 0.05, 0.36, 1);
 }
@@ -110,6 +111,15 @@
   fill: #ffffff;
 }
 
+@media screen and (max-width: 354px) {
+  .support {
+    width: 100%;
+  }
+  .support-name-icon {
+    margin-right: 20px;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .support {
     height: 472px;
@@ -121,7 +131,6 @@
   .support-btn {
     width: 38px;
     height: 38px;
-    margin-left: 109px;
   }
   .support-btn-icon {
     width: 13px;
@@ -136,8 +145,5 @@
   }
   .support-list {
     margin-bottom: 40px;
-  }
-  .support-btn {
-    margin-left: 119px;
   }
 }
