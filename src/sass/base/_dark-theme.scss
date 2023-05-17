@@ -129,6 +129,11 @@ body.dark-theme
   color: #ffffff;
 }
 
+.bestsellers.dark-theme > .bestsellers-card > .bestsellers-btn:hover,
+.bestsellers.dark-theme > .bestsellers-card > .bestsellers-btn:focus {
+  color: #111111;
+}
+
 .bestsellers.dark-theme > .bestsellers-title {
   color: #ffffff;
 }
@@ -313,3 +318,8 @@ body.dark-theme .about-book-modal .about-book-modal-title {
 body.dark-theme .about-book-modal .about-book-modal-close {
   background-color: transparent;
 }
+
+// body.dark-theme .bestsellers-btn:hover,
+// body.dark-theme .bestsellers-btn:focus {
+//   color: #111111;
+// }
