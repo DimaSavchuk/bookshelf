@@ -1,7 +1,7 @@
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { signUpMarkup } from './auth-markup';
+import { close, signUpMarkup } from './auth-markup';
 import { signInMarkup } from './signin-markup';
 import { initializeApp } from 'firebase/app';
 import {
@@ -222,8 +222,6 @@ function showSignInForm() {
               .querySelector('.authorization-form-button')
               .removeAttribute('disabled', 'disabled');
           });
-        
-        
       };
 
       signInForm.addEventListener('submit', onSignInFormSubmit);
