@@ -8,6 +8,8 @@ const paginationService = new PaginationService();
 const refs = {
   sellectedBooksList: document.querySelector('.sellected-books-list'),
   noBooksSection: document.querySelector('.books-not-available'),
+  shopPage:document.querySelector(".js-shop"),
+  homePage:document.querySelector(".js-home"),
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -17,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
 window.onresize = rerenderBooksOnResize;
 
 function InitializeShoppingList() {
+refs.homePage.classList.remove("current");
+refs.shopPage.classList.add("current");
   booksFromLocalStorage = load(STORAGE_KEY);
 
   if (isBooksAvailable()) {
