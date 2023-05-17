@@ -6,7 +6,7 @@
   .amazon,
   .apple,
   .shop {
-    transform: rotate 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .apple:hover,
@@ -15,7 +15,7 @@
   .shop:focus,
   .amazon:hover,
   .amazon:focus {
-    transform: rotate(45deg);
+    transform: rotate(360deg);
   }
 
   @media screen and (min-width: 768px) {
