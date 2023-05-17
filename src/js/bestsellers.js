@@ -123,7 +123,7 @@ export function makeMarkupBook(books) {
         <!-- box-menu -->
         <div class="bestsellers-box-menu">
             <p class = "bestsellers-overlay" id="${_id}">Quick View</p>  
-            <img class="gallery__image" src="${book_image}" id="${_id}">
+            <img class="gallery__image" src="${book_image}" alt="${title}" id="${_id}">
             </div>
          <!-- box-menu -->
          <div class="text-box">
