@@ -9,6 +9,18 @@
   transform: translate(-50%, -50%) scale(1);
 }
 
+.shop-image {
+  transform: filter 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.shop-image:focus,
+.shop-image:hover {
+  filter: brightness(0.3) invert(1);
+}
+.modal-book-image {
+  border-radius: 8px;
+}
+
 .about-book-modal {
   position: fixed;
   z-index: 20;
@@ -88,7 +100,7 @@
     line-height: 1.29;
     letter-spacing: -0.04em;
     color: #111111;
-    margin-top: 14px;
+    margin-top: 28px;
   }
   .about-book-modal-list {
     display: flex;
@@ -115,6 +127,13 @@
     text-transform: uppercase;
     color: #111111;
   }
+
+  .add-to-sopping-list:hover,
+  .add-to-sopping-list:focus {
+    background: #4f2ee8;
+    color: #ffffff;
+  }
+
   .congratulations-text {
     text-align: center;
     width: 242px;
