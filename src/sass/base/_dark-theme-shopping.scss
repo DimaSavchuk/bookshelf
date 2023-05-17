@@ -109,3 +109,34 @@
 .shopping-dark-js.dark-theme .about-team-close-modal .modal-icon {
   fill: #f6f6f6;
 }
+
+//pagination
+.shopping-dark-js.dark-theme .pagination-number {
+  color: #f6f6f6;
+  border: 1.5px solid #f6f6f6;
+}
+
+.shopping-dark-js.dark-theme .pagination-number.active {
+  background-color: #4f2ee8;
+}
+
+.shopping-dark-js.dark-theme .pagination-number:hover,
+.shopping-dark-js.dark-theme .pagination-number:focus {
+  color: #111111;
+}
+
+.shopping-dark-js.dark-theme .pagination-button {
+  color: #f6f6f6;
+  border: 1.5px solid #f6f6f6;
+}
+
+.shopping-dark-js.dark-theme .pagination-button:hover,
+.shopping-dark-js.dark-theme .pagination-button:focus {
+  color: #111111;
+}
+
+.shopping-dark-js.dark-theme .pagination-button.disabled {
+  color: #111111;
+  background-color: #f6f6f6;
+  border: 1.5px solid #111111;
+}
