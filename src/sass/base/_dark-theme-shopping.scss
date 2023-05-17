@@ -76,3 +76,12 @@
 .shopping-dark-js.dark-theme .no-books-text {
   color: #ffffff;
 }
+
+//about book
+.shopping-dark-js.dark-theme .trading-platforms-list .amazon {
+  filter: brightness(0.3) invert(1);
+}
+
+.shopping-dark-js.dark-theme .trading-platforms-list .shop {
+  filter: brightness(0.3) invert(1);
+}

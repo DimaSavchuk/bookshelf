@@ -331,7 +331,6 @@
   background-color: transparent;
 }
 
-// .main-js.dark-theme .bestsellers-btn:hover,
-// .main-js.dark-theme .bestsellers-btn:focus {
-//   color: #111111;
-// }
+.main-js.dark-theme .shop-image-amazon .shop-image {
+  filter: invert(1);
+}
