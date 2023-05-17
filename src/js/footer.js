@@ -13,15 +13,35 @@
    }
   function toggleModal() {
     const isModalOpen =
-      refs.openModalBtn.getAttribute('aria-expanded') === 'true' || false;
+    refs.openModalBtn.getAttribute('aria-expanded') === 'true' || false;
     refs.openModalBtn.setAttribute('aria-expanded', !isModalOpen);
     refs.modal.classList.toggle('is-hidden');
     // ----------------Scroll block---------------
     refs.bodyScroll.classList.toggle('no-scroll');
-
+    // refs.modal.addEventListener('keydown', onEscPress);
     const scrollLockMethod = !isModalOpen
       ? 'disableBodyScroll'
       : 'enableBodyScroll';
     // bodyScrollLock[scrollLockMethod](document.body);
+
+    function onModalClose (evt) {
+      // refs.modal.removeEventListener('keydown', onEscPress);
+      refs.modal.classList.add('is-hidden');
+    }
+
+    refs.modal.addEventListener('click', onBackdropClick);
+    function onBackdropClick (evt) {
+      if(evt.currentTarget === evt.target) {
+        onModalClose()
+      }
+    }
+
+    // function onEscPress (evt) {
+    //   console.log (evt.code)
+    //   if (evt.code === 'Escape') {
+    //     onModalClose()
+    //   }
+    // }
+    
   }
 })();
