@@ -13,12 +13,12 @@ const refs = {
 document.addEventListener('DOMContentLoaded', () => {
   InitializeShoppingList();
   // fix current page + bestsellerssection
-  const hideBestsellers = document.querySelector('.bestsellers');
-  const homePage = document.querySelector('.js-home');
-  const shopPage = document.querySelector('.js-shop');
-  hideBestsellers.classList.add('hide');
-  homePage.classList.remove('current');
-  shopPage.classList.add('current');
+  // const hideBestsellers = document.querySelector('.bestsellers');
+  // const homePage = document.querySelector('.js-home');
+  // const shopPage = document.querySelector('.js-shop');
+  // hideBestsellers.classList.add('hide');
+  // homePage.classList.remove('current');
+  // shopPage.classList.add('current');
 });
 
 window.onresize = rerenderBooksOnResize;
@@ -28,6 +28,7 @@ function InitializeShoppingList() {
 
   if (isBooksAvailable()) {
     //   if (booksFromLocalStorage && booksFromLocalStorage.length > 0) {
+    // }
 
     renderBooks();
     hideEmptyMessage();
