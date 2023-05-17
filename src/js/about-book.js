@@ -56,29 +56,48 @@ function clickOnBook(event) {
 
     function onAddItemClick(event) {
       if (event.target.textContent === 'ADD TO SHOPPING LIST') {
-        shoppingList.push(data);
-        Notiflix.Notify.success(
-          'Вітаємо! Ви додали книгу до списку покупок. Щоб видалити, натисніть кнопку "Видалити зі списку покупок".'
-        );
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(shoppingList));
-        refs.modalActionBtnEl.removeEventListener('click', onAddItemClick);
-
         event.target.textContent = 'REMOVE FROM SHOPPING LIST';
-        return;
-      }
 
-      if (event.target.textContent === 'REMOVE FROM SHOPPING LIST') {
+        shoppingList.push(data);
+        Notiflix.Notify.success('Ви додали книгу до списку покупок');
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(shoppingList));
+      } else {
+        event.target.textContent = 'ADD TO SHOPPING LIST';
+
         const bookIndex = shoppingList.findIndex(item => item._id === data._id);
         if (bookIndex !== -1) {
           shoppingList.splice(bookIndex, 1);
           console.log(shoppingList);
-          Notiflix.Notify.success('Книгу було видалено зі списку покупок.');
+          Notiflix.Notify.failure('Книгу було видалено зі списку покупок.');
           localStorage.setItem(STORAGE_KEY, JSON.stringify(shoppingList));
         }
-        event.target.textContent = 'ADD TO SHOPPING LIST';
-        refs.modalActionBtnEl.removeEventListener('click', onAddItemClick);
-        return;
+        Notiflix.Notify.success('Ви видалили книгу до списку покупок');
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(shoppingList));
       }
+      // if (event.target.textContent === 'ADD TO SHOPPING LIST') {
+      //   shoppingList.push(data);
+      //   Notiflix.Notify.success(
+      //     'Вітаємо! Ви додали книгу до списку покупок. Щоб видалити, натисніть кнопку "Видалити зі списку покупок".'
+      //   );
+      //   localStorage.setItem(STORAGE_KEY, JSON.stringify(shoppingList));
+      //   refs.modalActionBtnEl.removeEventListener('click', onAddItemClick);
+
+      //   event.target.textContent = 'REMOVE FROM SHOPPING LIST';
+      //   return;
+      // }
+
+      // if (event.target.textContent === 'REMOVE FROM SHOPPING LIST') {
+      //   const bookIndex = shoppingList.findIndex(item => item._id === data._id);
+      //   if (bookIndex !== -1) {
+      //     shoppingList.splice(bookIndex, 1);
+      //     console.log(shoppingList);
+      //     Notiflix.Notify.success('Книгу було видалено зі списку покупок.');
+      //     localStorage.setItem(STORAGE_KEY, JSON.stringify(shoppingList));
+      //   }
+      //   event.target.textContent = 'ADD TO SHOPPING LIST';
+      //   refs.modalActionBtnEl.removeEventListener('click', onAddItemClick);
+      //   return;
+      // }
     }
 
     refs.modalActionBtnEl.addEventListener('click', onAddItemClick);
