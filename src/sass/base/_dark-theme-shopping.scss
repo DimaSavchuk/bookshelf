@@ -85,3 +85,27 @@
 .shopping-dark-js.dark-theme .trading-platforms-list .shop {
   filter: brightness(0.3) invert(1);
 }
+
+.shopping-dark-js.dark-theme .about-team-window {
+  background-color: #202024;
+}
+
+.shopping-dark-js.dark-theme .about-team-window::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.shopping-dark-js.dark-theme .about-team-window::-webkit-scrollbar-thumb {
+  background: #111111;
+}
+
+.shopping-dark-js.dark-theme .about-team-item {
+  background-color: #202024;
+}
+
+.shopping-dark-js.dark-theme .about-team-inform {
+  color: #f6f6f6;
+}
+
+.shopping-dark-js.dark-theme .about-team-close-modal .modal-icon {
+  fill: #f6f6f6;
+}
