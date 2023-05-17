@@ -122,7 +122,7 @@ function renderModalCard(data) {
     _id: id,
   } = data;
   const modalImgMarkup = `
-    <img src="${bookImg}" class="modal-book-img" />`;
+    <img src="${bookImg}" alt="${title}" class="modal-book-img" />`;
   const modalDescriptionMarkup = `
     <div class="modal-about-book-info">
       <h3 class="modal-book-title">${title}</h3>
