@@ -29,8 +29,8 @@
     padding: 0;
     width: 24px;
     height: 24px;
-    // background-color: transparent;
-    // border: none;
+    background-color: transparent;
+    border: none;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -72,15 +72,6 @@
     color: #111111;
     margin-bottom: 4px;
   }
-  .about-book-modal-author {
-    font-style: italic;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 1.17;
-    letter-spacing: -0.04em;
-    color: #b4afaf;
-    margin-bottom: 18px;
-  }
   .about-book-modal-description {
     font-style: normal;
     font-weight: 400;
@@ -90,6 +81,16 @@
     color: #111111;
     margin-top: 14px;
   }
+  .about-book-modal-description .modal-book-author {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: -0.04em;
+    color: #b4afaf;
+    margin-bottom: 18px;
+  }
+
   .about-book-modal-list {
     display: flex;
     gap: 20px;

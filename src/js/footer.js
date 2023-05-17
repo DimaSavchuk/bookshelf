@@ -8,8 +8,9 @@
   };
 
   refs.openModalBtn.addEventListener('click', toggleModal);
+   if (refs && refs.closeModalBtn) {
   refs.closeModalBtn.addEventListener('click', toggleModal);
-
+   }
   function toggleModal() {
     const isModalOpen =
       refs.openModalBtn.getAttribute('aria-expanded') === 'true' || false;
