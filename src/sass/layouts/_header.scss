@@ -323,25 +323,25 @@ input:checked + .slider:before {
 
   @media screen and (max-width: 767px) {
     display: flex;
-
+    gap: 90px;
     align-items: center;
 
-    position: fixed;
+    position: absolute;
     top: 80px;
-    left: 20px;
+    right: 145px;
     z-index: 11;
-
-    padding: 10px 21px;
+    width: 190px;
+    padding: 14px;
     font-weight: 500;
     font-size: 14px;
-    border: 1.5px solid #111111;
-    border-radius: 18px;
-    color: #111111;
+    background: #4F2EE8;
+      border: 1.5px solid #111111;
+      border-radius: 18px;
 
     animation: magic 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
 
     .user-sign-up-text {
-      color: #111111;
+      color: #ffffff;
       font-size: 14px;
       line-height: 1.29;
     }
