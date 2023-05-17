@@ -18,6 +18,7 @@ const refs = {
 
 export const STORAGE_KEY = 'shoppingbookId';
 let shoppingList = getShoppingListFromLocalStorage();
+let currentBook;
 
 if (refs && refs.aboutBookModalCloseEl) {
   refs.aboutBookModalCloseEl.addEventListener('click', closeAboutBookModal);
@@ -34,81 +35,72 @@ function closeAboutBookModal() {
   refs.aboutBookModalEl.classList.add('is-hidden');
   refs.backdropEl.classList.add('is-hidden');
   refs.bodyEl.classList.remove('no-scroll');
-  refs.modalActionBtnEl.removeEventListener('click', onAddItemClick);
+  refs.modalActionBtnEl.removeEventListener('click', addItemToShoppingList);
+  refs.modalActionBtnEl.removeEventListener('click', removeItemFromShoppingList);
 }
 
 if (refs && refs.bestsellersSectionEl) {
   refs.bestsellersSectionEl.addEventListener('click', clickOnBook);
 }
 
-let onAddItemClick = null;
-
 function clickOnBook(event) {
   event.preventDefault();
   const bookID = event.target.id;
-  console.log(bookID);
   if (!bookID) {
     return;
   }
   booksRequest(bookID).then(data => {
+    if(data) {
     openAboutBookModal();
     renderModalCard(data);
+    currentBook = data;
+    refs.modalActionBtnEl.setAttribute('id',bookID);
 
-    function onAddItemClick(event) {
-      if (event.target.textContent === 'ADD TO SHOPPING LIST') {
-        event.target.textContent = 'REMOVE FROM SHOPPING LIST';
-
-        shoppingList.push(data);
-        Notiflix.Notify.success('Ви додали книгу до списку покупок');
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(shoppingList));
-      } else {
-        event.target.textContent = 'ADD TO SHOPPING LIST';
-
-        const bookIndex = shoppingList.findIndex(item => item._id === data._id);
-        if (bookIndex !== -1) {
-          shoppingList.splice(bookIndex, 1);
-          console.log(shoppingList);
-          Notiflix.Notify.failure('Книгу було видалено зі списку покупок.');
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(shoppingList));
-        }
-        Notiflix.Notify.success('Ви видалили книгу до списку покупок');
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(shoppingList));
-      }
-      // if (event.target.textContent === 'ADD TO SHOPPING LIST') {
-      //   shoppingList.push(data);
-      //   Notiflix.Notify.success(
-      //     'Вітаємо! Ви додали книгу до списку покупок. Щоб видалити, натисніть кнопку "Видалити зі списку покупок".'
-      //   );
-      //   localStorage.setItem(STORAGE_KEY, JSON.stringify(shoppingList));
-      //   refs.modalActionBtnEl.removeEventListener('click', onAddItemClick);
-
-      //   event.target.textContent = 'REMOVE FROM SHOPPING LIST';
-      //   return;
-      // }
-
-      // if (event.target.textContent === 'REMOVE FROM SHOPPING LIST') {
-      //   const bookIndex = shoppingList.findIndex(item => item._id === data._id);
-      //   if (bookIndex !== -1) {
-      //     shoppingList.splice(bookIndex, 1);
-      //     console.log(shoppingList);
-      //     Notiflix.Notify.success('Книгу було видалено зі списку покупок.');
-      //     localStorage.setItem(STORAGE_KEY, JSON.stringify(shoppingList));
-      //   }
-      //   event.target.textContent = 'ADD TO SHOPPING LIST';
-      //   refs.modalActionBtnEl.removeEventListener('click', onAddItemClick);
-      //   return;
-      // }
+    let bookInShoppingList = shoppingList.find(x => x._id === bookID);
+    if (bookInShoppingList) {
+      setButtonToRemove();
     }
-
-    refs.modalActionBtnEl.addEventListener('click', onAddItemClick);
+    else {
+      setButtonToAdd();
+    }
+  } else {
+    Notiflix.Notify.failure('Failed Loading Book');
+  }
   });
+}
+
+function setButtonToAdd(){
+  refs.modalActionBtnEl.removeEventListener('click', removeItemFromShoppingList);
+  refs.modalActionBtnEl.textContent = 'ADD TO SHOPPING LIST'; 
+  refs.modalActionBtnEl.addEventListener('click', addItemToShoppingList);
+}
+
+function setButtonToRemove(){
+  refs.modalActionBtnEl.removeEventListener('click', addItemToShoppingList);
+  refs.modalActionBtnEl.textContent = 'REMOVE FROM SHOPPING LIST';
+  refs.modalActionBtnEl.addEventListener('click', removeItemFromShoppingList);
+}
+
+function addItemToShoppingList(event){
+  shoppingList.push(currentBook);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(shoppingList));
+  Notiflix.Notify.success('Ви додали книгу до списку покупок');
+  setButtonToRemove();
+}
+
+function removeItemFromShoppingList(event){
+  const bookId = event.srcElement.id;
+  shoppingList = shoppingList.filter(
+    book => book._id !== bookId
+  );
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(shoppingList));
+  setButtonToAdd();
 }
 
 function openAboutBookModal() {
   refs.aboutBookModalEl.classList.remove('is-hidden');
   refs.backdropEl.classList.remove('is-hidden');
   refs.bodyEl.classList.add('no-scroll');
-  // refs.modalActionBtnEl.textContent = 'ADD TO SHOPPING LIST';
 }
 
 function renderModalCard(data) {
