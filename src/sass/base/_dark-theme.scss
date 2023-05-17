@@ -48,6 +48,22 @@
   > .basicLightbox
   > .basicLightbox__placeholder
   > .modal-auth
+  > .modal-authorization-form
+  > .authorization-form-button:hover,
+.main-js.dark-theme
+  > .basicLightbox
+  > .basicLightbox__placeholder
+  > .modal-auth
+  > .modal-authorization-form
+  > .authorization-form-button:focus {
+  background-color: #4f2ee8;
+  color: #ffffff;
+}
+
+.main-js.dark-theme
+  > .basicLightbox
+  > .basicLightbox__placeholder
+  > .modal-auth
   > .sign-action-group
   > .js_sign_in {
   color: #f6f6f6;
