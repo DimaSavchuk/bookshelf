@@ -14,6 +14,7 @@ const refs = {
   aboutBookModalLinkEl: document.querySelectorAll('.about-book-modal-link'),
   modalActionBtnEl: document.querySelector('.add-to-sopping-list'),
   congratulationsTextEl: document.querySelector('.congratulations-text'),
+  checkAuth: document.querySelector(".user-wrap"),
 };
 
 export const STORAGE_KEY = 'shoppingbookId';
@@ -53,15 +54,23 @@ function clickOnBook(event) {
     if(data) {
     openAboutBookModal();
     renderModalCard(data);
-    currentBook = data;
-    refs.modalActionBtnEl.setAttribute('id',bookID);
+    console.log(refs.checkAuth);
+    if(refs.checkAuth.classList.contains("authorized")){
+      currentBook = data;
+      refs.modalActionBtnEl.setAttribute('id',bookID);
+  
+      let bookInShoppingList = shoppingList.find(x => x._id === bookID);
+      if (bookInShoppingList) {
+        setButtonToRemove();
+      }
+      else {
+        setButtonToAdd();
+      }
+  
+    } else {
+      refs.modalActionBtnEl.style.display="none";
+      Notiflix.Notify.info('Please register or login to your account');
 
-    let bookInShoppingList = shoppingList.find(x => x._id === bookID);
-    if (bookInShoppingList) {
-      setButtonToRemove();
-    }
-    else {
-      setButtonToAdd();
     }
   } else {
     Notiflix.Notify.failure('Failed Loading Book');
