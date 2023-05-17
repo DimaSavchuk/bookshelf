@@ -7,6 +7,7 @@
   > .basicLightbox__placeholder
   > .modal-auth {
   background-color: #202024;
+  border: 2px solid #f6f6f6;
 }
 
 .main-js.dark-theme
@@ -311,6 +312,14 @@
 .main-js.dark-theme .modal-sign-action {
   color: #f6f6f6;
   opacity: 50%;
+}
+
+.main-js.dark-theme .form-icon {
+  color: #f6f6f6;
+}
+
+.main-js.dark-theme .auth-close-btn .icon-modal-close {
+  color: #ffffff;
 }
 
 //modal about-book
