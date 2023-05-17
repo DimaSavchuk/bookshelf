@@ -43,8 +43,9 @@ const signInMarkup = ` <div class="modal-auth">
             name="user_password"
             id="password"
             placeholder="enter your password"
-            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-            title="Must contain at least one  number and one uppercase and lowercase letter, and at least 6 or more characters"/>
+            minlength="5"
+            maxlength="20"
+            title="Must contain from 6 to 20 characters"/>
          
             <label class="authorization-form-label" for="password">Password</label>
         </div>
