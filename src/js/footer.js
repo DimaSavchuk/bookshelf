@@ -21,6 +21,6 @@
     const scrollLockMethod = !isModalOpen
       ? 'disableBodyScroll'
       : 'enableBodyScroll';
-    bodyScrollLock[scrollLockMethod](document.body);
+    // bodyScrollLock[scrollLockMethod](document.body);
   }
 })();
