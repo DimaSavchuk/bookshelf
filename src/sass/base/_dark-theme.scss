@@ -1,12 +1,15 @@
-body.dark-theme {
+.main-js.dark-theme {
   background-color: #202024;
 }
 
-body.dark-theme > .basicLightbox > .basicLightbox__placeholder > .modal-auth {
+.main-js.dark-theme
+  > .basicLightbox
+  > .basicLightbox__placeholder
+  > .modal-auth {
   background-color: #202024;
 }
 
-body.dark-theme
+.main-js.dark-theme
   > .basicLightbox
   > .basicLightbox__placeholder
   > .modal-auth
@@ -18,7 +21,7 @@ body.dark-theme
   outline: 2px solid #f6f6f6;
 }
 
-body.dark-theme
+.main-js.dark-theme
   > .basicLightbox
   > .basicLightbox__placeholder
   > .modal-auth
@@ -30,7 +33,7 @@ body.dark-theme
   color: #f6f6f6;
 }
 
-body.dark-theme
+.main-js.dark-theme
   > .basicLightbox
   > .basicLightbox__placeholder
   > .modal-auth
@@ -40,7 +43,7 @@ body.dark-theme
   color: #202024;
 }
 
-body.dark-theme
+.main-js.dark-theme
   > .basicLightbox
   > .basicLightbox__placeholder
   > .modal-auth
@@ -129,6 +132,11 @@ body.dark-theme
   color: #ffffff;
 }
 
+.bestsellers.dark-theme > .bestsellers-card > .bestsellers-btn:hover,
+.bestsellers.dark-theme > .bestsellers-card > .bestsellers-btn:focus {
+  color: #111111;
+}
+
 .bestsellers.dark-theme > .bestsellers-title {
   color: #ffffff;
 }
@@ -188,14 +196,14 @@ body.dark-theme
   box-shadow: 0 0 0 5px #4f2ee84d;
 }
 
-body.dark-theme
+.main-js.dark-theme
   > .basicLightbox
   > .basicLightbox__placeholder
   > .book_info_card {
   background-color: #202024;
 }
 
-body.dark-theme
+.main-js.dark-theme
   > .basicLightbox
   > .basicLightbox__placeholder
   > .book_info_card
@@ -204,7 +212,7 @@ body.dark-theme
   border: none;
 }
 
-body.dark-theme
+.main-js.dark-theme
   > .basicLightbox
   > .basicLightbox__placeholder
   > .book_info_card
@@ -213,7 +221,7 @@ body.dark-theme
   color: #ffffff;
 }
 
-body.dark-theme
+.main-js.dark-theme
   > .basicLightbox
   > .basicLightbox__placeholder
   > .book_info_card
@@ -222,7 +230,7 @@ body.dark-theme
   color: #ffffff;
 }
 
-body.dark-theme
+.main-js.dark-theme
   > .basicLightbox
   > .basicLightbox__placeholder
   > .book_info_card
@@ -280,12 +288,12 @@ body.dark-theme
   background: #111111;
 }
 
-//body scroll
-body::-webkit-scrollbar-track {
+//.main-js scroll
+.main-js::-webkit-scrollbar-track {
   background-color: transparent;
 }
 
-body::-webkit-scrollbar-thumb {
+.main-js::-webkit-scrollbar-thumb {
   background: #111111;
 }
 
@@ -295,21 +303,26 @@ body::-webkit-scrollbar-thumb {
 }
 
 //modal sign-in
-body.dark-theme .modal-sign-action.active {
+.main-js.dark-theme .modal-sign-action.active {
   color: #4f2ee8;
   opacity: 100%;
 }
 
-body.dark-theme .modal-sign-action {
+.main-js.dark-theme .modal-sign-action {
   color: #f6f6f6;
   opacity: 50%;
 }
 
 //modal about-book
-body.dark-theme .about-book-modal .about-book-modal-title {
+.main-js.dark-theme .about-book-modal .about-book-modal-title {
   color: #ffffff;
 }
 
-body.dark-theme .about-book-modal .about-book-modal-close {
+.main-js.dark-theme .about-book-modal .about-book-modal-close {
   background-color: transparent;
 }
+
+// .main-js.dark-theme .bestsellers-btn:hover,
+// .main-js.dark-theme .bestsellers-btn:focus {
+//   color: #111111;
+// }

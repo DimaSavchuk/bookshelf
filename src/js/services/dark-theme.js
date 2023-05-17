@@ -3,7 +3,7 @@ import { category } from '../categories';
 category();
 
 const refs = {
-  bodyEl: document.querySelector('body'),
+  bodyEl: document.querySelector('.main-js'),
   headerEl: document.querySelector('.header-section'),
   headerNavLinkEl: document.querySelector('.shopping'),
   logoLightEl: document.querySelector('.light_icon'),
