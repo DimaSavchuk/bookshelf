@@ -17,6 +17,7 @@
 .shop-image:hover {
   transform: rotate(360deg);
 }
+
 .modal-book-image {
   border-radius: 8px;
 }
@@ -71,6 +72,10 @@
     height: 408px;
     border-radius: 8px;
   }
+  .modal-book-img {
+    border-radius: 8px;
+    // border: 1px solid black;
+  }
   .about-book-modal-description {
     display: block;
     margin-bottom: 10px;
@@ -102,7 +107,6 @@
     color: #b4afaf;
     margin-bottom: 18px;
   }
-
   .about-book-modal-list {
     display: flex;
     gap: 20px;
@@ -127,16 +131,20 @@
     letter-spacing: -0.01em;
     text-transform: uppercase;
     color: #111111;
-
     cursor: pointer;
+    @media screen and (min-width: 768px) {
+      padding: 20px 100px;
+      font-size: 18px;
+      line-height: 1.33em;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+    }
   }
-
   .add-to-sopping-list:hover,
   .add-to-sopping-list:focus {
     background: #4f2ee8;
     color: #ffffff;
   }
-
   .congratulations-text {
     text-align: center;
     width: 242px;
@@ -149,7 +157,15 @@
     line-height: 1.2;
     text-align: center;
     letter-spacing: -0.04em;
-    color: #111111;
+    color: rgba(17, 17, 17, 0.5);
+    @media screen and (min-width: 768px) {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 1.17em;
+      text-align: center;
+      letter-spacing: -0.04em;
+      width: 325px;
+    }
   }
 }
 
