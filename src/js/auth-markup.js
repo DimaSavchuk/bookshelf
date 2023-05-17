@@ -1,6 +1,23 @@
+import svg from '../images/sprite.svg';
+
+
+const closeIcon = `<svg width="28" height="28" class="icon-modal-close">
+            <use href="${svg}#icon-x-close"></use>
+          </svg>`;
+  
+const mail = `<svg width="28" height="28" class="form-icon">
+            <use href="${svg}#icon-mail"></use>
+          </svg>`;
+
+const lock = `<svg width="28" height="28" class="form-icon">
+            <use href="${svg}#icon-lock"></use>
+          </svg>`;
+
 const signUpMarkup = ` <div class="modal-auth">
  <button class="auth-close-btn js-close-modal-btn">
- X</button>
+      ${closeIcon}
+    </button>
+ </button>
 
   <form class="modal-authorization-form" id="signup-form" name="authorization_form">
     <div
@@ -16,38 +33,34 @@ const signUpMarkup = ` <div class="modal-auth">
             id="name"
             placeholder="User name"
             pattern="^[А-Яа-я-A-Za-z]+$"
+            title="The name should contain only letters"
           />
         <label class="authorization-form-label" for="name">Name</label>
       </div>
 
       <div class="authorization-form-field">
-          <svg class="form-icon" width="18" height="18">
-            <use href="./images/sprite.svg#mail"></use>
-          </svg>
+          ${mail}
           <input
             class="authorization-form-input"
             type="email"
             name="user_email"
             id="email"
             placeholder="example@com.com"
-
           />
         <label class="authorization-form-label" for="email">Email</label>
       </div>
 
       <div class="authorization-form-field">
-          <svg class="form-icon" width="18" height="18">
-            <use href="./images/sprite.svg#icon-lock"></use>
-          </svg>
+         ${lock}
           <input
             class="authorization-form-input"
             type="password"
             name="user_password"
             id="password"
             placeholder="enter your password"
-            minlength="5"
-            maxlength="20"
-          />    
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+            title="Must contain at least one  number and one uppercase and lowercase letter, and at least 6 or more characters"/>
+              
             <label class="authorization-form-label" for="password">Password</label>
         </div>
     </div>
@@ -61,4 +74,4 @@ const signUpMarkup = ` <div class="modal-auth">
     </div>
 </div>`;
 
-export { signUpMarkup };
+export { close, signUpMarkup };

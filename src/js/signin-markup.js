@@ -1,6 +1,20 @@
+import svg from '../images/sprite.svg';
+
+const closeIcon = `<svg width="28" height="28" class="icon-modal-close">
+            <use href="${svg}#icon-x-close"></use>
+          </svg>`;
+
+const mail = `<svg width="28" height="28" class="form-icon">
+            <use href="${svg}#icon-mail"></use>
+          </svg>`;
+
+const lock = `<svg width="28" height="28" class="form-icon">
+            <use href="${svg}#icon-lock"></use>
+          </svg>`;
+
 const signInMarkup = ` <div class="modal-auth">
  <button class="auth-close-btn js-close-modal-btn">
-   X
+ ${closeIcon}
   </button>
 
   <form class="modal-authorization-form" id="signin-form" name="signin_form">
@@ -10,33 +24,28 @@ const signInMarkup = ` <div class="modal-auth">
       aria-labelledby="modal_authorization_form"
     >
       <div class="authorization-form-field">
-          <svg class="form-icon" width="10" height="10">
-            <use href="./images/sprite.svg#icon-mail"></use>
-          </svg>
+          ${mail}
           <input
             class="authorization-form-input"
             type="email"
             name="user_email"
             id="email"
             placeholder="example@com.com"
-
           />
           <label class="authorization-form-label" for="email">Email</label>
       </div>
 
       <div class="authorization-form-field">
-          <svg class="form-icon" width="10" height="10">
-            <use href="./images/sprite.svg#icon-lock"></use>
-          </svg>
+          ${lock}
           <input
             class="authorization-form-input"
             type="password"
             name="user_password"
             id="password"
             placeholder="enter your password"
-            minlength="5"
-            maxlength="20"
-          />
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+            title="Must contain at least one  number and one uppercase and lowercase letter, and at least 6 or more characters"/>
+         
             <label class="authorization-form-label" for="password">Password</label>
         </div>
     </div>

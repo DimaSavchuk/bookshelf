@@ -25,7 +25,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px;
 
   background-color: transparent;
   border: none;
@@ -36,16 +35,16 @@
   @media screen and (min-width: 768px) {
     top: 24px;
     right: 24px;
-    padding: 7px;
+  }
+  .icon-modal-close {
+  stroke: currentColor;
+  width: 20px;
+  height: 20px;
+   @media screen and (min-width: 768px) {
+    width: 28px;
+    height: 28px;
   }
 }
-
-.icon {
-  fill: currentColor;
-  @media screen and (min-width: 768px) {
-    width: 14px;
-    height: 14px;
-  }
 }
 
 .authorization-form-group {
@@ -134,10 +133,13 @@
   }
 }
 .form-icon {
+  stroke: currentColor;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   right: 24px;
+   width: 18px;
+    height: 18px;
   @media screen and (min-width: 768px) {
     width: 28px;
     height: 28px;
