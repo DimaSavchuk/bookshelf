@@ -263,6 +263,14 @@ body.dark-theme
   border: none;
 }
 
+.about-book-modal.dark-theme .about-book-modal-close {
+  border: none;
+}
+
+.about-book-modal.dark-theme .about-book-modal-close-icon {
+  fill: #ffffff;
+}
+
 //about team
 .about-team-window::-webkit-scrollbar-track {
   background-color: transparent;
@@ -306,5 +314,5 @@ body.dark-theme .about-book-modal .about-book-modal-close {
   background-color: transparent;
 }
 body.dark-theme .about-book-modal .about-book-modal-description {
-  color: #ffffff;
+  // color: #ffffff;
 }
