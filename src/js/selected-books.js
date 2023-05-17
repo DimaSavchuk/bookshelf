@@ -67,7 +67,7 @@ function renderBooks() {
             </div>
             
             <p class="book-category">${list_name}</p>
-            <p class="book-description">A scientist and single mother living in California in the 1960s becomes a star on a TV cooking show. Read by Miranda Raison, Pandora Sykes and the author. 11 hours, 55 minutes unabridged.A scientist and single mother living in California in the 1960s becomes a star on a TV cooking show. Read by Miranda Raison, Pandora Sykes and the author. 11 hours, 55 minutes unabridged.</p>
+            <p class="book-description">${description}</p>
             <div class="book-styles">
             <h3 class="book-author">${author}</h3>
             <div class="trading-platforms-list list">
