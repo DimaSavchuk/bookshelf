@@ -14,7 +14,7 @@ const refs = {
   aboutBookModalLinkEl: document.querySelectorAll('.about-book-modal-link'),
   modalActionBtnEl: document.querySelector('.add-to-sopping-list'),
   congratulationsTextEl: document.querySelector('.congratulations-text'),
-  checkAuth: document.querySelector(".user-wrap"),
+  checkAuth: document.querySelector('.user-wrap'),
 };
 
 export const STORAGE_KEY = 'shoppingbookId';
@@ -37,7 +37,10 @@ function closeAboutBookModal() {
   refs.backdropEl.classList.add('is-hidden');
   refs.bodyEl.classList.remove('no-scroll');
   refs.modalActionBtnEl.removeEventListener('click', addItemToShoppingList);
-  refs.modalActionBtnEl.removeEventListener('click', removeItemFromShoppingList);
+  refs.modalActionBtnEl.removeEventListener(
+    'click',
+    removeItemFromShoppingList
+  );
 }
 
 if (refs && refs.bestsellersSectionEl) {
@@ -51,57 +54,55 @@ function clickOnBook(event) {
     return;
   }
   booksRequest(bookID).then(data => {
-    if(data) {
-    openAboutBookModal();
-    renderModalCard(data);
-    console.log(refs.checkAuth);
-    if(refs.checkAuth.classList.contains("authorized")){
-      currentBook = data;
-      refs.modalActionBtnEl.setAttribute('id',bookID);
-  
-      let bookInShoppingList = shoppingList.find(x => x._id === bookID);
-      if (bookInShoppingList) {
-        setButtonToRemove();
-      }
-      else {
-        setButtonToAdd();
-      }
-  
-    } else {
-      refs.modalActionBtnEl.style.display="none";
-      Notiflix.Notify.info('Please register or login to your account');
+    if (data) {
+      openAboutBookModal();
+      renderModalCard(data);
+      // console.log(refs.checkAuth);
+      if (refs.checkAuth.classList.contains('authorized')) {
+        currentBook = data;
+        refs.modalActionBtnEl.setAttribute('id', bookID);
 
+        let bookInShoppingList = shoppingList.find(x => x._id === bookID);
+        if (bookInShoppingList) {
+          setButtonToRemove();
+        } else {
+          setButtonToAdd();
+        }
+      } else {
+        refs.modalActionBtnEl.style.display = 'none';
+        Notiflix.Notify.info('Please register or login to your account');
+      }
+    } else {
+      Notiflix.Notify.failure('Failed Loading Book');
     }
-  } else {
-    Notiflix.Notify.failure('Failed Loading Book');
-  }
   });
 }
 
-function setButtonToAdd(){
-  refs.modalActionBtnEl.removeEventListener('click', removeItemFromShoppingList);
-  refs.modalActionBtnEl.textContent = 'ADD TO SHOPPING LIST'; 
+function setButtonToAdd() {
+  refs.modalActionBtnEl.removeEventListener(
+    'click',
+    removeItemFromShoppingList
+  );
+  refs.modalActionBtnEl.textContent = 'ADD TO SHOPPING LIST';
   refs.modalActionBtnEl.addEventListener('click', addItemToShoppingList);
 }
 
-function setButtonToRemove(){
+function setButtonToRemove() {
   refs.modalActionBtnEl.removeEventListener('click', addItemToShoppingList);
   refs.modalActionBtnEl.textContent = 'REMOVE FROM SHOPPING LIST';
   refs.modalActionBtnEl.addEventListener('click', removeItemFromShoppingList);
 }
 
-function addItemToShoppingList(event){
+function addItemToShoppingList(event) {
   shoppingList.push(currentBook);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(shoppingList));
   Notiflix.Notify.success('Ви додали книгу до списку покупок');
   setButtonToRemove();
 }
 
-function removeItemFromShoppingList(event){
+function removeItemFromShoppingList(event) {
   const bookId = event.srcElement.id;
-  shoppingList = shoppingList.filter(
-    book => book._id !== bookId
-  );
+  shoppingList = shoppingList.filter(book => book._id !== bookId);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(shoppingList));
   setButtonToAdd();
 }
@@ -132,4 +133,8 @@ function renderModalCard(data) {
     </div>`;
   refs.aboutBookModalImgEl.innerHTML = modalImgMarkup;
   refs.aboutBookModalDescriptionEl.innerHTML = modalDescriptionMarkup;
+
+  refs.aboutBookModalLinkEl[0].setAttribute('href', buyLinks[0].url);
+  refs.aboutBookModalLinkEl[1].setAttribute('href', buyLinks[1].url);
+  refs.aboutBookModalLinkEl[2].setAttribute('href', buyLinks[4].url);
 }
